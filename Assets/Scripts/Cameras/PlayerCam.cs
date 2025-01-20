@@ -12,22 +12,30 @@ public class PlayerCam : MonoBehaviour
 
     public Transform player;
 
-    float xRotation;
-    float yRotation;
+    public float xRotation;
+    public float yRotation;
+
+    public float mY;
 
     public void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     public void Update()
     {
+
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        mY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+
+        //mY += mY;
+        //xRotation -= mY;
  
-        mouseX -= -mouseX;
-        mouseY += -mouseY;
+ 
+        mouseX += mouseX;
+        mouseY += mouseY;
         
 
         yRotation += mouseX;

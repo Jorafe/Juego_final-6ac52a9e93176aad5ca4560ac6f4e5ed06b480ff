@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-/*[InitializeOnLoad]
+[InitializeOnLoad]
 public class HierarchyController : Editor
 {
     public static Color DEFAULT_COLOR_HIERARCHY_SELECTED = Color.green;
@@ -43,4 +43,4 @@ public class HierarchyController : Editor
 
     }
 
-}*/
+}

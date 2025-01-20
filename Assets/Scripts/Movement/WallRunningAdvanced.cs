@@ -48,7 +48,7 @@ public class WallRunningAdvanced : MonoBehaviour
     private PlayerMovement pm;
     //private LedgeGrabbing lg;
     private Rigidbody rb;
-    public Escalation lg;
+    
 
 
 
@@ -56,7 +56,6 @@ public class WallRunningAdvanced : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
-        lg = GetComponent<Escalation>();
     }
 
     private void Update()
@@ -184,7 +183,6 @@ public class WallRunningAdvanced : MonoBehaviour
 
     private void WallJump()
     {
-        if(lg.holding || lg.exitingLedge) return;
 
         // enter exiting wall state
         exitingWall = true;
