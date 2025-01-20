@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -6,7 +6,7 @@ using UnityEditor;
 [InitializeOnLoad]
 public class HierarchyController : Editor
 {
-    public static Color DEFAULT_COLOR_HIERARCHY_SELECTED = Color.green;
+    /*public static Color DEFAULT_COLOR_HIERARCHY_SELECTED = Color.green;
     static HierarchyController()
     {
         EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
@@ -43,4 +43,4 @@ public class HierarchyController : Editor
 
     }
 
-}
+}*/
