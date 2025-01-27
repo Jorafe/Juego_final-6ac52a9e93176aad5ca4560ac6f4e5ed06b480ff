@@ -82,7 +82,6 @@ public class SCC_Wheel : MonoBehaviour {
         //  If wheel model is not selected, return.
         if (!wheelModel) {
 
-            Debug.LogError(transform.name + " wheel of the " + Drivetrain.transform.name + " is missing wheel model. This wheel is disabled");
             enabled = false;
             return;
 
