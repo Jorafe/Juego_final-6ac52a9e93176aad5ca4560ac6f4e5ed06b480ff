@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pollo : MonoBehaviour
+public class Pelota2 : MonoBehaviour
 {
     public float fuerzaRebote = 10f;
 

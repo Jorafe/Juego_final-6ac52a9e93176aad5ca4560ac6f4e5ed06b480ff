@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4884442136467419760}
   - component: {fileID: 7441276737311362078}
   - component: {fileID: 5882063457961534842}
+  - component: {fileID: 7291911733991055108}
   m_Layer: 6
   m_Name: Ice Cube
-  m_TagString: Untagged
+  m_TagString: whatIsIce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6240122179231922048}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -39.678288, y: 2.8001015, z: -29.224335}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 165.40999, y: 165.40999, z: 165.40999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &4884442136467419760
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -91,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6240122179231922048}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 359b971d7cc4e7445b5965cfd3c25cb9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -105,3 +106,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.027853664, y: 0.027664524, z: 0.027547034}
   m_Center: {x: -0.00019915965, y: -0.00002314942, z: 0.005960103}
+--- !u!114 &7291911733991055108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240122179231922048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428e2c729b84e6e4186a6ccaffa5307f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iceFriction: 0
