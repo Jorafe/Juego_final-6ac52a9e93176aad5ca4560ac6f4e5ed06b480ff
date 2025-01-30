@@ -7160,7 +7160,7 @@ MonoBehaviour:
   crouchYScale: 0.5
   jumpKey: 32
   sprintKey: 304
-  crouchKey: 99
+  crouchKey: 306
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -7216,9 +7216,10 @@ MonoBehaviour:
   playerObj: {fileID: 1212829095}
   pm: {fileID: 820980487}
   maxSlideTime: 0.75
-  slideForce: 200
+  slideForce: 300
   slideYScale: 0.5
-  slideKey: 102
+  controlKey: 99
+  shiftKey: 304
 --- !u!114 &820980490
 MonoBehaviour:
   m_ObjectHideFlags: 0
