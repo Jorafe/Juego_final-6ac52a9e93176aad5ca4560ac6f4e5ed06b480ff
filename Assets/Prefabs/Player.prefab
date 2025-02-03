@@ -2065,6 +2065,7 @@ GameObject:
   - component: {fileID: 3184026784218058062}
   - component: {fileID: 4870506970566983511}
   - component: {fileID: 3725092871947490558}
+  - component: {fileID: 7981634891878974396}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2238,6 +2239,20 @@ MonoBehaviour:
   controlKey: 99
   shiftKey: 304
   slideCooldownTime: 3
+--- !u!114 &7981634891878974396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805268054643926060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47817360676b828478b0756ccdae9996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPosition: {x: 0, y: 0, z: 0}
+  respawnDelay: 1
 --- !u!1 &6012610107727890082
 GameObject:
   m_ObjectHideFlags: 3

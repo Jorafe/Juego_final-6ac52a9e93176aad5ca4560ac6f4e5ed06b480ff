@@ -2216,6 +2216,12 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1125306437}
+    - target: {fileID: 1492680449485278375, guid: dd9cdcf31303b9e489ea345096070b5b,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ee612e8714f140345b4c183c774abe4d,
+        type: 2}
     - target: {fileID: 1557170719113291379, guid: dd9cdcf31303b9e489ea345096070b5b,
         type: 3}
       propertyPath: m_Mesh
@@ -6839,6 +6845,74 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1170690365
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.120075
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7072302
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240122179231922048, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Cube (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31f477c1943b6c6488288e38f261273e, type: 3}
 --- !u!43 &1269287331
 Mesh:
   m_ObjectHideFlags: 0
@@ -8719,6 +8793,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2029364405
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.120075
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7072302
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269180097552728816, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240122179231922048, guid: 31f477c1943b6c6488288e38f261273e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Cube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31f477c1943b6c6488288e38f261273e, type: 3}
 --- !u!1001 &3133334461153616766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8953,3 +9095,5 @@ SceneRoots:
   - {fileID: 6810564431382755791}
   - {fileID: 4770860098469436746}
   - {fileID: 3133334461153616766}
+  - {fileID: 2029364405}
+  - {fileID: 1170690365}

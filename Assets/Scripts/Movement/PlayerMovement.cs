@@ -87,20 +87,33 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update()
+{
+    // Raycast para detectar el suelo
+    RaycastHit hit;
+    if (Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.2f, whatIsGround))
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = true;
 
-        MyInput();
-        SpeedControl();
-        StateHandler();
-
-        // handle drag
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
-            rb.drag = groundDrag;
+        // Verifica si el objeto tiene el tag "whatIsIce"
+        if (hit.collider.CompareTag("whatIsIce"))
+        {
+            rb.drag = 0; // No aplicar resistencia si está en hielo
+        }
         else
-            rb.drag = 0;
+        {
+            rb.drag = groundDrag; // Aplicar resistencia normal en suelo común
+        }
     }
+    else
+    {
+        grounded = false;
+        rb.drag = 0; // Sin resistencia en el aire
+    }
+
+    MyInput();
+    SpeedControl();
+    StateHandler();
+}
 
     private void FixedUpdate()
     {

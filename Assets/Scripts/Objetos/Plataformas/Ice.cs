@@ -16,7 +16,7 @@ public class Ice : MonoBehaviour
     void OnCollisionStay(Collision collision)
     {
         // Si el objeto tocado tiene la tag "WhatIsIce"
-        if (collision.gameObject.CompareTag("WhatIsIce"))
+        if (collision.gameObject.CompareTag("whatIsIce"))
         {
             // Mantiene la velocidad horizontal reduciendo la fricción gradualmente
             rb.velocity = new Vector3(rb.velocity.x * iceFriction, rb.velocity.y, rb.velocity.z * iceFriction);

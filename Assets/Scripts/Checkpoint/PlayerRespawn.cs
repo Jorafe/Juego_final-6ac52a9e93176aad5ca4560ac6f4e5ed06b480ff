@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
+
+    public Vector3 respawnPosition;
     public float respawnDelay = 1f;  // El tiempo de retraso antes de reaparecer
 
-    private void OnDestroy()
+    /*private void OnDestroy()
     {
         // Si el objeto del jugador es destruido, espera un retraso para volver a aparecer
         if (gameObject.activeInHierarchy)
@@ -28,5 +30,5 @@ public class PlayerRespawn : MonoBehaviour
             // Reactivar el jugador si estaba desactivado
             gameObject.SetActive(true);
         }
-    }
+    }*/
 }
