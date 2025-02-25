@@ -228,12 +228,6 @@ MonoBehaviour:
   playerObj: {fileID: 2097056923355167632}
   rb: {fileID: 2877964218137398755}
   rotationSpeed: 7
-  combatLookAt: {fileID: 1870267144881308344}
-  FirstPersonCam: {fileID: 8964989333627788853}
-  thirdPersonCam: {fileID: 5091936395045001194}
-  combatCam: {fileID: 508503235615234934}
-  topDownCam: {fileID: 6677995076680093223}
-  currentStyle: 0
 --- !u!114 &2973236726347900413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3481,7 +3475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 65588012761591138}
-  - component: {fileID: 7829110967382443389}
   m_Layer: 0
   m_Name: CamaraHolder
   m_TagString: Untagged
@@ -3505,19 +3498,6 @@ Transform:
   - {fileID: 185930136432458427}
   m_Father: {fileID: 6435190523918228872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7829110967382443389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8364408503311711099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48328ec9ea149c41bfe4a3bfb92ff2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camaraPosition: {fileID: 6270865108749775559}
 --- !u!1 &8557717104935876104
 GameObject:
   m_ObjectHideFlags: 0

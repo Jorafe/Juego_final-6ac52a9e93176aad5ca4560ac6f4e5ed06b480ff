@@ -3,51 +3,47 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-    public GameObject pauseMenu;  // Asigna tu menú de pausa en el inspector.
-    private bool isPaused = false; // Estado del juego (en pausa o no).
-
-    public void LoadScene(string Scene)
-    {
-        SceneManager.LoadScene(Scene);
-    }
+    public GameObject pauseMenu;  // Menú de pausa asignado en el inspector.
+    public MonoBehaviour playerMovementScript; // Script de movimiento del jugador.
+    public MonoBehaviour cameraControllerScript; // Script que controla la cámara (solo desactiva el movimiento).
     
+    private bool isPaused = false; // Estado del juego (pausado o no).
 
-    public void DisableCanvas(string currentCanvas)
+    public void LoadScene(string sceneName)
     {
-        GameObject canvas = GameObject.Find(currentCanvas);
-        if (canvas != null)
-        {
-            canvas.SetActive(false);
-        }
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void EnableCanvas(GameObject newCanvas)
-    {
-        if (newCanvas != null)
-        {
-            newCanvas.SetActive(true);
-        }
-    }
-
-    // Esta función se llama para alternar entre pausa y reanudación del juego
     public void TogglePause()
     {
         isPaused = !isPaused;
 
         if (isPaused)
         {
-            Time.timeScale = 0f; // Detiene el tiempo
+            Time.timeScale = 0f; // Pausa el tiempo
             pauseMenu.SetActive(true); // Muestra el menú de pausa
+            
+            // Desactiva los controles del jugador y la cámara
+            if (playerMovementScript != null) playerMovementScript.enabled = false;
+            if (cameraControllerScript != null) cameraControllerScript.enabled = false;
+
+            Cursor.lockState = CursorLockMode.None; // Libera el cursor
+            Cursor.visible = true; // Hace visible el cursor
         }
         else
         {
             Time.timeScale = 1f; // Reanuda el tiempo
             pauseMenu.SetActive(false); // Oculta el menú de pausa
+            
+            // Reactiva los controles del jugador y la cámara
+            if (playerMovementScript != null) playerMovementScript.enabled = true;
+            if (cameraControllerScript != null) cameraControllerScript.enabled = true;
+
+            Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
+            Cursor.visible = false; // Oculta el cursor
         }
     }
 
-    // Detecta si se presionó la tecla Escape
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -55,5 +51,4 @@ public class GameManager : MonoBehaviour
             TogglePause();
         }
     }
-
 }
