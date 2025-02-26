@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     private bool isPaused = false; // Estado del juego (pausado o no).
     private float timer = 0f; // Timer en segundos
-    private bool timerRunning = true; // Control del timer
+    public bool timerRunning = true; // Control del timer
 
     public void LoadScene(string Scene)
     {
@@ -87,13 +87,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Detener el timer cuando el jugador colisiona con un objeto del layer "WhatIsTimer"
-    private void OnTriggerEnter(Collider other)
+    // Función para detener el timer desde otro script
+    public void StopTimer()
     {
-        if (other.CompareTag("Player") && other.gameObject.layer == LayerMask.NameToLayer("WhatIsTimer"))
-        {
-            timerRunning = false;
-        }
+        timerRunning = false;
     }
 }
 
