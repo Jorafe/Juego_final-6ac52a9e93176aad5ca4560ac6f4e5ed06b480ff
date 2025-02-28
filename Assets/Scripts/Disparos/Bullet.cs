@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public float lifeTime = 5f;
+    public float lifeTime = 5f; // Ahora es parametrizable
     private Rigidbody rb;
 
     private void Awake()
@@ -16,25 +16,18 @@ public class Bullet : MonoBehaviour
         transform.position = position;
         transform.rotation = rotation;
         gameObject.SetActive(true);
-        
-        // Asegúrate de disparar hacia el eje X, independientemente de la rotación
-        rb.velocity = new Vector3(speed, 0, 0);  // Movimiento en el eje X
-
+        rb.velocity = transform.right * speed; // Disparo en el eje X
         lifeTime = customLifeTime;
-        Invoke("Deactivate", lifeTime); // Desactiva la bala después del tiempo de vida
+        Invoke("Deactivate", lifeTime); // Desactiva la bala después del tiempo establecido
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // Verificamos si el objeto con el que colisiona tiene el layer WhatIsWorm
-        if (collision.gameObject.layer == LayerMask.NameToLayer("WhatIsWorm"))
+        // Comprobar si el objeto con el que colisiona tiene el tag "whatisworm"
+        if (other.CompareTag("whatisworm"))
         {
-            // Destruye el objeto con el layer WhatIsWorm
-            Destroy(collision.gameObject);
+            Deactivate(); // Desactiva la bala
         }
-
-        // Desactiva la bala
-        Deactivate();
     }
 
     private void Deactivate()

@@ -5,7 +5,7 @@ public class Gun : MonoBehaviour
 {
     public Transform firePoint;
     public float fireRate = 0.2f;
-    public float bulletLifeTime = 5f;
+    public float bulletLifeTime = 5f; // Tiempo de vida configurable desde el inspector
     private bool canShoot = true;
 
     private void Update()
@@ -25,4 +25,3 @@ public class Gun : MonoBehaviour
         canShoot = true;
     }
 }
-
