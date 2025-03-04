@@ -251,12 +251,6 @@ MonoBehaviour:
   playerObj: {fileID: 1212829095}
   rb: {fileID: 820980486}
   rotationSpeed: 7
-  combatLookAt: {fileID: 1253206212}
-  FirstPersonCam: {fileID: 1391988188}
-  thirdPersonCam: {fileID: 1949660837}
-  combatCam: {fileID: 1736359487}
-  topDownCam: {fileID: 1685878556}
-  currentStyle: 0
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +281,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 130000
+  m_Intensity: 40718.684
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -330,7 +324,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6500
+  m_ColorTemperature: 7707
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -364,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 130000
+  m_Intensity: 40718.684
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -820,7 +814,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 8ba92e2dd7f884a0f88b98fa2d235fe7, type: 2}
+  sharedProfile: {fileID: 11400000, guid: ea628010672044844a4e6a26146b07ef, type: 2}
 --- !u!4 &432432461
 Transform:
   m_ObjectHideFlags: 0
@@ -5573,7 +5567,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: a183956a004bb4c4cae027de1e4ecb7c, type: 3}
+  - {fileID: 2100000, guid: 1547627a0e2749c4593f19f67feb8b05, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
