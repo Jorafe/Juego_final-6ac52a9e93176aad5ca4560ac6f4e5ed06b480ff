@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 30f;
     public float lifeTime = 5f; // Ahora es parametrizable
     private Rigidbody rb;
 
@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour
         transform.position = position;
         transform.rotation = rotation;
         gameObject.SetActive(true);
-        rb.velocity = transform.right * speed; // Disparo en el eje X
         lifeTime = customLifeTime;
         Invoke("Deactivate", lifeTime); // Desactiva la bala después del tiempo establecido
     }

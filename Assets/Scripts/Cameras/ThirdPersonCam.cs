@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonCam : MonoBehaviour
 {
+
     [Header("References")]
     public Transform orientation;    // La orientación de la cámara
     public Transform player;         // El jugador
@@ -11,6 +13,7 @@ public class ThirdPersonCam : MonoBehaviour
     public Rigidbody rb;             // Rigidbody del jugador para movimiento
 
     public float rotationSpeed;      // Velocidad de rotación de la cámara
+
 
     private void Start()
     {
@@ -33,4 +36,6 @@ public class ThirdPersonCam : MonoBehaviour
         if (inputDir != Vector3.zero)
             playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
     }
+
+
 }

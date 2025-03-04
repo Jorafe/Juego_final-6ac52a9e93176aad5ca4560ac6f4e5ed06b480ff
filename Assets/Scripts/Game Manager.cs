@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string Scene)
     {
         SceneManager.LoadScene(Scene);
+        Time.timeScale = 1f;
+
     }
     
     public void DisableCanvas(string currentCanvas)
