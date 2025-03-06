@@ -243,14 +243,14 @@ RectTransform:
   m_GameObject: {fileID: 2099507481468871089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7802079, y: 0.5234899, z: 0.47102144}
+  m_LocalScale: {x: 2.3450928, y: 0.10819203, z: 0.37525806}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7029793788622716816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.693939, y: -3.7152405}
+  m_AnchoredPosition: {x: 23.4, y: -8.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2828187032702760928
@@ -423,14 +423,14 @@ RectTransform:
   m_GameObject: {fileID: 2394687420765901160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1805909, y: 0.5519437, z: 0.6195287}
+  m_LocalScale: {x: 1.7717955, y: 0.13107559, z: 0.6195287}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3602813845280898311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6558838, y: -4.765503}
+  m_AnchoredPosition: {x: 3.9, y: -9.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8429501245754410782
@@ -526,14 +526,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5176471}
+  m_Color: {r: 0.5450241, g: 0.5471698, b: 0, a: 0.46666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8c0dacd4ef081124c9f86a3ad175b3a3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3697b552af88a4141942812675ebb02b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -736,7 +736,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3896433226762899744}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EnableCanvas
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: DisableCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MenuDeSelecion
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5991098112287461096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,14 +909,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.48235294}
+  m_Color: {r: 0.4433962, g: 0, b: 0.3765349, a: 0.53333336}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8c0dacd4ef081124c9f86a3ad175b3a3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3697b552af88a4141942812675ebb02b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1070,14 +1094,14 @@ RectTransform:
   m_GameObject: {fileID: 5882902192156907983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3349383, y: 0.5646201, z: 0.8458099}
+  m_LocalScale: {x: 1.955581, y: 0.14819019, z: 0.8458099}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 70900305645559986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3447876, y: 2.665985}
+  m_AnchoredPosition: {x: 1.7, y: -2.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &821389504143320740
@@ -1142,14 +1166,14 @@ RectTransform:
   m_GameObject: {fileID: 6032402946625693264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.11688, y: 0.5734279, z: 0.2802634}
+  m_LocalScale: {x: 1.693504, y: 0.121926546, z: 0.2802634}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3184542202811320884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.421509, y: -0.7482605}
+  m_AnchoredPosition: {x: 6.7, y: -6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1344262982200273517
@@ -1412,14 +1436,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.48235294}
+  m_Color: {r: 0.3018868, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8c0dacd4ef081124c9f86a3ad175b3a3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3697b552af88a4141942812675ebb02b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2018,14 +2042,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4627451}
+  m_Color: {r: 0.061579898, g: 0.254717, b: 0, a: 0.5529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8c0dacd4ef081124c9f86a3ad175b3a3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3697b552af88a4141942812675ebb02b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

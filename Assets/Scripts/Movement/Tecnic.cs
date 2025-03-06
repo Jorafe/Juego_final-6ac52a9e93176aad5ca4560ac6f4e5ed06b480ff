@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Tecnic : MonoBehaviour
 {
-    private GameManager gameManager;
+    private TimerManager timeManager;
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        timeManager = FindObjectOfType<TimerManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("WhatIsTimer"))
         {
-            if (gameManager != null)
+            if (timeManager != null)
             {
-                gameManager.StopTimer();
+                timeManager.StopTimer();
             }
         }
     }

@@ -3873,6 +3873,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2190cf8b7464f174a95a5e2c9fc0a781, type: 3}
+--- !u!1 &714115547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714115549}
+  - component: {fileID: 714115548}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &714115548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714115547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b735808d8f71f3e4ab52ecec0a6bed0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 239816209}
+  playerMovementScript: {fileID: 0}
+  cameraControllerScript: {fileID: 0}
+  timerText: {fileID: 0}
+  timerTextTMP: {fileID: 1671375654}
+  timerRunning: 1
+--- !u!4 &714115549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714115547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 965.4586, y: 587.228, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &744349060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6069485191335601705, guid: 41244f5f1699ebd4f93b8c2772423f6f,
@@ -5088,7 +5138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reanudar
+  m_Text: Reiniciar
 --- !u!222 &1108114278
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5582,6 +5632,11 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1671375654}
+    - target: {fileID: 6469872834232692260, guid: 69b3d8c2dc351de4d9dcda8dcda3221b,
+        type: 3}
+      propertyPath: pauseAndTimerManager
+      value: 
+      objectReference: {fileID: 714115548}
     - target: {fileID: 6654055848166381322, guid: 69b3d8c2dc351de4d9dcda8dcda3221b,
         type: 3}
       propertyPath: m_Name
@@ -6864,8 +6919,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1236580495}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 714115548}
+        m_TargetAssemblyTypeName: TimerManager, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
@@ -7720,7 +7775,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reanudar
+  m_Text: Ajustes
 --- !u!222 &1601555868
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10392,3 +10447,4 @@ SceneRoots:
   - {fileID: 574407181}
   - {fileID: 210788377}
   - {fileID: 1906668310}
+  - {fileID: 714115549}
