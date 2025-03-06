@@ -95,4 +95,3 @@ public class GameManager : MonoBehaviour
         timerRunning = false;
     }
 }
-
