@@ -1,117 +1,91 @@
 using UnityEngine;
+using TMPro;
 using System.Collections;
-using TMPro; // Asegúrate de importar TextMeshPro
 
 public class Gun : MonoBehaviour
 {
     public Transform firePoint;
     public float fireRate = 0.2f;
-    public float bulletLifeTime = 5f; // Tiempo de vida configurable desde el inspector
+    public float bulletLifeTime = 5f;
+    public int maxBullets = 25;
+    private int bulletsLeft;
+    public TMP_Text ammoText;
+    public int totalWormCount = 0;
+    public TMP_Text wormText;
+    public LevelManager levelManager;
+    private int currentPhase = 0;
+
     private bool canShoot = true;
     private Camera mainCamera;
-    private int bulletsFired = 0;
-    private int maxBullets = 25; // Nueva variable para limitar los disparos
+    private bool allWormsDeactivated = false;
 
-    // Usamos TMP_Text en lugar de Text
-    public TMP_Text ammoText; // Referencia al texto en UI (TMP_Text de Unity)
-    public TMP_Text wormsText; // Referencia al texto en UI para los gusanos
-    public Worm[] allWorms; // Referencia a todos los gusanos en la escena
-    private int wormsDeactivated = 0; // Contador de gusanos desactivados
-    private int maxWorms = 20; // Máximo de gusanos que pueden ser desactivados
+    int totalWorms = LevelManager.Instance.GetTotalWorms();
 
     private void Start()
     {
         mainCamera = Camera.main;
-        UpdateAmmoUI(); // Actualizar UI al inicio
-        UpdateWormsUI(); // Actualizar UI de gusanos al inicio
-        allWorms = FindObjectsOfType<Worm>(); // Encuentra todos los gusanos en la escena
+        bulletsLeft = maxBullets;
+        UpdateUI();
     }
 
     private void Update()
     {
-        if (Input.GetButton("Fire1") && canShoot && bulletsFired < maxBullets)
+        if (Input.GetButton("Fire1") && canShoot && bulletsLeft > 0)
         {
             StartCoroutine(Shoot());
         }
-
-        if (bulletsFired >= maxBullets && canShoot)
+        else if (bulletsLeft == 0 || allWormsDeactivated) // Cambio de fase si se acaban las balas o si se destruyen todos los gusanos
         {
-            ReactivateWorms(); // Reactivar gusanos si el jugador ya no puede disparar más
+            if (currentPhase < 2)
+            {
+                currentPhase++;
+                levelManager.NextPhase();
+                bulletsLeft = maxBullets;
+                UpdateUI();
+                allWormsDeactivated = false; // Reiniciamos el estado de gusanos desactivados
+            }
+            else
+            {
+                Debug.Log("¡Juego terminado!");
+            }
         }
     }
 
     private IEnumerator Shoot()
     {
+        Vector3 ScreenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Ray ray = mainCamera.ScreenPointToRay(ScreenCenter);
+        RaycastHit hit;
+        Vector3 TargetPoint = Physics.Raycast(ray, out hit) ? hit.point : ray.GetPoint(100);
+        
         canShoot = false;
-
-        Vector3 targetPoint = GetAimPoint();
-
-        // Obtener bala del pool
         Bullet bullet = BulletPool.Instance.GetBullet();
-        if (bullet == null)
-        {
-            canShoot = true; // Permitir volver a disparar si hay balas en el pool
-            yield break;
-        }
-
+        bullet.SetGunReference(this);
         bullet.Activate(firePoint.position, firePoint.rotation, bulletLifeTime);
+        bullet.GetComponent<Rigidbody>().velocity = (TargetPoint - firePoint.position).normalized * bullet.speed;
 
-        // Calcular dirección y aplicar velocidad
-        Vector3 direction = (targetPoint - firePoint.position).normalized;
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.velocity = direction * bullet.speed;
-        }
+        bulletsLeft--;
+        UpdateUI();
 
-        bulletsFired++; // Contar la bala disparada
-        UpdateAmmoUI(); // Actualizar la UI de balas restantes
+        LevelManager.Instance.RegisterShot();
 
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 
-    private Vector3 GetAimPoint()
+    public void IncrementWormCounter()
     {
-        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-        Ray ray = mainCamera.ScreenPointToRay(screenCenter);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        totalWormCount++;
+        UpdateUI();
+        if (totalWormCount == levelManager.GetTotalWorms()) // Verificamos si se han destruido todos los gusanos
         {
-            return hit.point;
-        }
-        return ray.GetPoint(100);
-    }
-
-    private void UpdateAmmoUI()
-    {
-        if (ammoText != null)
-        {
-            int bulletsRemaining = maxBullets - bulletsFired;
-            ammoText.text = bulletsRemaining + "/" + maxBullets; // Mostrar balas restantes
+            allWormsDeactivated = true;
         }
     }
 
-    private void UpdateWormsUI()
+    private void UpdateUI()
     {
-        if (wormsText != null)
-        {
-            wormsText.text = wormsDeactivated + "/" + maxWorms; // Mostrar gusanos desactivados
-        }
-    }
-
-    // Función para reactivar todos los gusanos
-    private void ReactivateWorms()
-    {
-        foreach (var worm in allWorms)
-        {
-            worm.gameObject.SetActive(true); // Reactivar cada gusano
-        }
-    }
-
-    // Función para aumentar el contador de gusanos desactivados
-    public void DeactivateWorm()
-    {
-        wormsDeactivated++; // Aumentar el contador de gusanos desactivados
-        UpdateWormsUI(); // Actualizar el UI de gusanos
+        ammoText.text = bulletsLeft + "/25";
+        wormText.text = totalWormCount + " gusanos derribados";
     }
 }
