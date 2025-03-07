@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class ThirdPersonCam : MonoBehaviour
 {
 
+    private Animator animator;
+
     [Header("References")]
     public Transform orientation;    // La orientación de la cámara
     public Transform player;         // El jugador
@@ -20,6 +22,8 @@ public class ThirdPersonCam : MonoBehaviour
         // Bloquear el cursor en el centro y hacerlo invisible
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        animator = playerObj.GetComponent<Animator>(); // Obtiene el Animator del jugador
     }
 
     private void Update()
@@ -35,6 +39,12 @@ public class ThirdPersonCam : MonoBehaviour
 
         if (inputDir != Vector3.zero)
         playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+
+        if (animator != null)
+        {
+        animator.SetFloat("XSpeed", horizontalInput);
+        animator.SetFloat("YSpeed", verticalInput);
+        }
     }
 
 

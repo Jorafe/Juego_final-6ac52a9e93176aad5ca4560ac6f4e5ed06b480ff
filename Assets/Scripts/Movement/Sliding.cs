@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Sliding : MonoBehaviour
 {
+
+    private Animator animator;
+
+
     [Header("References")]
     public Transform orientation;
     public Transform playerObj;
@@ -32,6 +36,8 @@ public class Sliding : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
+
+        animator = GetComponent<Animator>();
 
         startYScale = playerObj.localScale.y;
     }
@@ -68,8 +74,9 @@ public class Sliding : MonoBehaviour
     private void StartSlide()
     {
         pm.sliding = true;
+        animator.SetBool("isSliding", true);
 
-        playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+        //playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
         rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
 
         slideTimer = maxSlideTime;
@@ -99,6 +106,7 @@ public class Sliding : MonoBehaviour
     private void StopSlide()
     {
         pm.sliding = false;
+        animator.SetTrigger("StopSliding");
         
         // Iniciar el cooldown después de terminar el slide
         slideCooldownTimer = slideCooldownTime;

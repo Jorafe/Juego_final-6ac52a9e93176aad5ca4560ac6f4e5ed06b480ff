@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Dashing : MonoBehaviour
 {
+
+    public Animator animator;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -58,6 +61,8 @@ public class Dashing : MonoBehaviour
         pm.dashing = true;
         pm.maxYSpeed = maxDashYSpeed;
 
+        animator.SetBool("isDashing", true);
+
         Transform forwardT;
 
         // decide wheter you want to use the playerCam or the playersOrientation as forward direction
@@ -102,7 +107,9 @@ public class Dashing : MonoBehaviour
 
     private void ResetDash()
     {
-        pm.dashing = false;
+        pm.dashing = false; 
+        animator.SetBool("isDashing", false);
+        
         pm.maxYSpeed = 0;
 
         // if you disabled it before, activate the gravity of the rigidbody again

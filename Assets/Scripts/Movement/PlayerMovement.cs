@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
-    
+    private Animator animator;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -85,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+         animator = GetComponent<Animator>(); // Obtiene el Animator
+
         readyToJump = true;
 
         startYScale = transform.localScale.y;
@@ -97,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
     if (Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.2f, whatIsGround))
     {
         grounded = true;
+
+         animator.SetBool("isFalling", false);
 
         // Verifica si el objeto tiene el tag "whatIsIce"
         if (hit.collider.CompareTag("whatIsIce"))
@@ -111,12 +115,22 @@ public class PlayerMovement : MonoBehaviour
     else
     {
         grounded = false;
+
+        animator.SetBool("isFalling", true);
         rb.drag = 0; // Sin resistencia en el aire
     }
 
     MyInput();
     SpeedControl();
     StateHandler();
+
+    // Actualizar los valores del Blend Tree
+    animator.SetFloat("XSpeed", horizontalInput);
+    animator.SetFloat("YSpeed", verticalInput);
+
+    // Actualiza el valor de Y para animaciones (salto)
+    animator.SetFloat("yVelocity", rb.velocity.y);
+
 }
 
     private void FixedUpdate()
@@ -193,10 +207,17 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.dashing;
 
+             animator.SetBool("isSliding", true);
+
             if (OnSlope() && rb.velocity.y < 0.1f)
             {
                 desiredMoveSpeed = slideSpeed;
                 keepMomentum = true;
+            }
+            else
+            {
+        // Si no está deslizándose, detener la animación de deslizamiento
+            animator.SetBool("isSliding", false);
             }
         }
         // Mode - Dashing
@@ -205,6 +226,8 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
+
+            animator.SetBool("isDashing", true);
         }
 
         // Mode - Crouching
@@ -231,13 +254,24 @@ public class PlayerMovement : MonoBehaviour
         // Mode - Air
         else
         {
-            state = MovementState.air;
+        state = MovementState.air;
 
-            if (desiredMoveSpeed < sprintSpeed)
-                desiredMoveSpeed = walkSpeed;
-            else
-                desiredMoveSpeed = sprintSpeed;
+        // Verificar si el jugador está cayendo
+        if (rb.velocity.y < 0) 
+        {
+        animator.SetBool("isFalling", true);  // Activa la animación de caída
         }
+        else
+        {
+        animator.SetBool("isFalling", false);  // Desactiva la animación de caída si no está cayendo
+        }
+
+        if (desiredMoveSpeed < sprintSpeed)
+            desiredMoveSpeed = walkSpeed;
+        else
+            desiredMoveSpeed = sprintSpeed;
+        }
+
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
         if (lastState == MovementState.dashing) keepMomentum = true;
@@ -348,14 +382,19 @@ public class PlayerMovement : MonoBehaviour
 
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        
+        animator.SetBool("isJumping", true);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
     private void ResetJump()
     {
+        
         readyToJump = true;
 
         exitingSlope = false;
+
+        animator.SetBool("isJumping", false);
     }
 
     public bool OnSlope()
@@ -367,6 +406,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+       
     }
 
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
@@ -374,45 +414,6 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*    public void OnMove(InputAction.CallbackContext context)
-    {
-        //InputAxis 
-        horizontalInput = context.ReadValue<Vector2>().x;
-        verticalInput = context.ReadValue<Vector2>().y;
-    }
-
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && readyToJump && grounded)
-        {
-            readyToJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-    }
-    public void OnCrouch(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-        }
-        else if (context.canceled)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
-    }
-
-    public void OnLook(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnFire(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }*/
-
 }
+
+    
