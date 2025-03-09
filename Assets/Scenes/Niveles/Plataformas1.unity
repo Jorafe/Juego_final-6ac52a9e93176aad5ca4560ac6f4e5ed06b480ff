@@ -6607,10 +6607,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2519419631284910936, guid: a9aad5b4746199947b885e2982c672de,
+        type: 3}
+      propertyPath: m_Height
+      value: 3.231882
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519419631284910936, guid: a9aad5b4746199947b885e2982c672de,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.7371652
+      objectReference: {fileID: 0}
     - target: {fileID: 3984530219211869482, guid: a9aad5b4746199947b885e2982c672de,
         type: 3}
       propertyPath: m_Name
       value: CharacterController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157218524666894991, guid: a9aad5b4746199947b885e2982c672de,
+        type: 3}
+      propertyPath: groundDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157218524666894991, guid: a9aad5b4746199947b885e2982c672de,
+        type: 3}
+      propertyPath: playerHeight
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6435190523918228872, guid: a9aad5b4746199947b885e2982c672de,
         type: 3}

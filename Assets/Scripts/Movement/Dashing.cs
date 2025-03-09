@@ -38,6 +38,8 @@ public class Dashing : MonoBehaviour
         if (playerCam == null)
             playerCam = Camera.main.transform;
 
+         animator = GetComponent<Animator>(); // Obtiene el Animator
+
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
     }

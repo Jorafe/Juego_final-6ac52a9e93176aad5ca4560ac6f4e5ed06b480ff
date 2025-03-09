@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-         animator = GetComponent<Animator>(); // Obtiene el Animator
+        animator = GetComponent<Animator>(); // Obtiene el Animator
 
         readyToJump = true;
 
@@ -100,7 +100,8 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = true;
 
-         animator.SetBool("isFalling", false);
+        //animator.SetBool("isFalling", false);
+        animator.SetBool("isDashing", false);
 
         // Verifica si el objeto tiene el tag "whatIsIce"
         if (hit.collider.CompareTag("whatIsIce"))
@@ -116,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = false;
 
-        animator.SetBool("isFalling", true);
+        //animator.SetBool("isFalling", true);
         rb.drag = 0; // Sin resistencia en el aire
     }
 
@@ -129,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
     animator.SetFloat("YSpeed", verticalInput);
 
     // Actualiza el valor de Y para animaciones (salto)
-    animator.SetFloat("yVelocity", rb.velocity.y);
+    //animator.SetFloat("yVelocity", rb.velocity.y);
 
 }
 
@@ -207,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.dashing;
 
-             animator.SetBool("isSliding", true);
+            //animator.SetBool("isSliding", true);
 
             if (OnSlope() && rb.velocity.y < 0.1f)
             {
@@ -217,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
         // Si no está deslizándose, detener la animación de deslizamiento
-            animator.SetBool("isSliding", false);
+            //animator.SetBool("isSliding", false);
             }
         }
         // Mode - Dashing
@@ -227,7 +228,10 @@ public class PlayerMovement : MonoBehaviour
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
 
+            animator.SetBool("isJumping", false);
             animator.SetBool("isDashing", true);
+            animator.SetBool("isFalling", false);
+            
         }
 
         // Mode - Crouching
@@ -257,14 +261,14 @@ public class PlayerMovement : MonoBehaviour
         state = MovementState.air;
 
         // Verificar si el jugador está cayendo
-        if (rb.velocity.y < 0) 
+        /*if (rb.velocity.y < 0) 
         {
         animator.SetBool("isFalling", true);  // Activa la animación de caída
         }
         else
         {
         animator.SetBool("isFalling", false);  // Desactiva la animación de caída si no está cayendo
-        }
+        }*/
 
         if (desiredMoveSpeed < sprintSpeed)
             desiredMoveSpeed = walkSpeed;
@@ -339,11 +343,19 @@ public class PlayerMovement : MonoBehaviour
 
         // on ground
         else if (grounded)
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            animator.SetBool("isJumping", false);
+        
+        }
 
         // in air
         else if (!grounded)
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+            
+        
 
         // turn gravity off while on slope
         if(!wallrunning) rb.useGravity = !OnSlope();
@@ -384,17 +396,15 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         
         animator.SetBool("isJumping", true);
-
+        
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
     private void ResetJump()
     {
-        
         readyToJump = true;
 
         exitingSlope = false;
-
-        animator.SetBool("isJumping", false);
+        
     }
 
     public bool OnSlope()
