@@ -5079,7 +5079,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2930165817797917501}
-  victoryMenu: {fileID: 0}
   playerMovementScript: {fileID: 0}
   cameraControllerScript: {fileID: 0}
   timerText: {fileID: 0}
@@ -9234,6 +9233,11 @@ PrefabInstance:
       objectReference: {fileID: 497474329}
     - target: {fileID: 1187835066454626318, guid: a9aad5b4746199947b885e2982c672de,
         type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 2930165817797917501}
+    - target: {fileID: 1187835066454626318, guid: a9aad5b4746199947b885e2982c672de,
+        type: 3}
       propertyPath: endGameCanvas
       value: 
       objectReference: {fileID: 481777219}
@@ -12163,7 +12167,7 @@ MonoBehaviour:
         m_MethodName: EnableCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5722654060042190119, guid: e61ed36f3990bc843aace41d09a5d0c2,
+          m_ObjectArgument: {fileID: 8049999952845837523, guid: d5402691aabcbdf4fbf40156e55b899a,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -17496,7 +17500,7 @@ MonoBehaviour:
         m_MethodName: EnableCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5722654060042190119, guid: e61ed36f3990bc843aace41d09a5d0c2,
+          m_ObjectArgument: {fileID: 8049999952845837523, guid: d5402691aabcbdf4fbf40156e55b899a,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
