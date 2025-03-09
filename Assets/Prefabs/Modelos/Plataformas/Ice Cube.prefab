@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 269180097552728816}
   - component: {fileID: 4884442136467419760}
   - component: {fileID: 7441276737311362078}
-  - component: {fileID: 5882063457961534842}
   - component: {fileID: 7291911733991055108}
+  - component: {fileID: 2730349918908107646}
   m_Layer: 6
   m_Name: Ice Cube
   m_TagString: whatIsIce
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -39.678288, y: 2.8001015, z: -29.224335}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.270429, y: 2.270429, z: 2.270429}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6240122179231922048}
-  m_Mesh: {fileID: 8385836491182413749, guid: af8ca091fd1931a49ad70896a56f6b9e, type: 3}
+  m_Mesh: {fileID: -1550514412580984892, guid: 8e49cbb0e3ce0a24ca6f6fd508503a24, type: 3}
 --- !u!23 &7441276737311362078
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -85,27 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5882063457961534842
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240122179231922048}
-  m_Material: {fileID: 13400000, guid: 359b971d7cc4e7445b5965cfd3c25cb9, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.027853664, y: 0.027664524, z: 0.027547034}
-  m_Center: {x: -0.00019915965, y: -0.00002314942, z: 0.005960103}
 --- !u!114 &7291911733991055108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iceFriction: 0
+--- !u!65 &2730349918908107646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240122179231922048}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.027499592, y: 0.02794767, z: 0.027079556}
+  m_Center: {x: 0.00694929, y: 0.22122772, z: 0.021704223}

@@ -1,7 +1,7 @@
 using UnityEngine;
-using TMPro;  // Asegúrate de que tienes este namespace si usas TextMeshPro
-using UnityEngine.UI;  // Necesario para el uso de Text de Unity UI
-using System.Collections; // Necesario para las corutinas
+using TMPro;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Tecnic : MonoBehaviour
 {
@@ -16,11 +16,23 @@ public class Tecnic : MonoBehaviour
     public TMP_Text victoryCandyTMPText; // El TMP_Text donde se mostrará el número de caramelos en el canvas de victoria
 
     public GameObject player; // El GameObject del jugador (asignado en el inspector)
+    public GameObject pauseMenu; // El menú de pausa (asignado en el inspector)
+    public MonoBehaviour playerMovementScript; // Script de movimiento del jugador
+    public MonoBehaviour cameraControllerScript; // Script de control de la cámara
 
     void Start()
     {
         timeManager = FindObjectOfType<TimerManager>();
         candyManager = FindObjectOfType<CandyManager>();  // Encuentra el CandyManager en la escena
+    }
+
+    private void Update()
+    {
+        // Solo permite abrir el menú de pausa si el menú de victoria no está activo
+        if (Input.GetKeyDown(KeyCode.Escape) && !endGameCanvas.activeSelf)
+        {
+            TogglePause();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,10 +63,10 @@ public class Tecnic : MonoBehaviour
             endGameCanvas.SetActive(true);
         }
 
-        // Desactiva el menú de pausa en el TimerManager (si está activo)
-        if (timeManager != null && timeManager.pauseMenu != null)
+        // Desactiva el menú de pausa si está activo
+        if (pauseMenu != null)
         {
-            timeManager.pauseMenu.SetActive(false);
+            pauseMenu.SetActive(false);
         }
 
         // Desactiva el GameObject del jugador (evita que el jugador se mueva)
@@ -62,6 +74,10 @@ public class Tecnic : MonoBehaviour
         {
             player.SetActive(false); // Desactiva el GameObject del jugador
         }
+
+        // Desactiva el movimiento y la cámara
+        if (playerMovementScript != null) playerMovementScript.enabled = false;
+        if (cameraControllerScript != null) cameraControllerScript.enabled = false;
 
         // Mostrar el cursor
         Cursor.lockState = CursorLockMode.None; // Libera el cursor
@@ -100,6 +116,30 @@ public class Tecnic : MonoBehaviour
             {
                 victoryCandyTMPText.text = candyCount.ToString(); // Solo el número
             }
+        }
+    }
+
+    // Función para alternar entre pausa y reanudación del juego
+    public void TogglePause()
+    {
+        if (endGameCanvas.activeSelf) return; // Si el menú de victoria está activo, no permite pausar
+
+        bool isPaused = Time.timeScale == 0f;
+        if (isPaused)
+        {
+            Time.timeScale = 1f;
+            playerMovementScript.enabled = true;
+            cameraControllerScript.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            playerMovementScript.enabled = false;
+            cameraControllerScript.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
