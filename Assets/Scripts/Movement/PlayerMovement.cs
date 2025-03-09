@@ -125,9 +125,19 @@ public class PlayerMovement : MonoBehaviour
     SpeedControl();
     StateHandler();
 
-    // Actualizar los valores del Blend Tree
+if (grounded)
+{
     animator.SetFloat("XSpeed", horizontalInput);
     animator.SetFloat("YSpeed", verticalInput);
+}
+else
+{
+    animator.SetFloat("XSpeed", 0);
+    animator.SetFloat("YSpeed", 0);
+}
+
+    // Actualizar los valores del Blend Tree
+    
 
     // Actualiza el valor de Y para animaciones (salto)
     //animator.SetFloat("yVelocity", rb.velocity.y);

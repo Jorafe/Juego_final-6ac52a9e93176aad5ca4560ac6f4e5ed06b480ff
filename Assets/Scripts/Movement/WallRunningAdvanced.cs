@@ -48,14 +48,15 @@ public class WallRunningAdvanced : MonoBehaviour
     private PlayerMovement pm;
     //private LedgeGrabbing lg;
     private Rigidbody rb;
+
+    private Animator animator;
     
-
-
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
+
+        animator = GetComponent<Animator>();  // Obtener el componente Animator
     }
 
     private void Update()
@@ -73,8 +74,25 @@ public class WallRunningAdvanced : MonoBehaviour
 
     private void CheckForWall()
     {
-        wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall);
-        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
+        wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall) && rightWallhit.collider.CompareTag("whatisWall");
+        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall) && leftWallhit.collider.CompareTag("whatisWall");
+
+        // Detectar si estamos en la pared de la derecha o izquierda y cambiar la animación
+        if (wallRight)
+        {
+            animator.SetBool("IsWallRight", true);  // Activar animación de pared derecha
+            animator.SetBool("IsWallLeft", false); // Desactivar animación de pared izquierda
+        }
+        else if (wallLeft)
+        {
+            animator.SetBool("IsWallRight", false); // Desactivar animación de pared derecha
+            animator.SetBool("IsWallLeft", true);   // Activar animación de pared izquierda
+        }
+        else
+        {
+            animator.SetBool("IsWallRight", false); // Desactivar animación de pared derecha
+            animator.SetBool("IsWallLeft", false);  // Desactivar animación de pared izquierda
+        }
     }
 
     private bool AboveGround()
@@ -187,6 +205,8 @@ public class WallRunningAdvanced : MonoBehaviour
         // enter exiting wall state
         exitingWall = true;
         exitWallTimer = exitWallTime;
+
+        animator.SetBool("isJumping", true);
 
         Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
 
