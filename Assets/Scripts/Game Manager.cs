@@ -27,4 +27,9 @@ public class GameManager : MonoBehaviour
             newCanvas.SetActive(true);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
