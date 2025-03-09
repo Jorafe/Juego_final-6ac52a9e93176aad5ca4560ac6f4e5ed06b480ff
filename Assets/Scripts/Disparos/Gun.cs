@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
     private Camera mainCamera;
     private bool allWormsDeactivated = false;
 
-    int totalWorms = LevelManager.Instance.GetTotalWorms();
+    //int totalWorms = LevelManager.Instance.GetTotalWorms();
 
     private void Start()
     {
@@ -85,7 +85,7 @@ public class Gun : MonoBehaviour
 
     private void UpdateUI()
     {
-        ammoText.text = bulletsLeft + "/25";
-        wormText.text = totalWormCount + " gusanos derribados";
+        //ammoText.text = bulletsLeft + "/25";
+       
     }
 }
