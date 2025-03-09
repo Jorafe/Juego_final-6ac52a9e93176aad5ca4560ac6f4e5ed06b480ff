@@ -74,7 +74,7 @@ public class Sliding : MonoBehaviour
     private void StartSlide()
     {
         pm.sliding = true;
-        animator.SetBool("isSliding", true);
+        
 
         //playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
         rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -106,7 +106,7 @@ public class Sliding : MonoBehaviour
     private void StopSlide()
     {
         pm.sliding = false;
-        animator.SetTrigger("StopSliding");
+        
         
         // Iniciar el cooldown después de terminar el slide
         slideCooldownTimer = slideCooldownTime;

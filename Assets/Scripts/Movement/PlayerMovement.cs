@@ -215,22 +215,27 @@ else
         }
         // Mode - Sliding
         if (sliding)
-        {
-            state = MovementState.dashing;
+{
+    state = MovementState.dashing;
 
-            //animator.SetBool("isSliding", true);
+    // Si el jugador está deslizándose sobre una pendiente
+    if (OnSlope() && rb.velocity.y < 0.1f)
+    {
+        desiredMoveSpeed = slideSpeed;
+        keepMomentum = true;
 
-            if (OnSlope() && rb.velocity.y < 0.1f)
-            {
-                desiredMoveSpeed = slideSpeed;
-                keepMomentum = true;
-            }
-            else
-            {
+        // Reducir la escala en el eje Y al deslizarse
+        transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+    }
+    else
+    {
         // Si no está deslizándose, detener la animación de deslizamiento
-            //animator.SetBool("isSliding", false);
-            }
-        }
+        //animator.SetBool("isSliding", false);
+
+        // Restaurar la escala cuando ya no esté deslizándose
+        transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+    }
+}
         // Mode - Dashing
         if (dashing)
         {
@@ -240,7 +245,7 @@ else
 
             animator.SetBool("isJumping", false);
             animator.SetBool("isDashing", true);
-            animator.SetBool("isFalling", false);
+            
             
         }
 
