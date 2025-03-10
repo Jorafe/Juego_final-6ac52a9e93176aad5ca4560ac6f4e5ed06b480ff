@@ -26,14 +26,14 @@ public class Tecnic : MonoBehaviour
         candyManager = FindObjectOfType<CandyManager>();  // Encuentra el CandyManager en la escena
     }
 
-    private void Update()
+    /*private void Update()
     {
         // Solo permite abrir el menú de pausa si el menú de victoria no está activo
         if (Input.GetKeyDown(KeyCode.Escape) && !endGameCanvas.activeSelf)
         {
             TogglePause();
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
