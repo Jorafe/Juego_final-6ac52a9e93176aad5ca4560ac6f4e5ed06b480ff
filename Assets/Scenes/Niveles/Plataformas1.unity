@@ -3529,20 +3529,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1976999591}
     m_Modifications:
-    - target: {fileID: 863731046402869028, guid: d04b745ca20e2cf4a828bcdf3ee0a757,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3107589936578798990, guid: d04b745ca20e2cf4a828bcdf3ee0a757,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3459994851915092783, guid: d04b745ca20e2cf4a828bcdf3ee0a757,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33
+      value: 33.15
       objectReference: {fileID: 0}
     - target: {fileID: 3459994851915092783, guid: d04b745ca20e2cf4a828bcdf3ee0a757,
         type: 3}
@@ -3552,7 +3542,7 @@ PrefabInstance:
     - target: {fileID: 3459994851915092783, guid: d04b745ca20e2cf4a828bcdf3ee0a757,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.2
+      value: -25.69
       objectReference: {fileID: 0}
     - target: {fileID: 3459994851915092783, guid: d04b745ca20e2cf4a828bcdf3ee0a757,
         type: 3}
@@ -5101,7 +5091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Run
+  m_text: Correr
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a184c4fc49de34ca07355f20b29e31, type: 2}
   m_sharedMaterial: {fileID: -8415291098905567485, guid: 76a184c4fc49de34ca07355f20b29e31,
@@ -5165,7 +5155,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -126.39224, y: 0, z: 251.00221, w: 0}
+  m_margin: {x: -126.39224, y: 0, z: 245.2633, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5912,7 +5902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move
+  m_text: 'Moverse
 
 '
   m_isRightToLeft: 0
@@ -5978,7 +5968,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -126.39224, y: 0, z: 251.00221, w: 0}
+  m_margin: {x: -126.39224, y: 0, z: 219.0284, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6772,7 +6762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jump
+  m_text: Saltar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a184c4fc49de34ca07355f20b29e31, type: 2}
   m_sharedMaterial: {fileID: -8415291098905567485, guid: 76a184c4fc49de34ca07355f20b29e31,
@@ -9804,7 +9794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1359093996
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14612,7 +14602,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.18, y: -1.8, z: -9.79}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75319, y: 0.68309, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -16696,7 +16686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Si correr a una de las pared te deslizaras por ella
+  m_text: Si corres a una de las paredes te deslizaras por ella
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a184c4fc49de34ca07355f20b29e31, type: 2}
   m_sharedMaterial: {fileID: -8415291098905567485, guid: 76a184c4fc49de34ca07355f20b29e31,
@@ -16724,8 +16714,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.8
-  m_fontSizeBase: 22.8
+  m_fontSize: 21.95
+  m_fontSizeBase: 21.95
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17498,7 +17488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1522071400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17643,7 +17633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -222, y: 265}
+  m_AnchoredPosition: {x: -189, y: 265}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542758927
@@ -18121,7 +18111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144, y: -331}
+  m_AnchoredPosition: {x: -144, y: -325}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632484488
@@ -18144,7 +18134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press any button
+  m_text: "Presione cualquier bot\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a184c4fc49de34ca07355f20b29e31, type: 2}
   m_sharedMaterial: {fileID: -8415291098905567485, guid: 76a184c4fc49de34ca07355f20b29e31,
@@ -18208,7 +18198,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -137.26797, w: 0}
+  m_margin: {x: -73.78576, y: 0, z: -208.59418, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -18352,7 +18342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -341, y: 30}
+  m_AnchoredPosition: {x: -329, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635507774
@@ -19945,7 +19935,7 @@ RectTransform:
   m_GameObject: {fileID: 1841330114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1414, y: 1.1414, z: 1.1414}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1522071404}
@@ -22919,21 +22909,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Checkpoint '
       objectReference: {fileID: 0}
-    - target: {fileID: 7324517711811651748, guid: 6abd7ea9a7ae1db49958991d5e672fd4,
+    - target: {fileID: 7504417226528676723, guid: 6abd7ea9a7ae1db49958991d5e672fd4,
         type: 3}
-      propertyPath: m_Size.x
-      value: 25.49472
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324517711811651748, guid: 6abd7ea9a7ae1db49958991d5e672fd4,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 28.480927
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324517711811651748, guid: 6abd7ea9a7ae1db49958991d5e672fd4,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 12.428207
-      objectReference: {fileID: 0}
+      propertyPath: respawnParticles
+      value: 
+      objectReference: {fileID: 1359093997}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

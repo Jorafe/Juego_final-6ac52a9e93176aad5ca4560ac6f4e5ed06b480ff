@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453457681d3817b42884bc65ba990bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!4 &14275306
 Transform:
   m_ObjectHideFlags: 0
@@ -2373,6 +2372,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454226593}
   m_CullTransparentMesh: 1
+--- !u!1 &455342357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455342360}
+  - component: {fileID: 455342359}
+  - component: {fileID: 455342358}
+  m_Layer: 0
+  m_Name: Death Zone
+  m_TagString: WhatIsDead
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455342358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455342357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ec2e3868c7fbc47a8d62c650b1d7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &455342359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455342357}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 691.14594, y: 1, z: 692.702}
+  m_Center: {x: 122.47867, y: 0, z: -25.396927}
+--- !u!4 &455342360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455342357}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00050610997, y: -0, z: -0, w: 0.9999999}
+  m_LocalPosition: {x: -331.2, y: -50.3, z: 282}
+  m_LocalScale: {x: 1.8313751, y: 68.447914, z: 1.956875}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -0.058, y: 0, z: 0}
 --- !u!1 &467120061
 GameObject:
   m_ObjectHideFlags: 0
@@ -7426,7 +7491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press any button
+  m_text: "Presione cualquier bot\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a184c4fc49de34ca07355f20b29e31, type: 2}
   m_sharedMaterial: {fileID: -8415291098905567485, guid: 76a184c4fc49de34ca07355f20b29e31,
@@ -7490,7 +7555,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -43.5317, y: 0, z: -49.148697, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7769,7 +7834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453457681d3817b42884bc65ba990bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!4 &1455301388
 Transform:
   m_ObjectHideFlags: 0
@@ -8510,7 +8574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453457681d3817b42884bc65ba990bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!4 &1677674922
 Transform:
   m_ObjectHideFlags: 0
@@ -8746,7 +8809,7 @@ PrefabInstance:
     - target: {fileID: 244049146774488674, guid: 6abd7ea9a7ae1db49958991d5e672fd4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.86
+      value: -11.15
       objectReference: {fileID: 0}
     - target: {fileID: 244049146774488674, guid: 6abd7ea9a7ae1db49958991d5e672fd4,
         type: 3}
@@ -12747,3 +12810,4 @@ SceneRoots:
   - {fileID: 773265112}
   - {fileID: 1768574996}
   - {fileID: 2013776468}
+  - {fileID: 455342360}
