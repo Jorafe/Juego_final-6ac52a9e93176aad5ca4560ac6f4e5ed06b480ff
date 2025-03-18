@@ -5,16 +5,10 @@ public class Bullet : MonoBehaviour
     public float speed = 30f;
     public float lifeTime = 5f;
     private Rigidbody rb;
-    private Gun gun;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    public void SetGunReference(Gun gunRef)
-    {
-        gun = gunRef;
     }
 
     public void Activate(Vector3 position, Quaternion rotation, float customLifeTime)
@@ -31,9 +25,8 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("whatisworm"))
         {
             other.gameObject.SetActive(false);
-            gun.IncrementWormCounter();
+            LevelManager.Instance.RegisterWormDeactivated(); // Solo llamamos al LevelManager
             Deactivate();
-            LevelManager.Instance.RegisterWormDeactivated();
         }
     }
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 
 public class Gun : MonoBehaviour
@@ -9,9 +8,6 @@ public class Gun : MonoBehaviour
     public float bulletLifeTime = 5f;
     public int maxBullets = 25;
     private int bulletsLeft;
-    public TMP_Text ammoText;
-    public int totalWormCount = 0;
-    public TMP_Text wormText;
     public LevelManager levelManager;
     private int currentPhase = 0;
 
@@ -19,13 +15,10 @@ public class Gun : MonoBehaviour
     private Camera mainCamera;
     private bool allWormsDeactivated = false;
 
-    //int totalWorms = LevelManager.Instance.GetTotalWorms();
-
     private void Start()
     {
         mainCamera = Camera.main;
         bulletsLeft = maxBullets;
-        UpdateUI();
     }
 
     private void Update()
@@ -34,19 +27,13 @@ public class Gun : MonoBehaviour
         {
             StartCoroutine(Shoot());
         }
-        else if (bulletsLeft == 0 || allWormsDeactivated) // Cambio de fase si se acaban las balas o si se destruyen todos los gusanos
+        else if (bulletsLeft == 0 || allWormsDeactivated)
         {
             if (currentPhase < 2)
             {
                 currentPhase++;
-                levelManager.NextPhase();
                 bulletsLeft = maxBullets;
-                UpdateUI();
                 allWormsDeactivated = false; // Reiniciamos el estado de gusanos desactivados
-            }
-            else
-            {
-                Debug.Log("¡Juego terminado!");
             }
         }
     }
@@ -60,32 +47,13 @@ public class Gun : MonoBehaviour
         
         canShoot = false;
         Bullet bullet = BulletPool.Instance.GetBullet();
-        bullet.SetGunReference(this);
         bullet.Activate(firePoint.position, firePoint.rotation, bulletLifeTime);
         bullet.GetComponent<Rigidbody>().velocity = (TargetPoint - firePoint.position).normalized * bullet.speed;
 
         bulletsLeft--;
-        UpdateUI();
-
         LevelManager.Instance.RegisterShot();
 
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
-    }
-
-    public void IncrementWormCounter()
-    {
-        totalWormCount++;
-        UpdateUI();
-        if (totalWormCount == levelManager.GetTotalWorms()) // Verificamos si se han destruido todos los gusanos
-        {
-            allWormsDeactivated = true;
-        }
-    }
-
-    private void UpdateUI()
-    {
-        //ammoText.text = bulletsLeft + "/25";
-       
     }
 }

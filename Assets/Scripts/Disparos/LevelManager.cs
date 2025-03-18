@@ -1,40 +1,30 @@
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
     public GameObject player;
-    public List<GameObject> platforms;
-    public List<GameObject> worms; // Lista de gusanos
-    public TMP_Text uiText; // Texto de balas y gusanos
-    
-    public TextMeshProUGUI wormCounterText; // Referencia al texto en el Canvas
-    public TextMeshProUGUI ammoCounterText; // Referencia al texto de balas en el Canvas
+    public GameObject victoryMenu;  // Referencia al menú de victoria
+    public TMP_Text wormCounterText;
+    public TMP_Text ammoCounterText;
 
-    private int currentPhase = 0;
-    private int maxPhases = 3; // Número total de fases
     private int bulletsFired = 0;
+    private int wormsDeactivated = 0;
     private int maxBulletsPerPhase = 25;
-    private int wormsDeactivated = 0; // Acumulación total de gusanos derribados
-    private int totalWorms = 60; // Máximo de gusanos en todo el juego
+    private int totalWorms = 60;
 
     private void Awake()
     {
-        Instance = this; // Instancia de LevelManager
+        Instance = this;
     }
 
     private void Start()
     {
         UpdateUI();
-    }
-
-    // Método que retorna el número total de gusanos
-    public int GetTotalWorms()
-    {
-        return totalWorms;
+        victoryMenu.SetActive(false);  // Aseguramos que el menú de victoria esté oculto al principio
     }
 
     public void RegisterShot()
@@ -42,10 +32,9 @@ public class LevelManager : MonoBehaviour
         bulletsFired++;
         UpdateUI();
 
-        // Si se acaban las balas o se han desactivado todos los gusanos, cambiar de fase
         if (bulletsFired >= maxBulletsPerPhase || wormsDeactivated >= totalWorms)
         {
-            NextPhase();
+            StartCoroutine(ShowVictoryMenu());  // Llamamos a la corutina para esperar 1 segundo
         }
     }
 
@@ -54,55 +43,39 @@ public class LevelManager : MonoBehaviour
         wormsDeactivated++;
         UpdateUI();
 
-        // Si se han desactivado todos los gusanos de esta fase antes de gastar todas las balas, cambiar de fase
-        if (AllWormsDisabled())
+        if (wormsDeactivated >= totalWorms)
         {
-            NextPhase();
+            StartCoroutine(ShowVictoryMenu());  // Llamamos a la corutina para esperar 1 segundo
         }
     }
 
-    private bool AllWormsDisabled()
+    private IEnumerator ShowVictoryMenu()
     {
-        foreach (GameObject worm in worms)
-        {
-            if (worm.activeSelf) return false;
-        }
-        return true;
-    }
+        // Esperamos 1 segundo antes de continuar
+        yield return new WaitForSeconds(1f);
 
-    public void NextPhase()
-    {
-        if (currentPhase < maxPhases - 1)
+        // Desactivamos al jugador
+        if (player != null)
         {
-            currentPhase++;
-            bulletsFired = 0; // Reiniciar balas en la nueva fase
-            ActivateWorms();
-            UpdateUI();
+            player.SetActive(false);
         }
-        else
-        {
-            Debug.Log("Juego terminado");
-            // Aquí puedes añadir la lógica para finalizar el juego
-        }
-    }
 
-    private void ActivateWorms()
-    {
-        foreach (GameObject worm in worms)
-        {
-            worm.SetActive(true);
-        }
+        // Activamos el cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Mostramos el menú de victoria
+        victoryMenu.SetActive(true);
     }
 
     private void UpdateUI()
     {
-        // Actualiza el contador de gusanos de esta fase en el formato "X/60"
+        // Actualizamos los contadores de gusanos y balas
         if (wormCounterText != null)
         {
             wormCounterText.text = wormsDeactivated + "/" + totalWorms;
         }
 
-        // Actualiza el contador de balas de forma descendente (balas restantes)
         if (ammoCounterText != null)
         {
             ammoCounterText.text = (maxBulletsPerPhase - bulletsFired) + "/" + maxBulletsPerPhase;
