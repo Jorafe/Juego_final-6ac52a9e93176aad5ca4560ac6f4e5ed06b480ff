@@ -18,19 +18,6 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Si ya hay un checkpoint anterior, destrúyelo
-            /*if (lastCheckpointObject != null)
-            {
-                Destroy(lastCheckpointObject);
-            }*/
-
-            // Actualiza el último checkpoint tocado
-            //lastCheckpoint = transform;
-            //lastCheckpointObject = gameObject;  // Guarda el objeto del checkpoint actual
-
-            // Destruye este checkpoint después de que el jugador lo toque
-            //Destroy(gameObject);
-
             respawn.respawnPosition = transform.position;
 
             Destroy(gameObject);

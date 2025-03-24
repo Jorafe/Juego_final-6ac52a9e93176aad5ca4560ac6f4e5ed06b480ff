@@ -1192,7 +1192,7 @@ Transform:
   m_GameObject: {fileID: 548488791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.035, y: 0.51, z: -0.512}
+  m_LocalPosition: {x: 0.035, y: 0.51, z: 0.477}
   m_LocalScale: {x: 0.35558844, y: 0.16990225, z: 0.16990225}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1371,14 +1371,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624912259}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 952.6615, y: 702.67, z: 179.61514}
+  m_LocalRotation: {x: 0, y: 0.9997611, z: 0, w: 0.021857485}
+  m_LocalPosition: {x: 952.66034, y: 702.67, z: 179.67729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 548488792}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180177.5, z: 0}
 --- !u!114 &624912264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,9 +1393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementArea: {fileID: 2120832285}
   target: {fileID: 1094408898}
-  flyingSpeed: 20
-  floatingSpeed: 10
-  phaseChangeInterval: 3
+  flyingSpeed: 15
+  floatingSpeed: 3
+  floatingPhaseDuration: 20
   minDistanceBetweenPoints: 50
 --- !u!54 &624912265
 Rigidbody:
@@ -2237,6 +2237,88 @@ MonoBehaviour:
   freeze: 0
   unlimited: 0
   restricted: 0
+--- !u!1 &1590186883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1590186886}
+  - component: {fileID: 1590186885}
+  - component: {fileID: 1590186884}
+  m_Layer: 0
+  m_Name: Spawn Portales
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1590186884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590186883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0812403ac5e094a49a2383a6c32e6433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnArea: {fileID: 1590186885}
+  firstObjectPrefab: {fileID: 7765800866018721891, guid: 8c9c296bb059abf4780ab2796734a77f,
+    type: 3}
+  secondObjectPrefab: {fileID: 1326457485515191363, guid: 02fa126367ceab04ba432e696fd2939c,
+    type: 3}
+  planePrefab: {fileID: 1879946400336466832, guid: 1846a38cb6e2d394aa47863d72b49e5c,
+    type: 3}
+  firstObjectScale: {x: 10, y: 1, z: 10}
+  secondObjectScale: {x: 3, y: 3, z: 3}
+  planeScale: {x: 10, y: 1, z: 10}
+  groundTag: whatisground
+  raycastDistance: 1000
+  secondObjectDelay: 3
+  spawnInterval: 15
+  scaleVariationFactor: 0.05
+  lifeTime: 6
+--- !u!65 &1590186885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590186883}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 74.18622, y: 27.029846, z: 73.31529}
+  m_Center: {x: 0.25424194, y: 9.281342, z: -2.6601028}
+--- !u!4 &1590186886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590186883}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 952.58435, y: 723.2, z: 179.43005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1838669795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,7 +2383,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2332,3 +2414,4 @@ SceneRoots:
   - {fileID: 2120832286}
   - {fileID: 1094408898}
   - {fileID: 624912263}
+  - {fileID: 1590186886}
