@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 356633174}
   - component: {fileID: 356633173}
   - component: {fileID: 356633172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 548488795}
   - component: {fileID: 548488794}
   - component: {fileID: 548488793}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1283,9 +1283,9 @@ GameObject:
   - component: {fileID: 624912260}
   - component: {fileID: 624912265}
   - component: {fileID: 624912264}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 1094408897}
   m_Layer: 0
   m_Name: GamePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2274,15 +2274,14 @@ MonoBehaviour:
     type: 3}
   planePrefab: {fileID: 1879946400336466832, guid: 1846a38cb6e2d394aa47863d72b49e5c,
     type: 3}
-  firstObjectScale: {x: 10, y: 1, z: 10}
-  secondObjectScale: {x: 3, y: 3, z: 3}
-  planeScale: {x: 10, y: 1, z: 10}
-  groundTag: whatisground
+  firstObjectScale: {x: 20, y: 0.5, z: 20}
+  secondObjectScale: {x: 10, y: 10, z: 10}
+  planeScale: {x: 20, y: 0.5, z: 20}
+  groundLayerName: whatisGround
   raycastDistance: 1000
-  secondObjectDelay: 3
-  spawnInterval: 15
-  scaleVariationFactor: 0.05
-  lifeTime: 6
+  secondObjectDelay: 1
+  spawnInterval: 5
+  objectLifeTime: 5
 --- !u!65 &1590186885
 BoxCollider:
   m_ObjectHideFlags: 0

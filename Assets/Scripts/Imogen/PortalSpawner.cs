@@ -1,124 +1,150 @@
+using System.Collections;
 using UnityEngine;
 
 public class PortalSpawner : MonoBehaviour
 {
-    public BoxCollider spawnArea;            // Área del BoxCollider donde se instanciarán los objetos
-    public GameObject firstObjectPrefab;     // Objeto que se instanciará primero (cubo de 1x5x5)
-    public GameObject secondObjectPrefab;    // Objeto que se instanciará 3 segundos después del primero (cubo de 5x5x5)
-    public GameObject planePrefab;           // El plano que se instanciará encima del objeto con el tag "whatisground"
+    public BoxCollider spawnArea;
+    public GameObject firstObjectPrefab;
+    public GameObject secondObjectPrefab;
+    public GameObject planePrefab;
 
-    // Escalas base para los objetos
-    public Vector3 firstObjectScale = new Vector3(1f, 5f, 5f);   // Escala base del primer objeto (1x5x5)
-    public Vector3 secondObjectScale = new Vector3(5f, 5f, 5f);  // Escala base del segundo objeto (5x5x5)
-    public Vector3 planeScale = new Vector3(5f, 1f, 5f);        // Escala base del plano (5x1x5)
+    // Escalas que ahora se pueden modificar desde el Inspector
+    public Vector3 firstObjectScale = new Vector3(1f, 5f, 5f);
+    public Vector3 secondObjectScale = new Vector3(5f, 5f, 5f);
+    public Vector3 planeScale = new Vector3(5f, 1f, 5f);
 
-    public string groundTag = "whatisground"; // Tag del objeto que el raycast debe detectar
-    public float raycastDistance = 1000f;    // Distancia del raycast (1 km)
-    public float secondObjectDelay = 3f;     // Tiempo de retraso para instanciar el segundo objeto
-    public float spawnInterval = 15f;        // Intervalo para instanciar el grupo (en segundos)
-    public float scaleVariationFactor = 0.05f; // Factor de variación aleatoria (5%)
-    public float lifeTime = 6f;               // Tiempo de vida total del grupo en segundos
-
-    private GameObject firstObject;
-    private GameObject secondObject;
-    private GameObject plane;
+    public string groundLayerName = "whatisGround"; // Nombre del layer en lugar de tag
+    public float raycastDistance = 1000f;
+    public float secondObjectDelay = 3f;
+    public float spawnInterval = 15f;
+    public float objectLifeTime = 5f; // Tiempo de vida para los objetos (en segundos)
 
     private void Start()
     {
-        // Comenzar a instanciar el grupo de objetos cada 15 segundos
-        InvokeRepeating("SpawnPortalGroup", 0f, spawnInterval);
+        InvokeRepeating("SpawnRandomPortalGroups", 0f, spawnInterval);
     }
 
-    private void SpawnPortalGroup()
+    private void SpawnRandomPortalGroups()
     {
-        // Instanciar el primer objeto en una posición aleatoria dentro del BoxCollider
-        Vector3 randomPosition = new Vector3(
-            Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
-            Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
-            Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
-        );
+        // Aleatoriamente decidimos cuántos grupos de portales instanciar
+        int groupCount = Random.Range(1, 6);  // De 1 a 5 grupos de portales
 
-        // Escalar aleatoriamente el primer objeto (con una variación del 5%)
-        Vector3 scaledFirstObject = GetRandomScaledVector(firstObjectScale);
-
-        // Instanciar el primer objeto
-        firstObject = Instantiate(firstObjectPrefab, randomPosition, Quaternion.identity);
-        firstObject.transform.localScale = scaledFirstObject; // Aplicar la escala aleatoria
-
-        // Instanciar el segundo objeto 3 segundos después del primero
-        Invoke("InstantiateSecondObject", secondObjectDelay);
-
-        // Lanzar un raycast desde el primer objeto hacia abajo para encontrar el objeto "whatisground"
-        RaycastHit hit;
-        Ray ray = new Ray(firstObject.transform.position, Vector3.down); // Dirección hacia abajo
-        if (Physics.Raycast(ray, out hit, raycastDistance))
+        for (int i = 0; i < groupCount; i++)
         {
-            // Si el raycast golpea un objeto con el tag especificado
-            if (hit.transform.CompareTag(groundTag))
+            StartCoroutine(SpawnPortalGroup());
+        }
+    }
+
+    private IEnumerator SpawnPortalGroup()
+    {
+        // Obtener una posición aleatoria dentro del área del spawn
+        Vector3 randomPosition = GetRandomPositionWithinCollider(spawnArea);
+
+        // Instanciamos el primer objeto con la escala asignada desde el Inspector
+        GameObject firstObject = Instantiate(firstObjectPrefab, randomPosition, Quaternion.identity);
+        firstObject.transform.localScale = firstObjectScale;
+
+        // Instanciamos el segundo objeto después del retraso
+        StartCoroutine(InstantiateSecondObject(firstObject));
+
+        // Instanciamos el plano de alerta tras detectar el suelo con raycast
+        StartCoroutine(SpawnAlertMark(firstObject));
+
+        // Destruimos el primer objeto después del tiempo de vida especificado
+        Destroy(firstObject, objectLifeTime);
+
+        // Asegurarnos de que los objetos con el tag "Enemy" no colisionen con nada
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemyObject in enemyObjects)
+        {
+            // Ignorar la colisión entre el "Enemy" y los otros objetos
+            Collider enemyCollider = enemyObject.GetComponent<Collider>();
+            if (enemyCollider != null)
             {
-                // Instanciar el plano 1 metro por encima del objeto "whatisground"
-                Vector3 spawnPosition = hit.point + Vector3.up; // Un metro por encima del objeto
-                plane = Instantiate(planePrefab, spawnPosition, Quaternion.identity);
-                // Escalar el plano en relación al segundo objeto
-                plane.transform.localScale = GetScaledPlaneForSecondObject();
+                Physics.IgnoreCollision(firstObject.GetComponent<Collider>(), enemyCollider);
+                Physics.IgnoreCollision(secondObjectPrefab.GetComponent<Collider>(), enemyCollider);
+                Physics.IgnoreCollision(planePrefab.GetComponent<Collider>(), enemyCollider);
             }
         }
 
-        // Destruir todos los objetos después de 6 segundos
-        Destroy(firstObject, lifeTime);
-        Invoke("DestroySecondObject", secondObjectDelay + lifeTime);
-        Invoke("DestroyPlane", secondObjectDelay + lifeTime);
+        yield return null;
     }
 
-    private void InstantiateSecondObject()
+    private IEnumerator InstantiateSecondObject(GameObject firstObject)
     {
-        // Instanciar el segundo objeto en una posición aleatoria
-        Vector3 randomPosition = new Vector3(
-            Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
-            Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
-            Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
-        );
+        yield return new WaitForSeconds(secondObjectDelay);
 
-        // Escalar aleatoriamente el segundo objeto (con una variación del 5%)
-        Vector3 scaledSecondObject = GetRandomScaledVector(secondObjectScale);
+        if (firstObject == null) yield break;
 
-        // Instanciar el segundo objeto
-        secondObject = Instantiate(secondObjectPrefab, randomPosition, Quaternion.identity);
-        secondObject.transform.parent = firstObject.transform; // Hacer que sea hijo del primer objeto
-        secondObject.transform.localScale = scaledSecondObject; // Aplicar la escala aleatoria
+        // Calculamos la posición y escala para el segundo objeto
+        Vector3 secondObjectPosition = firstObject.transform.position - new Vector3(0, firstObjectScale.y / 2 + secondObjectScale.y / 2, 0);
+        GameObject secondObject = Instantiate(secondObjectPrefab, secondObjectPosition, Quaternion.identity);
+        secondObject.transform.localScale = secondObjectScale;
+        secondObject.transform.parent = firstObject.transform;
+
+        // Destruimos el segundo objeto después del tiempo de vida especificado
+        Destroy(secondObject, objectLifeTime);
+
+        // Asegurarnos de que el segundo objeto no colisione con enemigos
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemyObject in enemyObjects)
+        {
+            // Ignorar la colisión entre el "Enemy" y el segundo objeto
+            Collider enemyCollider = enemyObject.GetComponent<Collider>();
+            if (enemyCollider != null)
+            {
+                Physics.IgnoreCollision(secondObject.GetComponent<Collider>(), enemyCollider);
+            }
+        }
     }
 
-    // Función para escalar aleatoriamente un objeto dentro de un 5% de su escala original
-    private Vector3 GetRandomScaledVector(Vector3 originalScale)
+    private IEnumerator SpawnAlertMark(GameObject firstObject)
     {
-        return new Vector3(
-            Random.Range(originalScale.x - originalScale.x * scaleVariationFactor, originalScale.x + originalScale.x * scaleVariationFactor),
-            Random.Range(originalScale.y - originalScale.y * scaleVariationFactor, originalScale.y + originalScale.y * scaleVariationFactor),
-            Random.Range(originalScale.z - originalScale.z * scaleVariationFactor, originalScale.z + originalScale.z * scaleVariationFactor)
-        );
+        yield return new WaitForEndOfFrame();
+
+        RaycastHit hit;
+        Vector3 rayOrigin = firstObject.transform.position;
+
+        // Lanzamos el raycast para detectar el suelo
+        if (Physics.Raycast(rayOrigin, Vector3.down, out hit, raycastDistance))
+        {
+            Debug.Log("Raycast hit: " + hit.transform.gameObject.name);
+
+            // Verificamos si el objeto golpeado está en el layer "whatisGround"
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer(groundLayerName))
+            {
+                Debug.Log("Raycast hit the ground layer");
+
+                // Instanciamos el plano justo sobre el suelo detectado
+                Vector3 planePosition = hit.point + Vector3.up * 0.01f; // Añadimos una pequeña altura para evitar solapamientos
+                GameObject plane = Instantiate(planePrefab, planePosition, Quaternion.identity);
+                plane.transform.localScale = planeScale;
+                plane.transform.parent = hit.transform; // Adjuntamos al objeto del suelo
+
+                // Destruimos el plano después del tiempo de vida especificado
+                Destroy(plane, objectLifeTime);
+            }
+            else
+            {
+                Debug.Log("Raycast hit a non-ground layer: " + hit.transform.gameObject.layer);
+            }
+        }
+        else
+        {
+            Debug.Log("Raycast did not hit anything.");
+        }
     }
 
-    // Función para escalar el plano basado en el segundo objeto
-    private Vector3 GetScaledPlaneForSecondObject()
+    private Vector3 GetRandomPositionWithinCollider(BoxCollider boxCollider)
     {
-        // Escalar el plano de acuerdo con la escala del segundo cubo, manteniendo las proporciones
-        return new Vector3(
-            secondObjectScale.x, 
-            planeScale.y, // Mantener el mismo valor de altura para el plano
-            secondObjectScale.z
-        );
-    }
+        Vector3 colliderCenter = boxCollider.bounds.center;
+        Vector3 colliderSize = boxCollider.bounds.size;
 
-    // Funciones para destruir los objetos después del tiempo de vida
-    private void DestroySecondObject()
-    {
-        if (secondObject != null)
-            Destroy(secondObject);
-    }
+        float randomX = Random.Range(colliderCenter.x - colliderSize.x / 2, colliderCenter.x + colliderSize.x / 2);
+        float randomZ = Random.Range(colliderCenter.z - colliderSize.z / 2, colliderCenter.z + colliderSize.z / 2);
 
-    private void DestroyPlane()
-    {
-        if (plane != null)
-            Destroy(plane);
+        return new Vector3(randomX, colliderCenter.y, randomZ);
     }
 }
