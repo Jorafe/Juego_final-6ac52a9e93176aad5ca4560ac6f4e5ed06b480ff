@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Muebles
+  m_Name: Cuerpo Toon
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -111,7 +111,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Tex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ab1ec1b291af29e4d944fa8514817992, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -131,7 +131,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: db3afe05f8445de42ad2cd1fc3fafde7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d195c066651eb54399692ea4d9b0851, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -230,7 +230,7 @@ Material:
     m_Floats:
     - _1st2nd_Shades_Feather: 0.013
     - _1st_ShadeColor_Feather: 0.0001
-    - _1st_ShadeColor_Step: 0.512
+    - _1st_ShadeColor_Step: 0.862
     - _2nd_ShadeColor_Feather: 0.013
     - _2nd_ShadeColor_Step: 0.626
     - _AORemapMax: 1
@@ -260,7 +260,7 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.512
+    - _BaseColor_Step: 0.862
     - _BaseShade_Feather: 0.0001
     - _Base_Speed: 1.31
     - _BlendMode: 0
@@ -327,7 +327,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _HighColor_Power: 0.779
+    - _HighColor_Power: 0
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -412,7 +412,7 @@ Material:
     - _Scroll_EmissiveV: 0
     - _SecondShadeOverridden: 0
     - _SecondShadeVisible: 1
-    - _Set_SystemShadowsToBase: 1
+    - _Set_SystemShadowsToBase: 0
     - _ShadeColor_Step: 0.626
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
@@ -462,7 +462,7 @@ Material:
     - _Tweak_MatcapMaskLevel: 0
     - _Tweak_RimLightMaskLevel: 0
     - _Tweak_ShadingGradeMapLevel: 0
-    - _Tweak_SystemShadowsLevel: 0.069
+    - _Tweak_SystemShadowsLevel: 0.063
     - _Tweak_transparency: 0
     - _UVBase: 0
     - _UVDetail: 0
@@ -486,8 +486,8 @@ Material:
     - _utsVersionY: 11
     - _utsVersionZ: 0
     m_Colors:
-    - _1st_ShadeColor: {r: 0.9764151, g: 0.97659266, b: 1, a: 1}
-    - _2nd_ShadeColor: {r: 0.7971698, g: 0.8355034, b: 1, a: 1}
+    - _1st_ShadeColor: {r: 0.36445355, g: 0.8490566, b: 0.6254845, a: 1}
+    - _2nd_ShadeColor: {r: 0.1027946, g: 0.6603774, b: 0.381586, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
@@ -501,7 +501,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Emissive_Color: {r: 1, g: 0.9241554, b: 0.4669811, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
     - _HighColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
