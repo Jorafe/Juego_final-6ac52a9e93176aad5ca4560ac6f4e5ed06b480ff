@@ -22,11 +22,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("whatisworm"))
+        if (other.CompareTag("Worm"))  // Cambié el tag a "Worm" (debes asegurarte de que los gusanos tengan este tag)
         {
-            other.gameObject.SetActive(false);
-            LevelManager.Instance.RegisterWormDeactivated(); // Solo llamamos al LevelManager
-            Deactivate();
+            other.gameObject.SetActive(false);  // Desactivamos el gusano
+            LevelManager.Instance.RegisterWormDeactivated(other.gameObject); // Pasamos el GameObject del gusano desactivado
+            Deactivate();  // Desactivamos la bala
         }
     }
 
