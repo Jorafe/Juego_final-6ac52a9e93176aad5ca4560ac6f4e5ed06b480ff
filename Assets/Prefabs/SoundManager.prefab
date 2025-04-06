@@ -142,12 +142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 3774533146333112427}
-  sfxSource: {fileID: 3774533146333112427}
+  sfxSource: {fileID: 0}
   hoverSFX: {fileID: 8300000, guid: 7b296226fbbafa24eaee8fd41ddd09c6, type: 3}
   clickSFX: {fileID: 8300000, guid: f6d384d2cbaef0d4cac9a61e0bf0fa52, type: 3}
   destroyCandySFX: {fileID: 8300000, guid: 07a7502c1eb8fe44d92c36b114dc19be, type: 3}
-  musicVolume: 0.2
-  sfxVolume: 0.3
+  musicVolume: 0.1
+  sfxVolume: 0.5
   sceneMusicList:
   - sceneName: PrimeraPantalla
     musicClip: {fileID: 8300000, guid: b6c811bb2caa892458269954263e9f07, type: 3}
@@ -175,8 +175,8 @@ MonoBehaviour:
   - tag: WhatisChicken
     sound: {fileID: 8300000, guid: be9600440781c224ba0363e912f09c0c, type: 3}
   - tag: WhatisBol
-    sound: {fileID: 8300000, guid: 71e339b0353b5a54ca005edb3e212b4e, type: 3}
-  - tag: WhatisWall
+    sound: {fileID: 8300000, guid: 2fa4985149dddf043877cd2ea966d5cc, type: 3}
+  - tag: whatisWall
     sound: {fileID: 0}
-  - tag: WhatisIce
+  - tag: whatisIce
     sound: {fileID: 8300000, guid: efc58c591cd4c0f40bb4ab55e5906884, type: 3}
