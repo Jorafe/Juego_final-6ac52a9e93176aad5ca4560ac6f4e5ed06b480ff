@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 7981634891878974396}
   - component: {fileID: 1187835066454626318}
   - component: {fileID: 2868843123788506796}
+  - component: {fileID: 5185434049818721166}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1058,6 +1059,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699606bfa0bf44c4b8c9e6c9cd13856e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endGameCanvas: {fileID: 0}
+  victoryTimeText: {fileID: 0}
+  victoryTimeTMPText: {fileID: 0}
+  victoryCandyText: {fileID: 0}
+  victoryCandyTMPText: {fileID: 0}
+  player: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  playerMovementScript: {fileID: 0}
+  cameraControllerScript: {fileID: 0}
 --- !u!95 &2868843123788506796
 Animator:
   serializedVersion: 5
@@ -1079,6 +1089,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5185434049818721166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805268054643926060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23764463fcfac7a4db5696a1b8c9bf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6561209904246941288
 GameObject:
   m_ObjectHideFlags: 0

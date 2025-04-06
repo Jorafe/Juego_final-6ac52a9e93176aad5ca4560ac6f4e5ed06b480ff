@@ -20,7 +20,8 @@ public class Pelota2 : MonoBehaviour
             // Si el objeto tiene un Animator, activa la animación de salto
             if (animator != null)
             {
-                animator.SetTrigger("Jump");
+                animator.SetBool("isJumping", true);
+                
             }
         }
     }

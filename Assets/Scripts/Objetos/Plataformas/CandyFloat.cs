@@ -11,6 +11,9 @@ public class CandyFloat : MonoBehaviour
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
+    [Header("Sonido de Caramelo")]
+    public AudioClip destroyCandySFX; // Sonido para destruir el caramelo
+
     void Start()
     {
         originalScale = transform.localScale;
@@ -96,15 +99,20 @@ public class CandyFloat : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-    {
-        CandyManager candyManager = FindObjectOfType<CandyManager>();
-        if (candyManager != null)
         {
-            candyManager.AddCandy(); // ✅ Suma caramelos
+            CandyManager candyManager = FindObjectOfType<CandyManager>();
+            if (candyManager != null)
+            {
+                candyManager.AddCandy(); // ✅ Suma caramelos
+            }
+
+            // Reproducir sonido de destrucción antes de destruir el caramelo
+            if (SoundManagerMenu.Instance != null && destroyCandySFX != null)
+            {
+                SoundManagerMenu.Instance.PlaySFX(destroyCandySFX);
+            }
+
+            Destroy(gameObject); // ✅ Elimina el caramelo
         }
-        Destroy(gameObject); // ✅ Elimina el caramelo
-    }
     }
 }
-
-    

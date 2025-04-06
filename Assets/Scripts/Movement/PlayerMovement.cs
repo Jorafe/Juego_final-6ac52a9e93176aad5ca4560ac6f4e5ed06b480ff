@@ -275,15 +275,6 @@ else
         {
         state = MovementState.air;
 
-        // Verificar si el jugador está cayendo
-        /*if (rb.velocity.y < 0) 
-        {
-        animator.SetBool("isFalling", true);  // Activa la animación de caída
-        }
-        else
-        {
-        animator.SetBool("isFalling", false);  // Desactiva la animación de caída si no está cayendo
-        }*/
 
         if (desiredMoveSpeed < sprintSpeed)
             desiredMoveSpeed = walkSpeed;
@@ -361,6 +352,7 @@ else
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             animator.SetBool("isJumping", false);
+            //animator.SetBool("isFalling", false);
         
         }
 
@@ -375,6 +367,29 @@ else
         // turn gravity off while on slope
         if(!wallrunning) rb.useGravity = !OnSlope();
     }
+
+    private bool IsJumpingStatic()
+    {
+    // Verifica si el jugador está en el aire (no tocando el suelo)
+    if (!grounded)
+    {
+        // Verifica el movimiento en los ejes X y Z locales
+        float horizontalVelocity = Mathf.Abs(rb.velocity.x);
+        float verticalVelocity = Mathf.Abs(rb.velocity.z);
+
+        // Si hay movimiento en cualquiera de los ejes X o Z, no es un salto estático
+        if (horizontalVelocity > 0.1f || verticalVelocity > 0.1f)
+        {
+            return false; // El jugador se está moviendo en el aire
+        }
+        else
+        {
+            return true; // El jugador está saltando estático
+        }
+    }
+
+    return false; // Si está en el suelo, no está saltando
+}
 
     private void SpeedControl()
     {
