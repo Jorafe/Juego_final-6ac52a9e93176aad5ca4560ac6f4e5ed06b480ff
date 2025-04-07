@@ -102,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
 
         //animator.SetBool("isFalling", false);
         animator.SetBool("isDashing", false);
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isJumpingMove", false);
 
         // Verifica si el objeto tiene el tag "whatIsIce"
         if (hit.collider.CompareTag("whatIsIce"))
@@ -125,24 +127,26 @@ public class PlayerMovement : MonoBehaviour
     SpeedControl();
     StateHandler();
 
-if (grounded)
-{
-    animator.SetFloat("XSpeed", horizontalInput);
-    animator.SetFloat("YSpeed", verticalInput);
-}
-else
-{
-    animator.SetFloat("XSpeed", 0);
-    animator.SetFloat("YSpeed", 0);
-}
 
-    // Actualizar los valores del Blend Tree
-    
 
-    // Actualiza el valor de Y para animaciones (salto)
-    //animator.SetFloat("yVelocity", rb.velocity.y);
+    if (grounded)
+    {
+        animator.SetFloat("XSpeed", horizontalInput);
+        animator.SetFloat("YSpeed", verticalInput);
+    }
+    else
+    {
+        animator.SetFloat("XSpeed", 0);
+        animator.SetFloat("YSpeed", 0);
+    }
 
-}
+        // Actualizar los valores del Blend Tree
+        
+
+        // Actualiza el valor de Y para animaciones (salto)
+        //animator.SetFloat("yVelocity", rb.velocity.y);
+
+    }
 
     private void FixedUpdate()
     {
@@ -352,6 +356,7 @@ else
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             animator.SetBool("isJumping", false);
+            animator.SetBool("isJumpingMove", false);
             //animator.SetBool("isFalling", false);
         
         }
@@ -368,17 +373,34 @@ else
         if(!wallrunning) rb.useGravity = !OnSlope();
     }
 
-    private bool IsJumpingStatic()
+    /*private bool IsJumpingStatic()
     {
     // Verifica si el jugador está en el aire (no tocando el suelo)
-    if (!grounded)
-    {
-        // Verifica el movimiento en los ejes X y Z locales
-        float horizontalVelocity = Mathf.Abs(rb.velocity.x);
-        float verticalVelocity = Mathf.Abs(rb.velocity.z);
+        if (!grounded)
+        {
+            // Verifica el movimiento en los ejes X y Z locales
+            float horizontalVelocity = Mathf.Abs(rb.velocity.x);
+            float verticalVelocity = Mathf.Abs(rb.velocity.z);
 
+            // Si hay movimiento en cualquiera de los ejes X o Z, no es un salto estático
+            if (horizontalVelocity > 0.1f || verticalVelocity > 0.1f)
+            {
+                return false; // El jugador se está moviendo en el aire
+            }
+            else
+            {
+                return true; // El jugador está saltando estático
+            }
+        }
+
+        return false; // Si está en el suelo, no está saltando
+    }*/
+
+
+    private bool IsJumpingStatic()
+    {
         // Si hay movimiento en cualquiera de los ejes X o Z, no es un salto estático
-        if (horizontalVelocity > 0.1f || verticalVelocity > 0.1f)
+        if (horizontalInput != 0 || verticalInput != 0)
         {
             return false; // El jugador se está moviendo en el aire
         }
@@ -388,8 +410,6 @@ else
         }
     }
 
-    return false; // Si está en el suelo, no está saltando
-}
 
     private void SpeedControl()
     {
@@ -425,10 +445,20 @@ else
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         
-        animator.SetBool("isJumping", true);
+        //animator.SetBool("isJumping", true);
         
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        if(IsJumpingStatic())
+        {
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumpingMove", true);
+        }
     }
+
     private void ResetJump()
     {
         readyToJump = true;

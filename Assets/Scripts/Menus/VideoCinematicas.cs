@@ -19,12 +19,22 @@ public class VideoCinematicas : MonoBehaviour
         SetToSmall();
     }
 
+    void Ondisable()
+    {
+        videoPlayer.loopPointReached -= OnVideoEnd;
+    }
+
     public void OnClickVideo()
     {
         if (!isFullscreen)
         {
             SetToFullScreen();
             videoPlayer.Play();
+        }
+        else
+        {
+            SetToSmall();
+            videoPlayer.Stop();
         }
     }
 
