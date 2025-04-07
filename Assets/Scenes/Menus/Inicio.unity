@@ -4071,7 +4071,7 @@ VideoPlayer:
   - 1
   m_Url: 
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
+  m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
@@ -5670,7 +5670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1912081571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6789,11 +6789,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5184398306597682885, guid: f8a11d676736ee743aa88f443a46925f,
-        type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1434105915}
     - target: {fileID: 5399576415765513990, guid: f8a11d676736ee743aa88f443a46925f,
         type: 3}
       propertyPath: m_LocalPosition.x
