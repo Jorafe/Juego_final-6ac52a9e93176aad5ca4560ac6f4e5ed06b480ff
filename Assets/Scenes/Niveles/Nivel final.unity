@@ -858,7 +858,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 953, y: 700, z: 176.93}
-  m_LocalScale: {x: 12.050282, y: 12.050282, z: 12.050282}
+  m_LocalScale: {x: 19.186459, y: 19.186459, z: 19.186459}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1283,6 +1283,7 @@ GameObject:
   - component: {fileID: 624912260}
   - component: {fileID: 624912265}
   - component: {fileID: 624912264}
+  - component: {fileID: 624912266}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -1424,6 +1425,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &624912266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624912259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2c00b956df8f847b18122b328192b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLives: 30
+  bulletTag: whatisBullet
 --- !u!1 &714971823
 GameObject:
   m_ObjectHideFlags: 3
@@ -2312,8 +2327,8 @@ Transform:
   m_GameObject: {fileID: 1590186883}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 952.43, y: 723.2, z: 181.06}
-  m_LocalScale: {x: 1.6, y: 1, z: 1.6125}
+  m_LocalPosition: {x: 952.18, y: 727, z: 183.71}
+  m_LocalScale: {x: 2.587954, y: 1.9126599, z: 2.6081722}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
