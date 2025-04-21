@@ -107,33 +107,27 @@ public class PortalSpawner : MonoBehaviour
         RaycastHit hit;
         Vector3 rayOrigin = firstObject.transform.position;
 
-        // Lanzamos el raycast para detectar el suelo
-        if (Physics.Raycast(rayOrigin, Vector3.down, out hit, raycastDistance))
+        // Creamos un LayerMask que solo incluye el layer "whatisGround"
+        int groundLayer = LayerMask.NameToLayer(groundLayerName);
+        int layerMask = 1 << groundLayer;
+
+        // Lanzamos el raycast usando solo ese layer
+        if (Physics.Raycast(rayOrigin, Vector3.down, out hit, raycastDistance, layerMask))
         {
             Debug.Log("Raycast hit: " + hit.transform.gameObject.name);
 
-            // Verificamos si el objeto golpeado está en el layer "whatisGround"
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer(groundLayerName))
-            {
-                Debug.Log("Raycast hit the ground layer");
+            // Instanciamos el plano justo sobre el suelo detectado
+            Vector3 planePosition = hit.point + Vector3.up * 0.01f; // Añadimos una pequeña altura para evitar solapamientos
+            GameObject plane = Instantiate(planePrefab, planePosition, Quaternion.identity);
+            plane.transform.localScale = planeScale;
+            plane.transform.parent = hit.transform; // Adjuntamos al objeto del suelo
 
-                // Instanciamos el plano justo sobre el suelo detectado
-                Vector3 planePosition = hit.point + Vector3.up * 0.01f; // Añadimos una pequeña altura para evitar solapamientos
-                GameObject plane = Instantiate(planePrefab, planePosition, Quaternion.identity);
-                plane.transform.localScale = planeScale;
-                plane.transform.parent = hit.transform; // Adjuntamos al objeto del suelo
-
-                // Destruimos el plano después del tiempo de vida especificado
-                Destroy(plane, objectLifeTime);
-            }
-            else
-            {
-                Debug.Log("Raycast hit a non-ground layer: " + hit.transform.gameObject.layer);
-            }
+            // Destruimos el plano después del tiempo de vida especificado
+            Destroy(plane, objectLifeTime);
         }
         else
         {
-            Debug.Log("Raycast did not hit anything.");
+            Debug.Log("Raycast did not hit anything on the ground layer.");
         }
     }
 

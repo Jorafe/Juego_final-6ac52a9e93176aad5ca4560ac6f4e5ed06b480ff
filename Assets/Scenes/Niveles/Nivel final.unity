@@ -2276,9 +2276,9 @@ MonoBehaviour:
     type: 3}
   firstObjectScale: {x: 20, y: 0.5, z: 20}
   secondObjectScale: {x: 10, y: 10, z: 10}
-  planeScale: {x: 20, y: 0.5, z: 20}
-  groundLayerName: whatisGround
-  raycastDistance: 1000
+  planeScale: {x: 2, y: 0.5, z: 2}
+  groundLayerName: whatisGraund
+  raycastDistance: 10000
   secondObjectDelay: 1
   spawnInterval: 5
   objectLifeTime: 5
@@ -2312,8 +2312,8 @@ Transform:
   m_GameObject: {fileID: 1590186883}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 952.58435, y: 723.2, z: 179.43005}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 952.43, y: 723.2, z: 181.06}
+  m_LocalScale: {x: 1.6, y: 1, z: 1.6125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2598,8 +2598,8 @@ Transform:
   m_GameObject: {fileID: 2120832284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 953, y: 709.30005, z: 176.93}
-  m_LocalScale: {x: 0.080761, y: 0.080761, z: 0.080761}
+  m_LocalPosition: {x: 953.45, y: 714.9, z: 177.08}
+  m_LocalScale: {x: 0.1214484, y: 0.1214484, z: 0.1214484}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
