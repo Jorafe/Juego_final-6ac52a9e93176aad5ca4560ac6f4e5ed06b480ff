@@ -27,7 +27,7 @@ public class PortalSpawner : MonoBehaviour
     private void SpawnRandomPortalGroups()
     {
         // Aleatoriamente decidimos cuántos grupos de portales instanciar
-        int groupCount = Random.Range(1, 6);  // De 1 a 5 grupos de portales
+        int groupCount = Random.Range(4, 7);  // De 1 a 5 grupos de portales
 
         for (int i = 0; i < groupCount; i++)
         {
