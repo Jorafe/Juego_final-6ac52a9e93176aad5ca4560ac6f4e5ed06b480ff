@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalSpawner : MonoBehaviour
@@ -8,16 +9,17 @@ public class PortalSpawner : MonoBehaviour
     public GameObject secondObjectPrefab;
     public GameObject planePrefab;
 
-    // Escalas que ahora se pueden modificar desde el Inspector
     public Vector3 firstObjectScale = new Vector3(1f, 5f, 5f);
     public Vector3 secondObjectScale = new Vector3(5f, 5f, 5f);
     public Vector3 planeScale = new Vector3(5f, 1f, 5f);
 
-    public string groundLayerName = "whatisGround"; // Nombre del layer en lugar de tag
+    public string groundLayerName = "whatisGround";
     public float raycastDistance = 1000f;
     public float secondObjectDelay = 3f;
     public float spawnInterval = 15f;
-    public float objectLifeTime = 5f; // Tiempo de vida para los objetos (en segundos)
+    public float objectLifeTime = 5f;
+
+    public float minDistanceBetweenPortals = 1f; // Nueva variable para controlar distancia mínima
 
     private void Start()
     {
@@ -26,39 +28,49 @@ public class PortalSpawner : MonoBehaviour
 
     private void SpawnRandomPortalGroups()
     {
-        // Aleatoriamente decidimos cuántos grupos de portales instanciar
-        int groupCount = Random.Range(4, 7);  // De 1 a 5 grupos de portales
+        int groupCount = Random.Range(4, 7); // De 4 a 6 grupos
+        List<Vector3> usedPositions = new List<Vector3>();
 
-        for (int i = 0; i < groupCount; i++)
+        int attempts = 0;
+
+        while (usedPositions.Count < groupCount && attempts < groupCount * 10)
         {
-            StartCoroutine(SpawnPortalGroup());
+            Vector3 randomPosition = GetRandomPositionWithinCollider(spawnArea);
+            bool tooClose = false;
+
+            foreach (Vector3 pos in usedPositions)
+            {
+                if (Vector3.Distance(randomPosition, pos) < minDistanceBetweenPortals)
+                {
+                    tooClose = true;
+                    break;
+                }
+            }
+
+            if (!tooClose)
+            {
+                usedPositions.Add(randomPosition);
+                StartCoroutine(SpawnPortalGroup(randomPosition));
+            }
+
+            attempts++;
         }
     }
 
-    private IEnumerator SpawnPortalGroup()
+    private IEnumerator SpawnPortalGroup(Vector3 position)
     {
-        // Obtener una posición aleatoria dentro del área del spawn
-        Vector3 randomPosition = GetRandomPositionWithinCollider(spawnArea);
-
-        // Instanciamos el primer objeto con la escala asignada desde el Inspector
-        GameObject firstObject = Instantiate(firstObjectPrefab, randomPosition, Quaternion.identity);
+        GameObject firstObject = Instantiate(firstObjectPrefab, position, Quaternion.identity);
         firstObject.transform.localScale = firstObjectScale;
 
-        // Instanciamos el segundo objeto después del retraso
         StartCoroutine(InstantiateSecondObject(firstObject));
-
-        // Instanciamos el plano de alerta tras detectar el suelo con raycast
         StartCoroutine(SpawnAlertMark(firstObject));
 
-        // Destruimos el primer objeto después del tiempo de vida especificado
         Destroy(firstObject, objectLifeTime);
 
-        // Asegurarnos de que los objetos con el tag "Enemy" no colisionen con nada
         GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemyObject in enemyObjects)
         {
-            // Ignorar la colisión entre el "Enemy" y los otros objetos
             Collider enemyCollider = enemyObject.GetComponent<Collider>();
             if (enemyCollider != null)
             {
@@ -77,21 +89,17 @@ public class PortalSpawner : MonoBehaviour
 
         if (firstObject == null) yield break;
 
-        // Calculamos la posición y escala para el segundo objeto
         Vector3 secondObjectPosition = firstObject.transform.position - new Vector3(0, firstObjectScale.y / 2 + secondObjectScale.y / 2, 0);
         GameObject secondObject = Instantiate(secondObjectPrefab, secondObjectPosition, Quaternion.identity);
         secondObject.transform.localScale = secondObjectScale;
         secondObject.transform.parent = firstObject.transform;
 
-        // Destruimos el segundo objeto después del tiempo de vida especificado
         Destroy(secondObject, objectLifeTime);
 
-        // Asegurarnos de que el segundo objeto no colisione con enemigos
         GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemyObject in enemyObjects)
         {
-            // Ignorar la colisión entre el "Enemy" y el segundo objeto
             Collider enemyCollider = enemyObject.GetComponent<Collider>();
             if (enemyCollider != null)
             {
@@ -107,22 +115,18 @@ public class PortalSpawner : MonoBehaviour
         RaycastHit hit;
         Vector3 rayOrigin = firstObject.transform.position;
 
-        // Creamos un LayerMask que solo incluye el layer "whatisGround"
         int groundLayer = LayerMask.NameToLayer(groundLayerName);
         int layerMask = 1 << groundLayer;
 
-        // Lanzamos el raycast usando solo ese layer
         if (Physics.Raycast(rayOrigin, Vector3.down, out hit, raycastDistance, layerMask))
         {
             Debug.Log("Raycast hit: " + hit.transform.gameObject.name);
 
-            // Instanciamos el plano justo sobre el suelo detectado
-            Vector3 planePosition = hit.point + Vector3.up * 0.01f; // Añadimos una pequeña altura para evitar solapamientos
+            Vector3 planePosition = hit.point + Vector3.up * 0.01f;
             GameObject plane = Instantiate(planePrefab, planePosition, Quaternion.identity);
             plane.transform.localScale = planeScale;
-            plane.transform.parent = hit.transform; // Adjuntamos al objeto del suelo
+            plane.transform.parent = hit.transform;
 
-            // Destruimos el plano después del tiempo de vida especificado
             Destroy(plane, objectLifeTime);
         }
         else
