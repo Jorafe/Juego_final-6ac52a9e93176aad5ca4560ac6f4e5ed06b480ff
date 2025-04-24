@@ -19,18 +19,44 @@ public class PortalSpawner : MonoBehaviour
     public float spawnInterval = 15f;
     public float objectLifeTime = 5f;
 
-    public float minDistanceBetweenPortals = 1f; // Nueva variable para controlar distancia mínima
+    public float minDistanceBetweenPortals = 1f;
+
+    [Header("Initial Phase Settings")]
+    public float initialPhaseDuration = 30f;
+    public int initialMinPortalGroups = 2;
+    public int initialMaxPortalGroups = 4;
+
+    [Header("Later Phase Settings")]
+    public int laterMinPortalGroups = 5;
+    public int laterMaxPortalGroups = 8;
+
+    private float startTime;
 
     private void Start()
     {
+        startTime = Time.time;
         InvokeRepeating("SpawnRandomPortalGroups", 0f, spawnInterval);
     }
 
     private void SpawnRandomPortalGroups()
     {
-        int groupCount = Random.Range(4, 7); // De 4 a 6 grupos
-        List<Vector3> usedPositions = new List<Vector3>();
+        float elapsed = Time.time - startTime;
 
+        int minGroups, maxGroups;
+
+        if (elapsed <= initialPhaseDuration)
+        {
+            minGroups = initialMinPortalGroups;
+            maxGroups = initialMaxPortalGroups;
+        }
+        else
+        {
+            minGroups = laterMinPortalGroups;
+            maxGroups = laterMaxPortalGroups;
+        }
+
+        int groupCount = Random.Range(minGroups, maxGroups + 1);
+        List<Vector3> usedPositions = new List<Vector3>();
         int attempts = 0;
 
         while (usedPositions.Count < groupCount && attempts < groupCount * 10)

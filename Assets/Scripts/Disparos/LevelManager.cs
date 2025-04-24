@@ -7,19 +7,19 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
 
     public GameObject player;
-    public GameObject victoryMenu;  // Referencia al menú de victoria
+    public GameObject victoryMenu;
     public TMP_Text wormCounterText;
     public TMP_Text ammoCounterText;
-    public TMP_Text timeCounterText;  // Contador de tiempo
+    public TMP_Text timeCounterText;
+    public TMP_Text candyCounterText;
 
     private int bulletsFired = 0;
-    private int wormsDeactivated = 0;
+    private int enemiesDeactivated = 0; // Evitar incrementar dos veces
+    private int totalCandies = 0;
     private int maxBulletsPerPhase = 25;
 
-    // Nuevo array para los gusanos
-    public GameObject[] worms;  // Array de todos los gusanos en el nivel
-
-    private float timeElapsed = 0f;  // Tiempo transcurrido en segundos
+    public GameObject[] enemies;
+    private float timeElapsed = 0f;
 
     private void Awake()
     {
@@ -29,12 +29,11 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         UpdateUI();
-        victoryMenu.SetActive(false);  // Aseguramos que el menú de victoria esté oculto al principio
+        victoryMenu.SetActive(false);
     }
 
     private void Update()
     {
-        // Actualizamos el tiempo transcurrido
         timeElapsed += Time.deltaTime;
         UpdateTimeUI();
     }
@@ -44,67 +43,71 @@ public class LevelManager : MonoBehaviour
         bulletsFired++;
         UpdateUI();
 
-        if (bulletsFired >= maxBulletsPerPhase || wormsDeactivated >= worms.Length)
+        if (bulletsFired >= maxBulletsPerPhase || enemiesDeactivated >= enemies.Length)
         {
-            StartCoroutine(ShowVictoryMenu());  // Llamamos a la corutina para esperar 1 segundo
+            StartCoroutine(ShowVictoryMenu());
         }
     }
 
-    public void RegisterWormDeactivated(GameObject worm)
+    public void RegisterEnemyDeactivated()
     {
-        // Verifica si el gusano ya ha sido desactivado
-        if (!worm.activeInHierarchy) return;
-
-        worm.SetActive(false);  // Desactiva el gusano
-        wormsDeactivated++;  // Incrementamos el contador
-        UpdateUI();  // Actualizamos la UI inmediatamente
-
-        if (wormsDeactivated >= worms.Length)
+        // Solo incrementamos el contador si no hemos llegado al total de enemigos
+        if (enemiesDeactivated < enemies.Length)
         {
-            StartCoroutine(ShowVictoryMenu());  // Llamamos a la corutina para esperar 1 segundo
+            enemiesDeactivated++;  // Incrementar solo una vez
+            UpdateUI();  // Actualizar UI para reflejar el nuevo contador de enemigos
         }
+
+        if (enemiesDeactivated >= enemies.Length)
+        {
+            StartCoroutine(ShowVictoryMenu());
+        }
+    }
+
+    public void AddCandies(int amount)
+    {
+        totalCandies += amount;
+        UpdateUI();  // Actualizar UI para reflejar los caramelos ganados
     }
 
     private IEnumerator ShowVictoryMenu()
     {
-        // Esperamos 1 segundo antes de continuar
         yield return new WaitForSeconds(1f);
 
-        // Desactivamos al jugador
         if (player != null)
         {
             player.SetActive(false);
         }
 
-        // Activamos el cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // Mostramos el menú de victoria
         victoryMenu.SetActive(true);
     }
 
     private void UpdateUI()
     {
-        // Actualizamos los contadores de gusanos y balas
         if (wormCounterText != null)
         {
-            wormCounterText.text = wormsDeactivated + "/" + worms.Length;
+            wormCounterText.text = enemiesDeactivated + "/" + enemies.Length;  // Contador de enemigos desactivados
         }
 
         if (ammoCounterText != null)
         {
             ammoCounterText.text = (maxBulletsPerPhase - bulletsFired) + "/" + maxBulletsPerPhase;
         }
+
+        if (candyCounterText != null)
+        {
+            candyCounterText.text = totalCandies.ToString(); // Solo el número de caramelos
+        }
     }
 
     private void UpdateTimeUI()
     {
-        // Convertimos el tiempo transcurrido a minutos y segundos
         int minutes = Mathf.FloorToInt(timeElapsed / 60f);
         int seconds = Mathf.FloorToInt(timeElapsed % 60f);
-        
-        // Actualizamos el texto del contador de tiempo
+
         if (timeCounterText != null)
         {
             timeCounterText.text = string.Format("{0:00}:{1:00}", minutes, seconds);

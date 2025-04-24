@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3959945020803348872}
   - component: {fileID: 5414711079474262449}
   - component: {fileID: 8218398252882553543}
-  - component: {fileID: -4147514729855335756}
   - component: {fileID: -6510621017497294424}
+  - component: {fileID: -1430922424884095574}
   m_Layer: 0
   m_Name: cristal_imogen 1
   m_TagString: Untagged
@@ -107,7 +107,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.123731, y: 2.2651682, z: 2.1874402}
   m_Center: {x: 0.05160399, y: 0.63258415, z: 0.018455517}
---- !u!54 &-4147514729855335756
+--- !u!114 &-6510621017497294424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221199144419682410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789ab7f0b049eb54389b5875d934d4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  targetLayer: Player
+--- !u!54 &-1430922424884095574
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +130,7 @@ Rigidbody:
   m_GameObject: {fileID: 2221199144419682410}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -134,17 +148,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6510621017497294424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2221199144419682410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 789ab7f0b049eb54389b5875d934d4cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Player
-  targetLayer: Player

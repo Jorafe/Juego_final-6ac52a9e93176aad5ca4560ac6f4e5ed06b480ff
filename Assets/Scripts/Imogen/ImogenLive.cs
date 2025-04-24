@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class ImogenLive : MonoBehaviour
 {
     [Header("Vidas")]
-    public int maxLives = 30;
+    public int maxLives = 100;
     private int currentLives;
 
     public string bulletTag = "whatisBullet";
@@ -20,6 +21,16 @@ public class ImogenLive : MonoBehaviour
         {
             TakeDamage(1);
         }
+        else if (collision.gameObject.CompareTag("whatisEstrella") && collision.collider.CompareTag("Player"))
+        {
+            StartCoroutine(DelayedDamage(10, 3f)); // 10 de daño tras 3 segundos
+        }
+    }
+
+    private IEnumerator DelayedDamage(int damage, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TakeDamage(damage);
     }
 
     private void TakeDamage(int amount)
@@ -27,7 +38,6 @@ public class ImogenLive : MonoBehaviour
         currentLives -= amount;
         currentLives = Mathf.Clamp(currentLives, 0, maxLives);
 
-        // Mostrar el número de vidas restantes en el log
         Debug.Log("Vidas restantes: " + currentLives);
 
         if (currentLives <= 0)
