@@ -11,15 +11,12 @@ public class EstrellaPresion : MonoBehaviour
     public float tiempoInicio = 15f;
     public float duracionVisible = 7f;
     public float tiempoEspera = 3f;
-    public float tiempoEsperaTrasJugador = 10f;
-    public float delayDesaparicionJugador = 1f;
 
     [Header("Altura y Escala")]
     public float alturaSobreCollider = 1f;
     public Vector3 escalaEstrella = Vector3.one;
 
     private GameObject estrellaActual;
-    private bool fueTocadaPorJugador = false;
 
     private void Start()
     {
@@ -33,10 +30,9 @@ public class EstrellaPresion : MonoBehaviour
         while (true)
         {
             InstanciarEstrellaAleatoria();
-            fueTocadaPorJugador = false;
 
             float tiempoRestante = duracionVisible;
-            while (estrellaActual != null && tiempoRestante > 0f && !fueTocadaPorJugador)
+            while (estrellaActual != null && tiempoRestante > 0f)
             {
                 tiempoRestante -= Time.deltaTime;
                 yield return null;
@@ -44,16 +40,11 @@ public class EstrellaPresion : MonoBehaviour
 
             if (estrellaActual != null)
             {
-                if (fueTocadaPorJugador)
-                {
-                    yield return new WaitForSeconds(delayDesaparicionJugador);
-                }
-
                 Destroy(estrellaActual);
             }
 
-            float tiempoEsperaActual = fueTocadaPorJugador ? tiempoEsperaTrasJugador : tiempoEspera;
-            yield return new WaitForSeconds(tiempoEsperaActual);
+            // Tiempo de espera para volver a generar la estrella
+            yield return new WaitForSeconds(tiempoEspera);
         }
     }
 
@@ -65,8 +56,9 @@ public class EstrellaPresion : MonoBehaviour
         estrellaActual = Instantiate(estrellaPrefab, randomPoint, Quaternion.identity);
         estrellaActual.transform.localScale = escalaEstrella;
 
-        EstrellaCollision estrellaScript = estrellaActual.AddComponent<EstrellaCollision>();
-        estrellaScript.presionManager = this;
+        // Agregar el componente que manejará la colisión y el daño a Imogen
+        Estrella estrellaScript = estrellaActual.AddComponent<Estrella>();
+        estrellaScript.dano = 20;  // Aquí establecemos el daño que la estrella hará a Imogen
     }
 
     private Vector3 GetRandomPointAboveCollider(Collider col)
@@ -78,11 +70,5 @@ public class EstrellaPresion : MonoBehaviour
         float y = bounds.max.y + alturaSobreCollider;
 
         return new Vector3(x, y, z);
-    }
-
-    // Este método lo llama el otro script cuando el Player toca la estrella
-    public void MarcarComoTocadaPorJugador()
-    {
-        fueTocadaPorJugador = true;
     }
 }

@@ -1,49 +1,24 @@
 using UnityEngine;
-using System.Collections;
 
 public class ImogenLive : MonoBehaviour
 {
-    [Header("Vidas")]
-    public int maxLives = 100;
-    private int currentLives;
+    [Header("Sistema de Vidas")]
+    [SerializeField] private int vidas = 100;
 
-    public string bulletTag = "whatisBullet";
+    // Propiedad pública para leer las vidas
+    public int VidasActuales => vidas;
 
-    private void Start()
+    // Método público para recibir daño
+    public void RecibirDaño(int cantidad)
     {
-        currentLives = maxLives;
-        Debug.Log("Vidas iniciales: " + currentLives);
-    }
+        vidas -= cantidad;
+        Debug.Log("Imogen ha recibido " + cantidad + " de daño. Vidas restantes: " + vidas);
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(bulletTag))
+        if (vidas <= 0)
         {
-            TakeDamage(1);
-        }
-        else if (collision.gameObject.CompareTag("whatisEstrella") && collision.collider.CompareTag("Player"))
-        {
-            StartCoroutine(DelayedDamage(10, 3f)); // 10 de daño tras 3 segundos
-        }
-    }
-
-    private IEnumerator DelayedDamage(int damage, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        TakeDamage(damage);
-    }
-
-    private void TakeDamage(int amount)
-    {
-        currentLives -= amount;
-        currentLives = Mathf.Clamp(currentLives, 0, maxLives);
-
-        Debug.Log("Vidas restantes: " + currentLives);
-
-        if (currentLives <= 0)
-        {
-            Debug.Log("¡Se han agotado las vidas de Imogen!");
-            // Aquí puedes añadir lógica de muerte si lo deseas.
+            Debug.Log("Imogen ha muerto.");
+            // Aquí puedes poner lógica de muerte/desactivación
+            // gameObject.SetActive(false);
         }
     }
 }
