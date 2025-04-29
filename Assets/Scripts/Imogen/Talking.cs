@@ -1,62 +1,60 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class Talking : MonoBehaviour
 {
-    [Header("Frases")]
-    public string[] frasesTexto;            // Frases escritas que se mostrarán
-    public Text textoUI;                    // Elemento UI de tipo Text para mostrar frases
-
     [Header("Animación")]
-    public Animator animador;               // Animator que se usará para la animación
-    public string nombreTriggerAnimacion = "Hablar";  // Nombre del trigger en el Animator
+    public Animator animator; // Referencia al Animator
+    public string triggerTalking = "IsTalking"; // Trigger para hablar
+    public string triggerDamage = "TakeDamage"; // Trigger para daño
 
-    [Header("Parámetros")]
-    public float intervalo = 30f;           // Tiempo entre cada frase
-    public float duracionTexto = 5f;        // Cuánto tiempo se muestra la frase
+    [Header("Parámetros de tiempo")]
+    public float intervalo = 30f; // Tiempo en segundos entre activaciones
 
-    private int indiceActual = 0;
+    private bool isTalking = false;
 
     private void Start()
     {
-        if (frasesTexto.Length == 0)
-        {
-            Debug.LogWarning("No se han asignado frases.");
-            return;
-        }
-
-        if (textoUI != null)
-            textoUI.enabled = false;
-
-        StartCoroutine(ReproducirFrases());
+        // Comienza la corrutina que activa la animación cada 30 segundos
+        StartCoroutine(ActivarAnimacionCadaIntervalo());
     }
 
-    private IEnumerator ReproducirFrases()
+    private IEnumerator ActivarAnimacionCadaIntervalo()
     {
         while (true)
         {
-            yield return new WaitForSeconds(intervalo);
+            yield return new WaitForSeconds(intervalo); // Espera 30 segundos
 
-            // Activar animación
-            if (animador != null && !string.IsNullOrEmpty(nombreTriggerAnimacion))
+            if (!isTalking)
             {
-                animador.SetTrigger(nombreTriggerAnimacion);
+                // Activa el trigger en el Animator para reproducir la animación de hablar
+                animator.SetTrigger(triggerTalking); // Activa el trigger "IsTalking"
+                isTalking = true;
+                Debug.Log("Animación activada: " + triggerTalking);
             }
-
-            // Mostrar texto
-            if (textoUI != null)
-            {
-                textoUI.text = frasesTexto[indiceActual];
-                textoUI.enabled = true;
-
-                yield return new WaitForSeconds(duracionTexto);
-
-                textoUI.enabled = false;
-            }
-
-            // Pasar a la siguiente frase (volver al principio si se termina)
-            indiceActual = (indiceActual + 1) % frasesTexto.Length;
         }
+    }
+
+    // Este método es el que llamará otro script o el sistema de daño
+    public void RecibirDaño()
+    {
+        // Interrumpe la animación de hablar y activa la animación de daño
+        animator.SetTrigger(triggerDamage); // Activa el trigger para la animación de daño
+        Debug.Log("Interrumpiendo 'Hablar' debido al daño.");
+
+        // Llamamos a una corrutina para esperar a que termine la animación de daño y luego reanudar "Hablar"
+        StartCoroutine(EsperarYReanudarHablar());
+    }
+
+    private IEnumerator EsperarYReanudarHablar()
+    {
+        // Espera a que la animación de daño termine (por ejemplo, 1 segundo si la animación de daño dura ese tiempo)
+        yield return new WaitForSeconds(1f); // Asegúrate de ajustar este tiempo según la duración de la animación de daño
+
+        // Después de la animación de daño, reanudamos la animación de hablar
+        animator.SetTrigger(triggerTalking); // Activa el trigger "IsTalking" para que vuelva a hablar
+        isTalking = true;
+
+        Debug.Log("Animación reanudada: " + triggerTalking);
     }
 }
