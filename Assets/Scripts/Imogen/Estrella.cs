@@ -21,7 +21,7 @@ public class Estrella : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No se ha asignado ningún GameObject al campo 'enemigoGO'.");
+            
         }
     }
 

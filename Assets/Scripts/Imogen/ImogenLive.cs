@@ -7,12 +7,20 @@ public class ImogenLive : MonoBehaviour
 
     // Propiedad pública para leer las vidas
     public int VidasActuales => vidas;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>(); // Obtiene el Animator
+    }
 
     // Método público para recibir daño
     public void RecibirDaño(int cantidad)
     {
         vidas -= cantidad;
+        animator.SetTrigger("IsDamage");
         Debug.Log("Imogen ha recibido " + cantidad + " de daño. Vidas restantes: " + vidas);
+        
 
         if (vidas <= 0)
         {
