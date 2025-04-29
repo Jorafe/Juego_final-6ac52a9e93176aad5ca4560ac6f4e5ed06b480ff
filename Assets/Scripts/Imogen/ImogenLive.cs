@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI; // Necesario para usar UI
 
 public class ImogenLive : MonoBehaviour
 {
     [Header("Sistema de Vidas")]
     [SerializeField] private int vidas = 100;
+    [SerializeField] private UnityEngine.UI.Slider vidaSlider; // Uso explícito para evitar conflictos
 
-    // Propiedad pública para leer las vidas
     public int VidasActuales => vidas;
 
     private Animator animator;
@@ -13,28 +14,37 @@ public class ImogenLive : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>(); // Obtiene el Animator
-        talkingScript = GetComponent<Talking>(); // Obtiene el script Talking para interrumpir la animación de hablar
+        animator = GetComponent<Animator>();
+        talkingScript = GetComponent<Talking>();
+
+        if (vidaSlider != null)
+        {
+            vidaSlider.maxValue = vidas;
+            vidaSlider.value = vidas;
+        }
     }
 
-    // Método público para recibir daño
     public void RecibirDaño(int cantidad)
     {
         vidas -= cantidad;
-        animator.SetTrigger("IsDamage"); // Activa la animación de daño
+        vidas = Mathf.Clamp(vidas, 0, vidas);
+
+        animator.SetTrigger("IsDamage");
         Debug.Log("Imogen ha recibido " + cantidad + " de daño. Vidas restantes: " + vidas);
 
-        // Si el script de Talking está presente, interrumpimos la animación de hablar
         if (talkingScript != null)
         {
-            talkingScript.RecibirDaño(); // Interrumpe la animación de hablar
+            talkingScript.RecibirDaño();
+        }
+
+        if (vidaSlider != null)
+        {
+            vidaSlider.value = vidas;
         }
 
         if (vidas <= 0)
         {
             Debug.Log("Imogen ha muerto.");
-            // Aquí puedes poner lógica de muerte/desactivación
-            // gameObject.SetActive(false);
         }
     }
 }
