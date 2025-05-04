@@ -4,22 +4,28 @@ using UnityEngine.Video;
 
 public class VideoCinematicas : MonoBehaviour
 {
-    public RawImage videoPreview;              // Pequeño tamaño
-    public RectTransform fullScreenRect;       // Tamaño a pantalla completa
-    public RectTransform smallRect;            // Tamaño pequeño
+    public RawImage videoPreview;
+    public RectTransform fullScreenRect;
     public VideoPlayer videoPlayer;
 
     private bool isFullscreen = false;
+
+    // Variables para guardar la posición y tamaño originales
+    private Vector3 originalPosition;
+    private Vector2 originalSize;
 
     void Start()
     {
         videoPlayer.isLooping = false;
         videoPlayer.loopPointReached += OnVideoEnd;
         videoPlayer.Stop();
-        SetToSmall();
+
+        // Guardar valores originales
+        originalPosition = videoPreview.rectTransform.position;
+        originalSize = videoPreview.rectTransform.sizeDelta;
     }
 
-    void Ondisable()
+    void OnDisable()
     {
         videoPlayer.loopPointReached -= OnVideoEnd;
     }
@@ -33,14 +39,14 @@ public class VideoCinematicas : MonoBehaviour
         }
         else
         {
-            SetToSmall();
+            RestoreOriginal();
             videoPlayer.Stop();
         }
     }
 
     void OnVideoEnd(VideoPlayer vp)
     {
-        SetToSmall();
+        RestoreOriginal();
         videoPlayer.Stop();
     }
 
@@ -51,10 +57,10 @@ public class VideoCinematicas : MonoBehaviour
         videoPreview.rectTransform.sizeDelta = fullScreenRect.sizeDelta;
     }
 
-    void SetToSmall()
+    void RestoreOriginal()
     {
         isFullscreen = false;
-        videoPreview.rectTransform.position = smallRect.position;
-        videoPreview.rectTransform.sizeDelta = smallRect.sizeDelta;
+        videoPreview.rectTransform.position = originalPosition;
+        videoPreview.rectTransform.sizeDelta = originalSize;
     }
 }

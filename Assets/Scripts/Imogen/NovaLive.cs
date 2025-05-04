@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
+using System.Collections;
 
 public class NovaLive : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class NovaLive : MonoBehaviour
 
     public RawImage rawImage; // El RawImage que se mostrará en el UI
     public Texture[] vidasTextures; // Las 8 texturas (de 0 a 7 vidas)
+
+    [Header("Cinemática de Muerte")]
+    [SerializeField] private VideoPlayer videoCinematica;
 
     private void Start()
     {
@@ -21,6 +26,15 @@ public class NovaLive : MonoBehaviour
             vidas--;
             Debug.Log("Vida perdida. Vidas restantes: " + vidas);
             ActualizarImagenVida();
+
+            if (vidas == 0)
+            {
+                Debug.Log("Nova se ha quedado sin vidas.");
+                if (videoCinematica != null)
+                {
+                    StartCoroutine(ReproducirCinematicaTrasRetraso(3f));
+                }
+            }
         }
         else
         {
@@ -30,9 +44,16 @@ public class NovaLive : MonoBehaviour
 
     private void ActualizarImagenVida()
     {
-        if (vidasTextures != null && vidasTextures.Length > vidas)
+        if (vidasTextures != null && vidas < vidasTextures.Length)
         {
             rawImage.texture = vidasTextures[vidas];
         }
+    }
+
+    private IEnumerator ReproducirCinematicaTrasRetraso(float segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        videoCinematica.gameObject.SetActive(true);
+        videoCinematica.Play();
     }
 }
