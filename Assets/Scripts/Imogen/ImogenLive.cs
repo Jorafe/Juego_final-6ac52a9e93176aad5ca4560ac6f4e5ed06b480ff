@@ -34,6 +34,8 @@ public class ImogenLive : MonoBehaviour
         vidas -= cantidad;
         vidas = Mathf.Clamp(vidas, 0, vidas);
 
+        SoundManagerMenu.Instance?.PlayEnemyDamageSFX();
+
         animator.SetTrigger("IsDamage");
         Debug.Log("Imogen ha recibido " + cantidad + " de daño. Vidas restantes: " + vidas);
 

@@ -8,8 +8,8 @@ public class NovaLive : MonoBehaviour
     [Range(0, 7)]
     public int vidas = 7;
 
-    public RawImage rawImage; // El RawImage que se mostrará en el UI
-    public Texture[] vidasTextures; // Las 8 texturas (de 0 a 7 vidas)
+    public RawImage rawImage;
+    public Texture[] vidasTextures;
 
     [Header("Cinemática de Muerte")]
     [SerializeField] private VideoPlayer videoCinematica;
@@ -25,6 +25,9 @@ public class NovaLive : MonoBehaviour
         {
             vidas--;
             Debug.Log("Vida perdida. Vidas restantes: " + vidas);
+
+            SoundManagerMenu.Instance?.PlayPlayerDamageSFX();
+
             ActualizarImagenVida();
 
             if (vidas == 0)

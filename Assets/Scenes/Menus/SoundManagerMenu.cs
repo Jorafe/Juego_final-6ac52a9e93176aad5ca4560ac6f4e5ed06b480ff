@@ -16,6 +16,10 @@ public class SoundManagerMenu : MonoBehaviour
     public AudioClip clickSFX;
     public AudioClip destroyCandySFX;
 
+    [Header("Audio Clips de Daño")]
+    public AudioClip playerDamageSFX;
+    public AudioClip enemyDamageSFX;
+
     [Header("Audio Settings")]
     [Range(0f, 1f)] public float musicVolume = 0.5f;
     [Range(0f, 1f)] public float sfxVolume = 0.5f;
@@ -24,7 +28,7 @@ public class SoundManagerMenu : MonoBehaviour
     public List<SceneMusic> sceneMusicList;
 
     [Header("Sonidos por Tag")]
-    public List<TagSound> tagSounds;  // Lista editable en el inspector
+    public List<TagSound> tagSounds;
 
     private Dictionary<string, AudioClip> tagToSound = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> sceneMusicMap = new Dictionary<string, AudioClip>();
@@ -145,6 +149,16 @@ public class SoundManagerMenu : MonoBehaviour
         {
             PlaySFX(clip);
         }
+    }
+
+    public void PlayPlayerDamageSFX()
+    {
+        PlaySFX(playerDamageSFX);
+    }
+
+    public void PlayEnemyDamageSFX()
+    {
+        PlaySFX(enemyDamageSFX);
     }
 
     [System.Serializable]

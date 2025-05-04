@@ -89,13 +89,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 1.7
   m_SidewaysFriction:
     m_ExtremumSlip: 0.1
     m_ExtremumValue: 0.25
     m_AsymptoteSlip: 0.1
     m_AsymptoteValue: 0.25
-    m_Stiffness: 1.4
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -309,7 +309,6 @@ GameObject:
   - component: {fileID: 3590676935152124412}
   - component: {fileID: 2949680364055906528}
   - component: {fileID: 2923446692813962760}
-  - component: {fileID: 9133149588260194390}
   m_Layer: 3
   m_Name: Mikey
   m_TagString: Player
@@ -448,9 +447,10 @@ MonoBehaviour:
   gasInput: 0
   brakeInput: 0
   steeringInput: 0
-  smokePrefab: {fileID: 0}
-  motorPower: 700
-  brakePower: 10000
+  smokePrefab: {fileID: 148745674886218742, guid: deb954cbef047404795615b7c02c0442,
+    type: 3}
+  motorPower: 600
+  brakePower: 5000
   slipAngle: 3
   steeringCurve:
     serializedVersion: 2
@@ -476,25 +476,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gasPedal: {fileID: 9133149588260194390}
-  brakePedal: {fileID: 9133149588260194390}
-  leftButton: {fileID: 9133149588260194390}
-  rightButton: {fileID: 9133149588260194390}
---- !u!114 &9133149588260194390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2903445876605878707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37c415d032ab8f340906ac632c010421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPressed: 0
-  dampenPress: 0
-  sensitivity: 1
 --- !u!1 &3177524284911108929
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +650,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1.5
+    m_Stiffness: 1.3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -740,13 +721,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 1.7
   m_SidewaysFriction:
     m_ExtremumSlip: 0.1
     m_ExtremumValue: 0.25
     m_AsymptoteSlip: 0.1
     m_AsymptoteValue: 0.25
-    m_Stiffness: 1.4
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1036,7 +1017,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1.5
+    m_Stiffness: 1.3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
