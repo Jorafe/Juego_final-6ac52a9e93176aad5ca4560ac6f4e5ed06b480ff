@@ -15,10 +15,19 @@ public class Gun : MonoBehaviour
     private Camera mainCamera;
     private bool allWormsDeactivated = false;
 
+    // Nuevo: Particle System
+    public ParticleSystem fireEffect; // Asigna tu prefab de partículas aquí
+
     private void Start()
     {
         mainCamera = Camera.main;
         bulletsLeft = maxBullets;
+
+        // Asegurarnos de que las partículas estén desactivadas inicialmente
+        if (fireEffect != null)
+        {
+            fireEffect.Stop(); // Detenemos el sistema de partículas al inicio
+        }
     }
 
     private void Update()
@@ -44,8 +53,16 @@ public class Gun : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(ScreenCenter);
         RaycastHit hit;
         Vector3 TargetPoint = Physics.Raycast(ray, out hit) ? hit.point : ray.GetPoint(100);
-        
+
         canShoot = false;
+
+        // Activar la partícula de disparo siempre que dispares
+        if (fireEffect != null)
+        {
+            fireEffect.transform.position = firePoint.position; // Coloca las partículas en el firePoint
+            fireEffect.Play(); // Reproduce la animación de la partícula
+        }
+
         Bullet bullet = BulletPool.Instance.GetBullet();
         bullet.Activate(firePoint.position, firePoint.rotation, bulletLifeTime);
         bullet.GetComponent<Rigidbody>().velocity = (TargetPoint - firePoint.position).normalized * bullet.speed;
@@ -53,7 +70,15 @@ public class Gun : MonoBehaviour
         bulletsLeft--;
         LevelManager.Instance.RegisterShot();
 
+        // Esperamos el tiempo necesario antes de permitir otro disparo
         yield return new WaitForSeconds(fireRate);
+
+        // Detener el sistema de partículas si es necesario, o dejarlo activo según la duración del efecto
+        if (fireEffect != null && fireEffect.isPlaying)
+        {
+            fireEffect.Stop(); // Detenemos el sistema de partículas después de un disparo
+        }
+
         canShoot = true;
     }
 }
