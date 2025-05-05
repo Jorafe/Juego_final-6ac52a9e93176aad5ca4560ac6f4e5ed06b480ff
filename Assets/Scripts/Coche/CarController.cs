@@ -17,6 +17,7 @@ public class CarController : MonoBehaviour
     public float slipAngle;
     private float speed;
     public AnimationCurve steeringCurve;
+    
 
     void Start()
     {
