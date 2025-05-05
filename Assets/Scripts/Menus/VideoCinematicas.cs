@@ -1,18 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using System.Collections.Generic;
 
 public class VideoCinematicas : MonoBehaviour
 {
     public RawImage videoPreview;
-    public RectTransform fullScreenRect;
     public VideoPlayer videoPlayer;
 
     private bool isFullscreen = false;
 
-    // Variables para guardar la posición y tamaño originales
-    private Vector3 originalPosition;
-    private Vector2 originalSize;
+    private Vector2 originalAnchoredPosition;
+    private Vector2 originalSizeDelta;
+    private Vector2 originalAnchorMin;
+    private Vector2 originalAnchorMax;
+    private Vector2 originalPivot;
+
+    private static List<VideoCinematicas> allVideos = new List<VideoCinematicas>();
+    private List<GameObject> hijosDesactivados = new List<GameObject>();
+
+    void Awake()
+    {
+        allVideos.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        allVideos.Remove(this);
+    }
 
     void Start()
     {
@@ -20,9 +35,13 @@ public class VideoCinematicas : MonoBehaviour
         videoPlayer.loopPointReached += OnVideoEnd;
         videoPlayer.Stop();
 
-        // Guardar valores originales
-        originalPosition = videoPreview.rectTransform.position;
-        originalSize = videoPreview.rectTransform.sizeDelta;
+        // Guardamos todos los valores relevantes del RectTransform
+        RectTransform rt = videoPreview.rectTransform;
+        originalAnchoredPosition = rt.anchoredPosition;
+        originalSizeDelta = rt.sizeDelta;
+        originalAnchorMin = rt.anchorMin;
+        originalAnchorMax = rt.anchorMax;
+        originalPivot = rt.pivot;
     }
 
     void OnDisable()
@@ -34,11 +53,15 @@ public class VideoCinematicas : MonoBehaviour
     {
         if (!isFullscreen)
         {
+            DesactivarOtrosVideos();
+            DesactivarHijos();
             SetToFullScreen();
             videoPlayer.Play();
         }
         else
         {
+            RestaurarOtrosVideos();
+            ActivarHijos();
             RestoreOriginal();
             videoPlayer.Stop();
         }
@@ -46,21 +69,79 @@ public class VideoCinematicas : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
+        RestaurarOtrosVideos();
+        ActivarHijos();
         RestoreOriginal();
         videoPlayer.Stop();
     }
 
-    void SetToFullScreen()
-    {
-        isFullscreen = true;
-        videoPreview.rectTransform.position = fullScreenRect.position;
-        videoPreview.rectTransform.sizeDelta = fullScreenRect.sizeDelta;
-    }
+  void SetToFullScreen()
+{
+    isFullscreen = true;
+    RectTransform rt = videoPreview.rectTransform;
+
+    // Desconectamos de cualquier layout
+    LayoutElement le = videoPreview.GetComponent<LayoutElement>();
+    if (le) Destroy(le);
+
+    rt.anchorMin = new Vector2(0, 0);
+    rt.anchorMax = new Vector2(0, 0);
+    rt.pivot = new Vector2(0.5f, 0.5f);
+    
+    rt.anchoredPosition = new Vector2(Screen.width / 2f, Screen.height / 2f);
+    rt.sizeDelta = new Vector2(1920, 1080);
+}
 
     void RestoreOriginal()
     {
         isFullscreen = false;
-        videoPreview.rectTransform.position = originalPosition;
-        videoPreview.rectTransform.sizeDelta = originalSize;
+        RectTransform rt = videoPreview.rectTransform;
+
+        rt.anchorMin = originalAnchorMin;
+        rt.anchorMax = originalAnchorMax;
+        rt.pivot = originalPivot;
+        rt.anchoredPosition = originalAnchoredPosition;
+        rt.sizeDelta = originalSizeDelta;
+    }
+
+    void DesactivarOtrosVideos()
+    {
+        foreach (var video in allVideos)
+        {
+            if (video != this)
+                video.gameObject.SetActive(false);
+        }
+    }
+
+    void RestaurarOtrosVideos()
+    {
+        foreach (var video in allVideos)
+        {
+            if (video != this)
+                video.gameObject.SetActive(true);
+        }
+    }
+
+    void DesactivarHijos()
+    {
+        hijosDesactivados.Clear();
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                child.gameObject.SetActive(false);
+                hijosDesactivados.Add(child.gameObject);
+            }
+        }
+    }
+
+    void ActivarHijos()
+    {
+        foreach (var go in hijosDesactivados)
+        {
+            if (go != null)
+                go.SetActive(true);
+        }
+        hijosDesactivados.Clear();
     }
 }
