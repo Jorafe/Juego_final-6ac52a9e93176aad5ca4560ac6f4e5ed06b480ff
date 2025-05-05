@@ -3512,7 +3512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &203391312
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21998,7 +21998,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 141373148}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -22010,7 +22010,7 @@ MonoBehaviour:
           m_StringArgument: Inicio
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 141373148}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnableCanvas
         m_Mode: 2
@@ -22023,7 +22023,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 141373148}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: DisableCanvas
         m_Mode: 5
