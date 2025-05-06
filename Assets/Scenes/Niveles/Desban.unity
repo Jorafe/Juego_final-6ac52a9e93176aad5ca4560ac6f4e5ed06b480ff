@@ -251,12 +251,6 @@ MonoBehaviour:
   playerObj: {fileID: 1212829095}
   rb: {fileID: 820980486}
   rotationSpeed: 7
-  combatLookAt: {fileID: 1253206212}
-  FirstPersonCam: {fileID: 1391988188}
-  thirdPersonCam: {fileID: 1949660837}
-  combatCam: {fileID: 1736359487}
-  topDownCam: {fileID: 1685878556}
-  currentStyle: 0
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cedf49c24a2ba4ba8b067c0ff83dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   orientation: {fileID: 168278790}
   playerCam: {fileID: 117929843}
   dashForce: 20
@@ -1472,7 +1467,9 @@ MonoBehaviour:
   maxSlideTime: 0.75
   slideForce: 200
   slideYScale: 0.5
-  slideKey: 102
+  controlKey: 306
+  shiftKey: 304
+  slideCooldownTime: 3
 --- !u!114 &820980490
 MonoBehaviour:
   m_ObjectHideFlags: 0
