@@ -103,11 +103,11 @@ public class WallRunningAdvanced : MonoBehaviour
     private void StateMachine()
     {
         // Getting Inputs
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");  // Soporta joystick
+        verticalInput = Input.GetAxis("Vertical");
 
-        upwardsRunning = Input.GetKey(upwardsRunKey);
-        downwardsRunning = Input.GetKey(downwardsRunKey);
+        upwardsRunning = Input.GetKey(upwardsRunKey) || Input.GetButton("WallUp");
+        downwardsRunning = Input.GetKey(downwardsRunKey) || Input.GetButton("WallDown");
 
         // State 1 - Wallrunning
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
@@ -126,7 +126,7 @@ public class WallRunningAdvanced : MonoBehaviour
             }
 
             // wall jump
-            if (Input.GetKeyDown(jumpKey)) WallJump();
+            if (Input.GetKeyDown(jumpKey) || Input.GetButtonDown("Jump")) WallJump();
         }
 
         // State 2 - Exiting

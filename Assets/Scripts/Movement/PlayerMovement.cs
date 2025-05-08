@@ -1,20 +1,17 @@
-using System.Collections;
+using System.Collections; 
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
-
 public class PlayerMovement : MonoBehaviour
 {
-
     private Animator animator;
 
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-    public float slideSpeed;
     public float dashSpeed;
     public float dashSpeedChangeFactor;
     public float maxYSpeed;
@@ -27,15 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    [Header("Crouching")]
-    public float crouchSpeed;
-    public float crouchYScale;
-    private float startYScale;
-
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -47,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
-
     public Transform orientation;
 
     float horizontalInput;
@@ -57,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
 
-    public bool sliding;
-
     public MovementState state;
     public enum MovementState
     {
@@ -67,13 +55,11 @@ public class PlayerMovement : MonoBehaviour
         walking,
         sprinting,
         wallrunning,
-        crouching,
         dashing,
         air
     }
 
     public bool dashing;
-    public bool crouching;
     public bool wallrunning;
     public bool freeze;
     public bool unlimited;
@@ -85,67 +71,52 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        animator = GetComponent<Animator>(); // Obtiene el Animator
+        animator = GetComponent<Animator>();
 
         readyToJump = true;
-
-        startYScale = transform.localScale.y;
+        //startYScale = transform.localScale.y;
     }
 
     private void Update()
-{
-    // Raycast para detectar el suelo
-    RaycastHit hit;
-    if (Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.2f, whatIsGround))
     {
-        grounded = true;
-
-        //animator.SetBool("isFalling", false);
-        animator.SetBool("isDashing", false);
-        animator.SetBool("isJumping", false);
-        animator.SetBool("isJumpingMove", false);
-
-        // Verifica si el objeto tiene el tag "whatIsIce"
-        if (hit.collider.CompareTag("whatIsIce"))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.2f, whatIsGround))
         {
-            rb.drag = 0; // No aplicar resistencia si está en hielo
+            grounded = true;
+
+            animator.SetBool("isDashing", false);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isJumpingMove", false);
+
+            if (hit.collider.CompareTag("whatIsIce"))
+            {
+                rb.drag = 0;
+            }
+            else
+            {
+                rb.drag = groundDrag;
+            }
         }
         else
         {
-            rb.drag = groundDrag; // Aplicar resistencia normal en suelo común
+            grounded = false;
+            rb.drag = 0;
         }
-    }
-    else
-    {
-        grounded = false;
 
-        //animator.SetBool("isFalling", true);
-        rb.drag = 0; // Sin resistencia en el aire
-    }
+        MyInput();
+        SpeedControl();
+        StateHandler();
 
-    MyInput();
-    SpeedControl();
-    StateHandler();
-
-
-
-    if (grounded)
-    {
-        animator.SetFloat("XSpeed", horizontalInput);
-        animator.SetFloat("YSpeed", verticalInput);
-    }
-    else
-    {
-        animator.SetFloat("XSpeed", 0);
-        animator.SetFloat("YSpeed", 0);
-    }
-
-        // Actualizar los valores del Blend Tree
-        
-
-        // Actualiza el valor de Y para animaciones (salto)
-        //animator.SetFloat("yVelocity", rb.velocity.y);
-
+        if (grounded)
+        {
+            animator.SetFloat("XSpeed", horizontalInput);
+            animator.SetFloat("YSpeed", verticalInput);
+        }
+        else
+        {
+            animator.SetFloat("XSpeed", 0);
+            animator.SetFloat("YSpeed", 0);
+        }
     }
 
     private void FixedUpdate()
@@ -155,93 +126,43 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
-        // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if ((Input.GetKey(jumpKey) || Input.GetButton("Jump")) && readyToJump && grounded)
         {
             readyToJump = false;
-
             Jump();
-
             Invoke(nameof(ResetJump), jumpCooldown);
-        }
-
-        // start crouch
-        if (Input.GetKeyDown(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-        }
-
-        // stop crouch
-        if (Input.GetKeyUp(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
     }
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
     private MovementState lastState;
-    
-
-    public bool IsSliding() 
-    {
-        return sliding;
-    }
-
     bool keepMomentum;
+    private float speedChangeFactor;
+
     private void StateHandler()
     {
-
-        // Mode - Freeze
         if (freeze)
         {
             state = MovementState.freeze;
             rb.velocity = Vector3.zero;
             desiredMoveSpeed = 0f;
         }
-
-        // Mode - Unlimited
-        if (unlimited)
+        else if (unlimited)
         {
             state = MovementState.unlimited;
             desiredMoveSpeed = 999f;
             return;
         }
-        // Mode - Wallrunning
-        if (wallrunning)
+        else if (wallrunning)
         {
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallrunSpeed;
         }
-        // Mode - Sliding
-        if (sliding)
-{
-    state = MovementState.dashing;
-
-    // Si el jugador está deslizándose sobre una pendiente
-    if (OnSlope() && rb.velocity.y < 0.1f)
-    {
-        desiredMoveSpeed = slideSpeed;
-        keepMomentum = true;
-
-        // Reducir la escala en el eje Y al deslizarse
-        transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-    }
-    else
-    {
-        // Si no está deslizándose, detener la animación de deslizamiento
-        //animator.SetBool("isSliding", false);
-
-        // Restaurar la escala cuando ya no esté deslizándose
-        transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-    }
-}
-        // Mode - Dashing
-        if (dashing)
+        else if (dashing)
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
@@ -249,43 +170,22 @@ public class PlayerMovement : MonoBehaviour
 
             animator.SetBool("isJumping", false);
             animator.SetBool("isDashing", true);
-            
-            
         }
-
-        // Mode - Crouching
-        else if (Input.GetKey(crouchKey))
-        {
-            state = MovementState.crouching;
-            desiredMoveSpeed = crouchSpeed;
-        }
-
-        // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && (Input.GetKey(sprintKey) || Input.GetButton("Sprint")))
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
         }
-
-        // Mode - Walking
         else if (grounded)
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }
-
-        // Mode - Air
         else
         {
-        state = MovementState.air;
-
-
-        if (desiredMoveSpeed < sprintSpeed)
-            desiredMoveSpeed = walkSpeed;
-        else
-            desiredMoveSpeed = sprintSpeed;
+            state = MovementState.air;
+            desiredMoveSpeed = desiredMoveSpeed < sprintSpeed ? walkSpeed : sprintSpeed;
         }
-
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
         if (lastState == MovementState.dashing) keepMomentum = true;
@@ -307,25 +207,20 @@ public class PlayerMovement : MonoBehaviour
         lastDesiredMoveSpeed = desiredMoveSpeed;
         lastState = state;
 
-        if(Mathf.Abs(desiredMoveSpeed - moveSpeed) < 0.01f) keepMomentum = false;
+        if (Mathf.Abs(desiredMoveSpeed - moveSpeed) < 0.01f) keepMomentum = false;
     }
 
-    private float speedChangeFactor;
     private IEnumerator SmoothlyLerpMoveSpeed()
     {
-        // smoothly lerp movementSpeed to desired value
         float time = 0;
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
         float startValue = moveSpeed;
-
         float boostFactor = speedChangeFactor;
 
         while (time < difference)
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
-
             time += Time.deltaTime * boostFactor;
-
             yield return null;
         }
 
@@ -339,93 +234,43 @@ public class PlayerMovement : MonoBehaviour
         if (restricted) return;
         if (state == MovementState.dashing) return;
 
-        // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        // on slope
         if (OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
-
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
-
-        // on ground
         else if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             animator.SetBool("isJumping", false);
             animator.SetBool("isJumpingMove", false);
-            //animator.SetBool("isFalling", false);
-        
         }
-
-        // in air
         else if (!grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-            
-        
 
-        // turn gravity off while on slope
-        if(!wallrunning) rb.useGravity = !OnSlope();
+        if (!wallrunning) rb.useGravity = !OnSlope();
     }
-
-    /*private bool IsJumpingStatic()
-    {
-    // Verifica si el jugador está en el aire (no tocando el suelo)
-        if (!grounded)
-        {
-            // Verifica el movimiento en los ejes X y Z locales
-            float horizontalVelocity = Mathf.Abs(rb.velocity.x);
-            float verticalVelocity = Mathf.Abs(rb.velocity.z);
-
-            // Si hay movimiento en cualquiera de los ejes X o Z, no es un salto estático
-            if (horizontalVelocity > 0.1f || verticalVelocity > 0.1f)
-            {
-                return false; // El jugador se está moviendo en el aire
-            }
-            else
-            {
-                return true; // El jugador está saltando estático
-            }
-        }
-
-        return false; // Si está en el suelo, no está saltando
-    }*/
-
 
     private bool IsJumpingStatic()
     {
-        // Si hay movimiento en cualquiera de los ejes X o Z, no es un salto estático
-        if (horizontalInput != 0 || verticalInput != 0)
-        {
-            return false; // El jugador se está moviendo en el aire
-        }
-        else
-        {
-            return true; // El jugador está saltando estático
-        }
+        return horizontalInput == 0 && verticalInput == 0;
     }
-
 
     private void SpeedControl()
     {
-        // limiting speed on slope
         if (OnSlope() && !exitingSlope)
         {
             if (rb.velocity.magnitude > moveSpeed)
                 rb.velocity = rb.velocity.normalized * moveSpeed;
         }
-
-        // limiting speed on ground or in air
         else
         {
             Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-            // limit velocity if needed
             if (flatVel.magnitude > moveSpeed)
             {
                 Vector3 limitedVel = flatVel.normalized * moveSpeed;
@@ -433,7 +278,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // limit y vel
         if (maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
             rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
     }
@@ -441,30 +285,19 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         exitingSlope = true;
-
-        // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        
-        //animator.SetBool("isJumping", true);
-        
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
-        if(IsJumpingStatic())
-        {
+        if (IsJumpingStatic())
             animator.SetBool("isJumping", true);
-        }
         else
-        {
             animator.SetBool("isJumpingMove", true);
-        }
     }
 
     private void ResetJump()
     {
         readyToJump = true;
-
         exitingSlope = false;
-        
     }
 
     public bool OnSlope()
@@ -476,14 +309,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
-       
     }
 
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
-
 }
-
-    

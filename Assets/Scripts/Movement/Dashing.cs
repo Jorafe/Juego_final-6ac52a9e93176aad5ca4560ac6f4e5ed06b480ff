@@ -46,7 +46,7 @@ public class Dashing : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(dashKey))
+        if (Input.GetKeyDown(dashKey) || Input.GetButtonDown("Dash"))
             Dash();
 
         if (dashCdTimer > 0)
@@ -122,9 +122,8 @@ public class Dashing : MonoBehaviour
     private Vector3 GetDirection(Transform forwardT)
     {
         // get the W,A,S,D input
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
-
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
         // 2 Vector3 for the forward and right velocity
         Vector3 direction = new Vector3();
 
