@@ -251,6 +251,11 @@ MonoBehaviour:
   playerObj: {fileID: 1212829095}
   rb: {fileID: 820980486}
   rotationSpeed: 7
+  camHolder: {fileID: 0}
+  sensitivityX: 2
+  sensitivityY: 2
+  minY: -40
+  maxY: 60
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 7
   sprintSpeed: 10
-  slideSpeed: 5
   dashSpeed: 20
   dashSpeedChangeFactor: 50
   maxYSpeed: 0
@@ -1404,11 +1408,8 @@ MonoBehaviour:
   jumpForce: 9
   jumpCooldown: 0.25
   airMultiplier: 0.2
-  crouchSpeed: 3.5
-  crouchYScale: 0.5
   jumpKey: 32
   sprintKey: 304
-  crouchKey: 99
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -1416,10 +1417,8 @@ MonoBehaviour:
   maxSlopeAngle: 40
   orientation: {fileID: 168278790}
   rb: {fileID: 0}
-  sliding: 0
   state: 0
   dashing: 0
-  crouching: 0
   wallrunning: 0
   freeze: 0
   unlimited: 0
