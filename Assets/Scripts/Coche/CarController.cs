@@ -45,26 +45,30 @@ public class CarController : MonoBehaviour
     }
 
     void CheckInput()
+{
+    steeringInput = Input.GetAxis("Horizontal");
+
+    gasInput = 0;
+    brakeInput = 0;
+
+    bool acelerar = Input.GetButton("Acelerar"); // R2
+    bool frenar = Input.GetButton("Frenar");     // L2
+
+    if (acelerar && !frenar)
     {
-        gasInput = Input.GetAxis("Vertical");
-        steeringInput = Input.GetAxis("Horizontal");
-
-        slipAngle = Vector3.Angle(transform.forward, playerRB.velocity - transform.forward);
-
-        float movingDirection = Vector3.Dot(transform.forward, playerRB.velocity);
-        if (movingDirection < -0.5f && gasInput > 0)
-        {
-            brakeInput = Mathf.Abs(gasInput);
-        }
-        else if (movingDirection > 0.5f && gasInput < 0)
-        {
-            brakeInput = Mathf.Abs(gasInput);
-        }
-        else
-        {
-            brakeInput = 0;
-        }
+        gasInput = 1f; // Avanza
     }
+    else if (frenar && !acelerar)
+    {
+        gasInput = -1f; // Marcha atrás
+    }
+    else if (frenar && acelerar)
+    {
+        brakeInput = 1f; // Ambos pulsados = freno
+    }
+
+    slipAngle = Vector3.Angle(transform.forward, playerRB.velocity - transform.forward);
+}
 
     void ApplyBrake()
     {
