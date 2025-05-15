@@ -4,7 +4,7 @@ using System.Collections;
 public class Gun : MonoBehaviour
 {
     public Transform firePoint;
-    public float fireRate = 0.2f;
+    public float fireRate = 3f;
     public float bulletLifeTime = 5f;
     public int maxBullets = 25;
     private int bulletsLeft;

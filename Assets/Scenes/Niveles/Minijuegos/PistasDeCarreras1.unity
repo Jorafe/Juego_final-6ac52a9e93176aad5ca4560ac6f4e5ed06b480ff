@@ -236,7 +236,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14216945}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -369,7 +369,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14700214}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -513,6 +513,7 @@ GameObject:
   - component: {fileID: 28165311}
   - component: {fileID: 28165310}
   - component: {fileID: 28165312}
+  - component: {fileID: 28165313}
   m_Layer: 0
   m_Name: pneumaticos (1)
   m_TagString: Untagged
@@ -607,6 +608,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0199368, y: 1.7557018, z: 2.6890173}
   m_Center: {x: -0.3877763, y: -0.21229418, z: -0.8571815}
+--- !u!114 &28165313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28165308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &30341542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -923,7 +938,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39335353}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1170,7 +1185,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49694897}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1201,6 +1216,7 @@ GameObject:
   - component: {fileID: 54780781}
   - component: {fileID: 54780780}
   - component: {fileID: 54780779}
+  - component: {fileID: 54780782}
   m_Layer: 0
   m_Name: pneumaticos (30)
   m_TagString: Untagged
@@ -1295,6 +1311,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54780777}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &54780782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54780777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &57070368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,7 +1439,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57070368}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1542,7 +1572,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58927906}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1675,7 +1705,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64871500}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1808,7 +1838,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81849348}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1839,6 +1869,7 @@ GameObject:
   - component: {fileID: 85213393}
   - component: {fileID: 85213392}
   - component: {fileID: 85213391}
+  - component: {fileID: 85213394}
   m_Layer: 0
   m_Name: pneumaticos (26)
   m_TagString: Untagged
@@ -1933,6 +1964,73 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85213389}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &85213394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85213389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
+--- !u!1 &93178688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93178690}
+  - component: {fileID: 93178689}
+  m_Layer: 10
+  m_Name: Fin Timer (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &93178689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93178688}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 41.023373, y: 14.988587, z: 35.54471}
+  m_Center: {x: 3.263445, y: 6.9942946, z: 4.3517}
+--- !u!4 &93178690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93178688}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.03525844, z: -0, w: 0.99937826}
+  m_LocalPosition: {x: -41.9, y: -19.39, z: 77.98}
+  m_LocalScale: {x: 1.327, y: 1.327, z: 0.08481919}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 4.041, z: 0}
 --- !u!1 &100472936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2468,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157699597}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2473,6 +2571,7 @@ GameObject:
   - component: {fileID: 164272890}
   - component: {fileID: 164272889}
   - component: {fileID: 164272888}
+  - component: {fileID: 164272891}
   m_Layer: 0
   m_Name: pneumaticos (49)
   m_TagString: Untagged
@@ -2567,6 +2666,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164272886}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &164272891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164272886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &176484428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,7 +2794,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176484428}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2928,7 +3041,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197997127}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3061,7 +3174,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203242930}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3119,6 +3232,7 @@ GameObject:
   - component: {fileID: 242432579}
   - component: {fileID: 242432578}
   - component: {fileID: 242432577}
+  - component: {fileID: 242432580}
   m_Layer: 0
   m_Name: pneumaticos (18)
   m_TagString: Untagged
@@ -3213,6 +3327,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242432575}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &242432580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242432575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &251504790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,6 +3771,7 @@ GameObject:
   - component: {fileID: 306487688}
   - component: {fileID: 306487687}
   - component: {fileID: 306487686}
+  - component: {fileID: 306487689}
   m_Layer: 0
   m_Name: pneumaticos (10)
   m_TagString: Untagged
@@ -3737,6 +3866,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306487684}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &306487689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306487684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &308940154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,6 +3892,7 @@ GameObject:
   - component: {fileID: 308940158}
   - component: {fileID: 308940157}
   - component: {fileID: 308940156}
+  - component: {fileID: 308940159}
   m_Layer: 0
   m_Name: pneumaticos (31)
   m_TagString: Untagged
@@ -3843,6 +3987,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308940154}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &308940159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308940154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &329268145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +4013,7 @@ GameObject:
   - component: {fileID: 329268149}
   - component: {fileID: 329268148}
   - component: {fileID: 329268147}
+  - component: {fileID: 329268150}
   m_Layer: 0
   m_Name: pneumaticos (20)
   m_TagString: Untagged
@@ -3949,6 +4108,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329268145}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &329268150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329268145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &332573002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4560,7 +4733,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369528278}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4693,7 +4866,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392478859}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4826,7 +4999,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401705863}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4959,7 +5132,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402207282}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -5092,7 +5265,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408254398}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -5228,6 +5401,7 @@ GameObject:
   - component: {fileID: 414083382}
   - component: {fileID: 414083381}
   - component: {fileID: 414083380}
+  - component: {fileID: 414083383}
   m_Layer: 0
   m_Name: pneumaticos (33)
   m_TagString: Untagged
@@ -5322,6 +5496,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414083378}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &414083383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414083378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &414815064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5520,6 +5708,7 @@ GameObject:
   - component: {fileID: 424445860}
   - component: {fileID: 424445859}
   - component: {fileID: 424445858}
+  - component: {fileID: 424445861}
   m_Layer: 0
   m_Name: pneumaticos (50)
   m_TagString: Untagged
@@ -5614,6 +5803,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424445856}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &424445861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424445856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &427971008
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,7 +5931,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427971008}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -5861,7 +6064,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428073509}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6027,6 +6230,7 @@ GameObject:
   - component: {fileID: 435668343}
   - component: {fileID: 435668342}
   - component: {fileID: 435668341}
+  - component: {fileID: 435668344}
   m_Layer: 0
   m_Name: pneumaticos (46)
   m_TagString: Untagged
@@ -6121,6 +6325,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435668339}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &435668344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435668339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &438349035
 GameObject:
   m_ObjectHideFlags: 0
@@ -6235,7 +6453,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438349035}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6380,6 +6598,7 @@ GameObject:
   - component: {fileID: 450766930}
   - component: {fileID: 450766929}
   - component: {fileID: 450766928}
+  - component: {fileID: 450766931}
   m_Layer: 0
   m_Name: pneumaticos (19)
   m_TagString: Untagged
@@ -6474,6 +6693,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450766926}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &450766931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450766926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &455342357
 GameObject:
   m_ObjectHideFlags: 0
@@ -7260,6 +7493,7 @@ GameObject:
   - component: {fileID: 518464361}
   - component: {fileID: 518464360}
   - component: {fileID: 518464359}
+  - component: {fileID: 518464362}
   m_Layer: 0
   m_Name: pneumaticos (44)
   m_TagString: Untagged
@@ -7354,6 +7588,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518464357}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &518464362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518464357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &530831107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7582,7 +7830,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540255476}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -7889,7 +8137,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578797486}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -8022,7 +8270,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580189155}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -8284,6 +8532,7 @@ GameObject:
   - component: {fileID: 615486451}
   - component: {fileID: 615486450}
   - component: {fileID: 615486449}
+  - component: {fileID: 615486452}
   m_Layer: 0
   m_Name: pneumaticos (45)
   m_TagString: Untagged
@@ -8378,6 +8627,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615486447}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &615486452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615486447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &620052887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8972,7 +9235,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671419502}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -9292,6 +9555,7 @@ GameObject:
   - component: {fileID: 708989330}
   - component: {fileID: 708989329}
   - component: {fileID: 708989328}
+  - component: {fileID: 708989331}
   m_Layer: 0
   m_Name: pneumaticos (36)
   m_TagString: Untagged
@@ -9386,6 +9650,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708989326}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &708989331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708989326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &718835244
 GameObject:
   m_ObjectHideFlags: 0
@@ -9500,7 +9778,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718835244}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -9706,7 +9984,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729346472}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -9842,6 +10120,7 @@ GameObject:
   - component: {fileID: 751223749}
   - component: {fileID: 751223748}
   - component: {fileID: 751223750}
+  - component: {fileID: 751223751}
   m_Layer: 0
   m_Name: pneumaticos (4)
   m_TagString: Untagged
@@ -9936,6 +10215,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0199368, y: 1.7557017, z: 2.6890166}
   m_Center: {x: -0.38778007, y: -0.21230944, z: -0.85718125}
+--- !u!114 &751223751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751223746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &757395071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10377,6 +10670,7 @@ GameObject:
   - component: {fileID: 775632544}
   - component: {fileID: 775632543}
   - component: {fileID: 775632542}
+  - component: {fileID: 775632545}
   m_Layer: 0
   m_Name: pneumaticos (28)
   m_TagString: Untagged
@@ -10471,6 +10765,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775632540}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &775632545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775632540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &796504888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10685,6 +10993,7 @@ GameObject:
   - component: {fileID: 799074312}
   - component: {fileID: 799074311}
   - component: {fileID: 799074310}
+  - component: {fileID: 799074313}
   m_Layer: 0
   m_Name: pneumaticos (16)
   m_TagString: Untagged
@@ -10779,6 +11088,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799074308}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &799074313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799074308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &808181530
 GameObject:
   m_ObjectHideFlags: 0
@@ -11251,7 +11574,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842480479}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -11282,6 +11605,7 @@ GameObject:
   - component: {fileID: 858539665}
   - component: {fileID: 858539664}
   - component: {fileID: 858539663}
+  - component: {fileID: 858539666}
   m_Layer: 0
   m_Name: pneumaticos (25)
   m_TagString: Untagged
@@ -11376,6 +11700,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858539661}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &858539666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858539661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &866102743
 GameObject:
   m_ObjectHideFlags: 0
@@ -11490,7 +11828,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866102743}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -11623,7 +11961,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875151769}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -11654,6 +11992,7 @@ GameObject:
   - component: {fileID: 878770633}
   - component: {fileID: 878770632}
   - component: {fileID: 878770634}
+  - component: {fileID: 878770635}
   m_Layer: 0
   m_Name: pneumaticos (3)
   m_TagString: Untagged
@@ -11748,6 +12087,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0199368, y: 1.7557017, z: 2.6890166}
   m_Center: {x: -0.38777626, y: -0.21229418, z: -0.85718507}
+--- !u!114 &878770635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878770630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &885985032
 GameObject:
   m_ObjectHideFlags: 0
@@ -12018,6 +12371,7 @@ GameObject:
   - component: {fileID: 921047594}
   - component: {fileID: 921047593}
   - component: {fileID: 921047592}
+  - component: {fileID: 921047595}
   m_Layer: 0
   m_Name: pneumaticos (22)
   m_TagString: Untagged
@@ -12112,6 +12466,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921047590}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &921047595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921047590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &922584399
 GameObject:
   m_ObjectHideFlags: 0
@@ -12378,6 +12746,7 @@ GameObject:
   - component: {fileID: 950712117}
   - component: {fileID: 950712116}
   - component: {fileID: 950712115}
+  - component: {fileID: 950712118}
   m_Layer: 0
   m_Name: pneumaticos (27)
   m_TagString: Untagged
@@ -12472,6 +12841,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950712113}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &950712118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950712113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &950931781
 GameObject:
   m_ObjectHideFlags: 0
@@ -12586,7 +12969,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950931781}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12617,6 +13000,7 @@ GameObject:
   - component: {fileID: 971348867}
   - component: {fileID: 971348866}
   - component: {fileID: 971348865}
+  - component: {fileID: 971348868}
   m_Layer: 0
   m_Name: pneumaticos (9)
   m_TagString: Untagged
@@ -12711,6 +13095,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971348863}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &971348868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971348863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &975564851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13244,7 +13642,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993837518}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -13566,6 +13964,7 @@ GameObject:
   - component: {fileID: 1026451398}
   - component: {fileID: 1026451397}
   - component: {fileID: 1026451396}
+  - component: {fileID: 1026451399}
   m_Layer: 0
   m_Name: pneumaticos (48)
   m_TagString: Untagged
@@ -13660,6 +14059,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026451394}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1026451399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026451394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1033220215
 GameObject:
   m_ObjectHideFlags: 0
@@ -13672,6 +14085,7 @@ GameObject:
   - component: {fileID: 1033220219}
   - component: {fileID: 1033220218}
   - component: {fileID: 1033220217}
+  - component: {fileID: 1033220220}
   m_Layer: 0
   m_Name: pneumaticos (53)
   m_TagString: Untagged
@@ -13766,6 +14180,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033220215}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1033220220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033220215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1036988863
 GameObject:
   m_ObjectHideFlags: 0
@@ -13778,6 +14206,7 @@ GameObject:
   - component: {fileID: 1036988867}
   - component: {fileID: 1036988866}
   - component: {fileID: 1036988865}
+  - component: {fileID: 1036988868}
   m_Layer: 0
   m_Name: pneumaticos (17)
   m_TagString: Untagged
@@ -13872,6 +14301,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036988863}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1036988868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036988863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1040203734
 GameObject:
   m_ObjectHideFlags: 0
@@ -13956,6 +14399,7 @@ GameObject:
   - component: {fileID: 1052180828}
   - component: {fileID: 1052180827}
   - component: {fileID: 1052180826}
+  - component: {fileID: 1052180829}
   m_Layer: 0
   m_Name: pneumaticos (51)
   m_TagString: Untagged
@@ -14050,6 +14494,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052180824}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1052180829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052180824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1057086270
 GameObject:
   m_ObjectHideFlags: 0
@@ -14164,7 +14622,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057086270}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -14401,7 +14859,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059908267}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -14561,7 +15019,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077226336}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -14592,6 +15050,7 @@ GameObject:
   - component: {fileID: 1083841162}
   - component: {fileID: 1083841161}
   - component: {fileID: 1083841160}
+  - component: {fileID: 1083841163}
   m_Layer: 0
   m_Name: pneumaticos (24)
   m_TagString: Untagged
@@ -14686,6 +15145,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083841158}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1083841163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083841158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1086329568
 GameObject:
   m_ObjectHideFlags: 0
@@ -14833,6 +15306,7 @@ GameObject:
   - component: {fileID: 1089355976}
   - component: {fileID: 1089355975}
   - component: {fileID: 1089355974}
+  - component: {fileID: 1089355977}
   m_Layer: 0
   m_Name: pneumaticos (6)
   m_TagString: Untagged
@@ -14927,6 +15401,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089355972}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1089355977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089355972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1089433199
 GameObject:
   m_ObjectHideFlags: 0
@@ -15041,7 +15529,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089433199}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -15360,7 +15848,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116996528}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -15493,7 +15981,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120529569}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -15714,7 +16202,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124593119}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -15898,6 +16386,7 @@ GameObject:
   - component: {fileID: 1133399058}
   - component: {fileID: 1133399057}
   - component: {fileID: 1133399059}
+  - component: {fileID: 1133399060}
   m_Layer: 0
   m_Name: pneumaticos (5)
   m_TagString: Untagged
@@ -15992,6 +16481,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0199368, y: 1.7557017, z: 2.6890166}
   m_Center: {x: -0.38778389, y: -0.21229418, z: -0.8571889}
+--- !u!114 &1133399060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133399055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1146497063
 GameObject:
   m_ObjectHideFlags: 0
@@ -16178,7 +16681,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148507700}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -16209,6 +16712,7 @@ GameObject:
   - component: {fileID: 1154955754}
   - component: {fileID: 1154955753}
   - component: {fileID: 1154955752}
+  - component: {fileID: 1154955755}
   m_Layer: 0
   m_Name: pneumaticos (15)
   m_TagString: Untagged
@@ -16303,6 +16807,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154955750}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1154955755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154955750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1176525981
 GameObject:
   m_ObjectHideFlags: 0
@@ -16489,7 +17007,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185576759}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -16622,7 +17140,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189324274}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -17070,7 +17588,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271285563}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -17526,7 +18044,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331137854}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -17557,6 +18075,7 @@ GameObject:
   - component: {fileID: 1335427588}
   - component: {fileID: 1335427587}
   - component: {fileID: 1335427586}
+  - component: {fileID: 1335427589}
   m_Layer: 0
   m_Name: pneumaticos (41)
   m_TagString: Untagged
@@ -17651,6 +18170,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335427584}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1335427589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335427584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1336882676
 GameObject:
   m_ObjectHideFlags: 0
@@ -17765,7 +18298,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336882676}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -17910,6 +18443,7 @@ GameObject:
   - component: {fileID: 1346104599}
   - component: {fileID: 1346104598}
   - component: {fileID: 1346104597}
+  - component: {fileID: 1346104600}
   m_Layer: 0
   m_Name: pneumaticos (11)
   m_TagString: Untagged
@@ -18004,6 +18538,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346104595}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1346104600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346104595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &1364989516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18232,7 +18780,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383957250}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -18263,6 +18811,7 @@ GameObject:
   - component: {fileID: 1385527528}
   - component: {fileID: 1385527527}
   - component: {fileID: 1385527526}
+  - component: {fileID: 1385527529}
   m_Layer: 0
   m_Name: pneumaticos (39)
   m_TagString: Untagged
@@ -18357,6 +18906,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385527524}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1385527529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385527524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1387955873
 GameObject:
   m_ObjectHideFlags: 0
@@ -18593,7 +19156,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397052729}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -18726,7 +19289,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407340929}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -18964,7 +19527,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410364836}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -18995,6 +19558,7 @@ GameObject:
   - component: {fileID: 1411210257}
   - component: {fileID: 1411210256}
   - component: {fileID: 1411210255}
+  - component: {fileID: 1411210258}
   m_Layer: 0
   m_Name: pneumaticos (42)
   m_TagString: Untagged
@@ -19089,6 +19653,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411210253}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1411210258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411210253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1424108029
 GameObject:
   m_ObjectHideFlags: 0
@@ -19275,6 +19853,7 @@ GameObject:
   - component: {fileID: 1427674142}
   - component: {fileID: 1427674141}
   - component: {fileID: 1427674140}
+  - component: {fileID: 1427674143}
   m_Layer: 0
   m_Name: pneumaticos (34)
   m_TagString: Untagged
@@ -19369,6 +19948,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427674138}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1427674143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427674138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1429473947
 GameObject:
   m_ObjectHideFlags: 0
@@ -19483,7 +20076,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429473947}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -19616,7 +20209,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430586821}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -19722,6 +20315,7 @@ GameObject:
   - component: {fileID: 1436285368}
   - component: {fileID: 1436285367}
   - component: {fileID: 1436285366}
+  - component: {fileID: 1436285369}
   m_Layer: 0
   m_Name: pneumaticos (37)
   m_TagString: Untagged
@@ -19816,6 +20410,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436285364}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1436285369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436285364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &1437158197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20188,7 +20796,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503377361}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -20387,7 +20995,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521549046}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -20418,6 +21026,7 @@ GameObject:
   - component: {fileID: 1521711944}
   - component: {fileID: 1521711943}
   - component: {fileID: 1521711942}
+  - component: {fileID: 1521711945}
   m_Layer: 0
   m_Name: pneumaticos (12)
   m_TagString: Untagged
@@ -20512,6 +21121,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521711940}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1521711945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521711940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1527206866
 GameObject:
   m_ObjectHideFlags: 0
@@ -20524,6 +21147,7 @@ GameObject:
   - component: {fileID: 1527206869}
   - component: {fileID: 1527206868}
   - component: {fileID: 1527206870}
+  - component: {fileID: 1527206871}
   m_Layer: 0
   m_Name: pneumaticos (2)
   m_TagString: Untagged
@@ -20618,6 +21242,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0199368, y: 1.7557017, z: 2.6890166}
   m_Center: {x: -0.38777626, y: -0.2123018, z: -0.85718125}
+--- !u!114 &1527206871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527206866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1528314100
 GameObject:
   m_ObjectHideFlags: 0
@@ -20630,6 +21268,7 @@ GameObject:
   - component: {fileID: 1528314104}
   - component: {fileID: 1528314103}
   - component: {fileID: 1528314102}
+  - component: {fileID: 1528314105}
   m_Layer: 0
   m_Name: pneumaticos (21)
   m_TagString: Untagged
@@ -20724,6 +21363,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528314100}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1528314105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528314100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1529642574
 GameObject:
   m_ObjectHideFlags: 0
@@ -20838,7 +21491,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529642574}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -20971,7 +21624,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553283767}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -21126,7 +21779,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578490004}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -21259,7 +21912,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578705642}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -21392,7 +22045,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584040807}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -21525,7 +22178,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602117024}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -21658,7 +22311,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603799446}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -21807,6 +22460,7 @@ GameObject:
   - component: {fileID: 1631364515}
   - component: {fileID: 1631364514}
   - component: {fileID: 1631364513}
+  - component: {fileID: 1631364516}
   m_Layer: 0
   m_Name: pneumaticos (43)
   m_TagString: Untagged
@@ -21901,6 +22555,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631364511}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1631364516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631364511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1716943662
 GameObject:
   m_ObjectHideFlags: 0
@@ -22159,7 +22827,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731699479}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -22250,111 +22918,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736523755}
   m_CullTransparentMesh: 1
---- !u!1 &1737130961
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1737130962}
-  - component: {fileID: 1737130965}
-  - component: {fileID: 1737130964}
-  - component: {fileID: 1737130963}
-  m_Layer: 0
-  m_Name: cono (33)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1737130962
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737130961}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.19377351, y: 0.5978602, z: 0.018031258, w: 0.7776181}
-  m_LocalPosition: {x: -135.88, y: 10.59, z: 45.01}
-  m_LocalScale: {x: 0.3635148, y: 0.3635148, z: 0.3635148}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9069355694157622078}
-  m_LocalEulerAnglesHint: {x: 16.248, y: 77.363, z: 15.697}
---- !u!65 &1737130963
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737130961}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.9999998, y: 5.353416, z: 3.9999998}
-  m_Center: {x: -0.0000076293945, y: 2.676708, z: 0}
---- !u!23 &1737130964
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737130961}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b84ca0b50c6228447bd62ea6b93952c6, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1737130965
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737130961}
-  m_Mesh: {fileID: -1420671499251535735, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
 --- !u!1 &1739532400
 GameObject:
   m_ObjectHideFlags: 0
@@ -22367,6 +22930,7 @@ GameObject:
   - component: {fileID: 1739532404}
   - component: {fileID: 1739532403}
   - component: {fileID: 1739532402}
+  - component: {fileID: 1739532405}
   m_Layer: 0
   m_Name: pneumaticos (23)
   m_TagString: Untagged
@@ -22461,6 +23025,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739532400}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1739532405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739532400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1742664604
 GameObject:
   m_ObjectHideFlags: 0
@@ -22575,7 +23153,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742664604}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -22606,6 +23184,7 @@ GameObject:
   - component: {fileID: 1749220513}
   - component: {fileID: 1749220512}
   - component: {fileID: 1749220511}
+  - component: {fileID: 1749220514}
   m_Layer: 0
   m_Name: pneumaticos (40)
   m_TagString: Untagged
@@ -22700,6 +23279,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749220509}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1749220514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749220509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &1751279780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22826,6 +23419,7 @@ GameObject:
   - component: {fileID: 1758461390}
   - component: {fileID: 1758461389}
   - component: {fileID: 1758461388}
+  - component: {fileID: 1758461391}
   m_Layer: 0
   m_Name: pneumaticos (29)
   m_TagString: Untagged
@@ -22920,6 +23514,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758461386}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1758461391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758461386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &1768574996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23333,7 +23941,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788274176}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -23466,7 +24074,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792578185}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -23497,6 +24105,7 @@ GameObject:
   - component: {fileID: 1817623643}
   - component: {fileID: 1817623642}
   - component: {fileID: 1817623641}
+  - component: {fileID: 1817623644}
   m_Layer: 0
   m_Name: pneumaticos (38)
   m_TagString: Untagged
@@ -23591,6 +24200,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817623639}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1817623644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817623639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1817817990
 GameObject:
   m_ObjectHideFlags: 0
@@ -23705,7 +24328,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817817990}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -24181,7 +24804,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835367859}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -24212,6 +24835,7 @@ GameObject:
   - component: {fileID: 1837373123}
   - component: {fileID: 1837373122}
   - component: {fileID: 1837373121}
+  - component: {fileID: 1837373124}
   m_Layer: 0
   m_Name: pneumaticos (47)
   m_TagString: Untagged
@@ -24306,6 +24930,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837373119}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1837373124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837373119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1839353777
 GameObject:
   m_ObjectHideFlags: 0
@@ -24473,7 +25111,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850440196}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -24720,7 +25358,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861160182}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -24932,7 +25570,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889174723}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -25347,6 +25985,7 @@ GameObject:
   - component: {fileID: 1932522649}
   - component: {fileID: 1932522648}
   - component: {fileID: 1932522647}
+  - component: {fileID: 1932522650}
   m_Layer: 0
   m_Name: pneumaticos (35)
   m_TagString: Untagged
@@ -25441,6 +26080,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932522645}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1932522650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932522645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1940387796
 GameObject:
   m_ObjectHideFlags: 0
@@ -25555,7 +26208,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940387796}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -25586,6 +26239,7 @@ GameObject:
   - component: {fileID: 1942737012}
   - component: {fileID: 1942737011}
   - component: {fileID: 1942737010}
+  - component: {fileID: 1942737013}
   m_Layer: 0
   m_Name: pneumaticos (52)
   m_TagString: Untagged
@@ -25680,6 +26334,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942737008}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1942737013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942737008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &1953503689
 GameObject:
   m_ObjectHideFlags: 0
@@ -25794,7 +26462,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953503689}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -25927,7 +26595,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964675914}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -26372,6 +27040,7 @@ GameObject:
   - component: {fileID: 1997637415}
   - component: {fileID: 1997637414}
   - component: {fileID: 1997637413}
+  - component: {fileID: 1997637416}
   m_Layer: 0
   m_Name: pneumaticos (7)
   m_TagString: Untagged
@@ -26466,6 +27135,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997637411}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &1997637416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997637411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1 &2000663671
 GameObject:
   m_ObjectHideFlags: 0
@@ -26908,6 +27591,7 @@ GameObject:
   - component: {fileID: 2026749536}
   - component: {fileID: 2026749535}
   - component: {fileID: 2026749534}
+  - component: {fileID: 2026749537}
   m_Layer: 0
   m_Name: pneumaticos (8)
   m_TagString: Untagged
@@ -27002,6 +27686,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026749532}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &2026749537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026749532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &2047615414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27128,6 +27826,7 @@ GameObject:
   - component: {fileID: 2061117973}
   - component: {fileID: 2061117972}
   - component: {fileID: 2061117971}
+  - component: {fileID: 2061117974}
   m_Layer: 0
   m_Name: pneumaticos (13)
   m_TagString: Untagged
@@ -27222,6 +27921,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061117969}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &2061117974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061117969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &2118544462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27424,7 +28137,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123966018}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -27713,6 +28426,7 @@ GameObject:
   - component: {fileID: 2136419519}
   - component: {fileID: 2136419518}
   - component: {fileID: 2136419517}
+  - component: {fileID: 2136419520}
   m_Layer: 0
   m_Name: pneumaticos (32)
   m_TagString: Untagged
@@ -27807,6 +28521,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136419515}
   m_Mesh: {fileID: 2575588722636490225, guid: 4974719b39ac1fd48b4a770488b9bc6c, type: 3}
+--- !u!114 &2136419520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136419515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &2143947243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28368,8 +29096,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149013052949}
   m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
---- !u!65 &3469287836651301643
-BoxCollider:
+--- !u!64 &3469287836651301643
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28386,9 +29114,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1404793, y: 2.2428064, z: 3.537643}
-  m_Center: {x: 0.2331791, y: 0.2399998, z: 0.97274065}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
 --- !u!33 &3469287837404948631
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28397,8 +29126,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149232549256}
   m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
---- !u!65 &3469287837404948632
-BoxCollider:
+--- !u!64 &3469287837404948632
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28415,9 +29144,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1404784, y: 2.2428048, z: 3.537642}
-  m_Center: {x: 0.23316404, y: 0.23999944, z: 0.97274625}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
 --- !u!33 &3469287837688739187
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28434,8 +29164,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147827419213}
   m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
---- !u!65 &3469287837744659795
-BoxCollider:
+--- !u!64 &3469287837744659795
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28452,9 +29182,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1404793, y: 2.242806, z: 3.5376434}
-  m_Center: {x: 0.23317929, y: 0.23996916, z: 0.972739}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
 --- !u!33 &3469287838504143086
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28463,8 +29194,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148166827505}
   m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
---- !u!65 &3469287838504143087
-BoxCollider:
+--- !u!64 &3469287838504143087
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28481,9 +29212,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1404793, y: 2.242806, z: 3.5376434}
-  m_Center: {x: 0.23317929, y: 0.23999968, z: 0.972739}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1579241630799410176, guid: 7db9b7841466e7245973b294888be688, type: 3}
 --- !u!1 &3507769868490161211
 GameObject:
   m_ObjectHideFlags: 0
@@ -28496,6 +29228,7 @@ GameObject:
   - component: {fileID: 7388739969716499324}
   - component: {fileID: 6733616929607553285}
   - component: {fileID: 7388739969716499325}
+  - component: {fileID: 7388739969716499326}
   m_Layer: 0
   m_Name: pneumaticos
   m_TagString: Untagged
@@ -28641,7 +29374,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7171598986064808884}
   serializedVersion: 4
-  m_Mass: 200
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -28689,6 +29422,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0199368, y: 1.7557017, z: 2.6890166}
   m_Center: {x: -0.38777244, y: -0.21229036, z: -0.85718507}
+--- !u!114 &7388739969716499326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507769868490161211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02214799d46a0ac4e835c1b70cecda5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaRebote: 10
+  animator: {fileID: 0}
 --- !u!1001 &7793573336704904944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28966,7 +29713,6 @@ Transform:
   - {fileID: 738157397}
   - {fileID: 1004457096}
   - {fileID: 275961451}
-  - {fileID: 1737130962}
   - {fileID: 1891369378}
   - {fileID: 1828257789}
   - {fileID: 1120529570}
@@ -29054,6 +29800,7 @@ SceneRoots:
   - {fileID: 3849447651196941495}
   - {fileID: 1059403437}
   - {fileID: 1839353779}
+  - {fileID: 93178690}
   - {fileID: 1515430076}
   - {fileID: 2000663673}
   - {fileID: 1617946334}

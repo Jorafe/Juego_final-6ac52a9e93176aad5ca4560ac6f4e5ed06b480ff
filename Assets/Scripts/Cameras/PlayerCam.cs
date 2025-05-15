@@ -1,52 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class PlayerCam : MonoBehaviour
 {
-    public float sensX;
-    public float sensY;
+    public float sensX = 200f;
+    public float sensY = 200f;
     public Transform orientation;
     public Transform camHolder;
-
     public Transform player;
 
-    public float xRotation;
-    public float yRotation;
+    private float xRotation = 0f;
+    private float yRotation = 0f;
 
-    public float mY;
-
-    public void Start()
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    public void Update()
+    void Update()
     {
+        // Entradas del ratón
+        float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-        mY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        // Entradas del joystick derecho (Input Manager clásico)
+        float joyX = Input.GetAxis("RightStickX") * sensX * Time.deltaTime;
+        float joyY = Input.GetAxis("RightStickY") * sensY * Time.deltaTime;
 
-        //mY += mY;
-        //xRotation -= mY;
- 
- 
-        mouseX += mouseX;
-        mouseY += mouseY;
-        
+        // Combinar ambas entradas
+        float finalX = mouseX + joyX;
+        float finalY = mouseY + joyY;
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
+        // Invertir eje Y si lo necesitas
+        xRotation -= finalY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
+        yRotation += finalX;
+
         transform.position = player.position;
-
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);
     }
-
-    
 }
