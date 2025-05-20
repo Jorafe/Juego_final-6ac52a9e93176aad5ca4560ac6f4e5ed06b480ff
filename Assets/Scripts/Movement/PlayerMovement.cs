@@ -300,6 +300,18 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+    private void OnCollisionEnter(Collision collision)
+{
+    Debug.Log("Colisión con: " + collision.gameObject.name + ", Tag: " + collision.collider.tag);
+
+    if (collision.collider.CompareTag("WhatisChicken") || collision.collider.CompareTag("WhatisBol"))
+    {
+        Debug.Log("¡Activando salto en movimiento!");
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isJumpingMove", true);
+    }
+}
+
     public bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))

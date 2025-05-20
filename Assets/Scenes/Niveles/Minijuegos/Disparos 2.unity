@@ -2510,6 +2510,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1414416802620580879, guid: a9aad5b4746199947b885e2982c672de,
         type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414416802620580879, guid: a9aad5b4746199947b885e2982c672de,
+        type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
       value: 300
       objectReference: {fileID: 0}
@@ -3481,7 +3486,7 @@ PrefabInstance:
     - target: {fileID: 6435190523918228872, guid: a9aad5b4746199947b885e2982c672de,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.6
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 6435190523918228872, guid: a9aad5b4746199947b885e2982c672de,
         type: 3}
@@ -9684,7 +9689,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 50
+  field of view: 70
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -9711,7 +9716,7 @@ Transform:
   m_GameObject: {fileID: 1823688464}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5257311, y: 0, z: 0, w: 0.85065085}
-  m_LocalPosition: {x: 9.334551, y: -0.6040151, z: -21.642952}
+  m_LocalPosition: {x: -1.2054496, y: -0.6040151, z: -21.642952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
