@@ -35,7 +35,6 @@ public class VideoCinematicas : MonoBehaviour
         videoPlayer.loopPointReached += OnVideoEnd;
         videoPlayer.Stop();
 
-        // Guardamos todos los valores relevantes del RectTransform
         RectTransform rt = videoPreview.rectTransform;
         originalAnchoredPosition = rt.anchoredPosition;
         originalSizeDelta = rt.sizeDelta;
@@ -57,6 +56,7 @@ public class VideoCinematicas : MonoBehaviour
             DesactivarHijos();
             SetToFullScreen();
             videoPlayer.Play();
+            SoundManagerMenu.Instance?.StartCinematic();
         }
         else
         {
@@ -64,6 +64,7 @@ public class VideoCinematicas : MonoBehaviour
             ActivarHijos();
             RestoreOriginal();
             videoPlayer.Stop();
+            SoundManagerMenu.Instance?.EndCinematic();
         }
     }
 
@@ -73,24 +74,24 @@ public class VideoCinematicas : MonoBehaviour
         ActivarHijos();
         RestoreOriginal();
         videoPlayer.Stop();
+        SoundManagerMenu.Instance?.EndCinematic();
     }
 
-  void SetToFullScreen()
-{
-    isFullscreen = true;
-    RectTransform rt = videoPreview.rectTransform;
+    void SetToFullScreen()
+    {
+        isFullscreen = true;
+        RectTransform rt = videoPreview.rectTransform;
 
-    // Desconectamos de cualquier layout
-    LayoutElement le = videoPreview.GetComponent<LayoutElement>();
-    if (le) Destroy(le);
+        LayoutElement le = videoPreview.GetComponent<LayoutElement>();
+        if (le) Destroy(le);
 
-    rt.anchorMin = new Vector2(0, 0);
-    rt.anchorMax = new Vector2(0, 0);
-    rt.pivot = new Vector2(0.5f, 0.5f);
-    
-    rt.anchoredPosition = new Vector2(Screen.width / 2f, Screen.height / 2f);
-    rt.sizeDelta = new Vector2(1920, 1080);
-}
+        rt.anchorMin = new Vector2(0, 0);
+        rt.anchorMax = new Vector2(0, 0);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+
+        rt.anchoredPosition = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        rt.sizeDelta = new Vector2(1920, 1080);
+    }
 
     void RestoreOriginal()
     {

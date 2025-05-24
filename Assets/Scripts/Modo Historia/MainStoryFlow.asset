@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6e157a9b07a954d87173dbd5ca759b, type: 3}
+  m_Name: MainStoryFlow
+  m_EditorClassIdentifier: 
+  steps:
+  - type: 0
+    cutsceneIndex: 0
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 1
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: Plataformas1
+  - type: 0
+    cutsceneIndex: 2
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 3
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 4
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: PistasDeCarreras1
+  - type: 0
+    cutsceneIndex: 5
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: Disparos
+  - type: 0
+    cutsceneIndex: 6
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 7
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 8
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: Plataformas2
+  - type: 0
+    cutsceneIndex: 9
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: PistasDeCarreras2
+  - type: 0
+    cutsceneIndex: 10
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: Disparos 2
+  - type: 0
+    cutsceneIndex: 11
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: Plataformas3
+  - type: 0
+    cutsceneIndex: 13
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 14
+    levelSceneName: 
+  - type: 0
+    cutsceneIndex: 15
+    levelSceneName: 
+  - type: 1
+    cutsceneIndex: 0
+    levelSceneName: Nivel final

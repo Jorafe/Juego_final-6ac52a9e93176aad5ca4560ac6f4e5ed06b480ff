@@ -34,6 +34,8 @@ public class SoundManagerMenu : MonoBehaviour
     private Dictionary<string, AudioClip> sceneMusicMap = new Dictionary<string, AudioClip>();
     private AudioClip currentMusicClip = null;
 
+    private bool isCinematicPlaying = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -159,6 +161,24 @@ public class SoundManagerMenu : MonoBehaviour
     public void PlayEnemyDamageSFX()
     {
         PlaySFX(enemyDamageSFX);
+    }
+
+    public void StartCinematic()
+    {
+        if (!isCinematicPlaying && musicSource.isPlaying)
+        {
+            musicSource.Pause();
+        }
+        isCinematicPlaying = true;
+    }
+
+    public void EndCinematic()
+    {
+        if (isCinematicPlaying && musicSource.clip != null)
+        {
+            musicSource.UnPause();
+        }
+        isCinematicPlaying = false;
     }
 
     [System.Serializable]
