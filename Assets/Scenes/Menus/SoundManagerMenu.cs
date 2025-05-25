@@ -112,6 +112,15 @@ public class SoundManagerMenu : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "CutsceneScene")
+        {
+            StartCinematic(); // Pausar música automáticamente
+        }
+        else
+        {
+            EndCinematic(); // Reanudar música al salir de CutsceneScene
+        }
+
         if (sceneMusicMap.ContainsKey(scene.name))
         {
             AudioClip musicClip = sceneMusicMap[scene.name];

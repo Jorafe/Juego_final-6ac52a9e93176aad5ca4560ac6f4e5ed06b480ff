@@ -11,8 +11,6 @@ public class NovaLive : MonoBehaviour
     public RawImage rawImage;
     public Texture[] vidasTextures;
 
-    [Header("Cinemática de Muerte")]
-    [SerializeField] private VideoPlayer videoCinematica;
 
     private void Start()
     {
@@ -33,15 +31,14 @@ public class NovaLive : MonoBehaviour
             if (vidas == 0)
             {
                 Debug.Log("Nova se ha quedado sin vidas.");
-                if (videoCinematica != null)
-                {
-                    StartCoroutine(ReproducirCinematicaTrasRetraso(3f));
-                }
+                StoryManager.Instance?.LoadNextStep();
             }
         }
         else
         {
             Debug.Log("Nova ya no tiene vidas.");
+            StoryManager.Instance?.LoadNextStep();
+    
         }
     }
 
@@ -52,11 +49,5 @@ public class NovaLive : MonoBehaviour
             rawImage.texture = vidasTextures[vidas];
         }
     }
-
-    private IEnumerator ReproducirCinematicaTrasRetraso(float segundos)
-    {
-        yield return new WaitForSeconds(segundos);
-        videoCinematica.gameObject.SetActive(true);
-        videoCinematica.Play();
-    }
+    
 }

@@ -8,9 +8,7 @@ public class ImogenLive : MonoBehaviour
     [Header("Sistema de Vidas")]
     [SerializeField] private int vidas = 100;
     [SerializeField] private UnityEngine.UI.Slider vidaSlider;
-
-    [Header("Cinemática de Muerte")]
-    [SerializeField] private VideoPlayer videoCinematica;
+    
 
     public int VidasActuales => vidas;
 
@@ -52,17 +50,7 @@ public class ImogenLive : MonoBehaviour
         if (vidas <= 0)
         {
             Debug.Log("Imogen ha muerto.");
-            if (videoCinematica != null)
-            {
-                StartCoroutine(ReproducirCinematicaTrasRetraso(3f));
-            }
+            StoryManager.Instance?.LoadNextStep();
         }
-    }
-
-    private IEnumerator ReproducirCinematicaTrasRetraso(float segundos)
-    {
-        yield return new WaitForSeconds(segundos);
-        videoCinematica.gameObject.SetActive(true);
-        videoCinematica.Play();
     }
 }

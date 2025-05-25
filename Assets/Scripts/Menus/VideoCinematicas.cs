@@ -19,6 +19,8 @@ public class VideoCinematicas : MonoBehaviour
     private static List<VideoCinematicas> allVideos = new List<VideoCinematicas>();
     private List<GameObject> hijosDesactivados = new List<GameObject>();
 
+    private bool wasPlaying = false;
+
     void Awake()
     {
         allVideos.Add(this);
@@ -48,6 +50,20 @@ public class VideoCinematicas : MonoBehaviour
         videoPlayer.loopPointReached -= OnVideoEnd;
     }
 
+    void Update()
+    {
+        if (videoPlayer.isPlaying && !wasPlaying)
+        {
+            wasPlaying = true;
+            SoundManagerMenu.Instance?.StartCinematic();
+        }
+        else if (!videoPlayer.isPlaying && wasPlaying)
+        {
+            wasPlaying = false;
+            SoundManagerMenu.Instance?.EndCinematic();
+        }
+    }
+
     public void OnClickVideo()
     {
         if (!isFullscreen)
@@ -56,7 +72,6 @@ public class VideoCinematicas : MonoBehaviour
             DesactivarHijos();
             SetToFullScreen();
             videoPlayer.Play();
-            SoundManagerMenu.Instance?.StartCinematic();
         }
         else
         {
@@ -64,7 +79,6 @@ public class VideoCinematicas : MonoBehaviour
             ActivarHijos();
             RestoreOriginal();
             videoPlayer.Stop();
-            SoundManagerMenu.Instance?.EndCinematic();
         }
     }
 
@@ -74,7 +88,6 @@ public class VideoCinematicas : MonoBehaviour
         ActivarHijos();
         RestoreOriginal();
         videoPlayer.Stop();
-        SoundManagerMenu.Instance?.EndCinematic();
     }
 
     void SetToFullScreen()

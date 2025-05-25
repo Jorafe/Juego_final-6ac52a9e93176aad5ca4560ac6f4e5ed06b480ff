@@ -1,27 +1,42 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
+using UnityEngine.Video;
 
 public class CutsceneController : MonoBehaviour
 {
-    public List<PlayableDirector> cutscenes;
+    [Tooltip("Arrastra aquí todos los GameObjects que contienen VideoPlayers, en orden.")]
+    public List<GameObject> cutsceneObjects;
 
     void Start()
     {
         int index = StoryManager.Instance.GetCurrentCutsceneIndex();
-        if (index >= cutscenes.Count) {
-            Debug.LogError("Cutscene index fuera de rango");
+
+        if (index >= cutsceneObjects.Count)
+        {
+            Debug.LogError("El índice de cinemática está fuera del rango.");
             return;
         }
 
-        cutscenes[index].gameObject.SetActive(true);
-        cutscenes[index].Play();
-        cutscenes[index].stopped += OnCutsceneFinished;
+        // Activar solo la cinemática correspondiente
+        for (int i = 0; i < cutsceneObjects.Count; i++)
+            cutsceneObjects[i].SetActive(i == index);
+
+        GameObject currentCutscene = cutsceneObjects[index];
+        VideoPlayer vp = currentCutscene.GetComponent<VideoPlayer>();
+
+        if (vp == null)
+        {
+            Debug.LogError("El GameObject no tiene un VideoPlayer asignado.");
+            return;
+        }
+
+        vp.loopPointReached += OnVideoFinished;
+        vp.Play();
     }
 
-    void OnCutsceneFinished(PlayableDirector dir)
+    void OnVideoFinished(VideoPlayer vp)
     {
-        dir.stopped -= OnCutsceneFinished;
+        vp.loopPointReached -= OnVideoFinished;
         StoryManager.Instance.LoadNextStep();
     }
 }
