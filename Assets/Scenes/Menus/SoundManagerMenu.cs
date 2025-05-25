@@ -21,7 +21,7 @@ public class SoundManagerMenu : MonoBehaviour
     public AudioClip enemyDamageSFX;
 
     [Header("Audio Settings")]
-    [Range(0f, 1f)] public float musicVolume = 0.5f;
+    [Range(0f, 1f)] public float musicVolume = 0.2f;
     [Range(0f, 1f)] public float sfxVolume = 0.5f;
 
     [Header("Scene Music")]

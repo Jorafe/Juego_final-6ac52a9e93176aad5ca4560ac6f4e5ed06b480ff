@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     private int bulletsFired = 0;
     private int enemiesDeactivated = 0; // Evitar incrementar dos veces
     private int totalCandies = 0;
-    private int maxBulletsPerPhase = 25;
+    private int maxBulletsPerPhase = 20;
 
     public GameObject[] enemies;
     private float timeElapsed = 0f;

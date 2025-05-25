@@ -50,7 +50,7 @@ public class TimerManager : MonoBehaviour
     // Actualiza el temporizador si está corriendo
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("pause"))
         {
             TogglePause();
         }

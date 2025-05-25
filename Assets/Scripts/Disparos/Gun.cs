@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
     public Transform firePoint;
     public float fireRate = 3f;
     public float bulletLifeTime = 5f;
-    public int maxBullets = 25;
+    public int maxBullets = 20;
     private int bulletsLeft;
     public LevelManager levelManager;
     private int currentPhase = 0;

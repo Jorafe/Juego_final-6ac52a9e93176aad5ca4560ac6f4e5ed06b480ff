@@ -267,8 +267,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251263
-  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 1}
+    rgba: 2030104319
+  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 0.4745098}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 214697900}
   - component: {fileID: 214697899}
   - component: {fileID: 214697898}
+  - component: {fileID: 214697903}
   m_Layer: 5
   m_Name: 'Cinematica 2 3D '
   m_TagString: Untagged
@@ -1071,6 +1072,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214697896}
   m_CullTransparentMesh: 0
+--- !u!114 &214697903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214697896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68eef8b70cc7d340a0fa8a4bcf648aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boton: {fileID: 214697898}
+  elementosAfectados:
+  - {fileID: 1166561480}
+  - {fileID: 36158422}
 --- !u!1 &250009435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,8 +1229,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251263
-  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 1}
+    rgba: 2097213183
+  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 0.49019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1951,7 +1968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2031,6 +2048,7 @@ GameObject:
   - component: {fileID: 472814453}
   - component: {fileID: 472814456}
   - component: {fileID: 472814457}
+  - component: {fileID: 472814458}
   m_Layer: 5
   m_Name: Cinematica 1 2D
   m_TagString: Untagged
@@ -2200,6 +2218,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &472814458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472814451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68eef8b70cc7d340a0fa8a4bcf648aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boton: {fileID: 472814457}
+  elementosAfectados:
+  - {fileID: 451699655}
+  - {fileID: 2122034152}
 --- !u!1 &483395289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.45490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3606,6 +3640,7 @@ GameObject:
   - component: {fileID: 845513264}
   - component: {fileID: 845513263}
   - component: {fileID: 845513262}
+  - component: {fileID: 845513267}
   m_Layer: 5
   m_Name: 'Cinematica 2 2D '
   m_TagString: Untagged
@@ -3775,6 +3810,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845513260}
   m_CullTransparentMesh: 0
+--- !u!114 &845513267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845513260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68eef8b70cc7d340a0fa8a4bcf648aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boton: {fileID: 845513262}
+  elementosAfectados:
+  - {fileID: 1983261655}
+  - {fileID: 294725702}
 --- !u!1 &847075567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,7 +5398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.45490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5522,8 +5573,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251263
-  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 1}
+    rgba: 2147544831
+  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6441,8 +6492,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251263
-  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 1}
+    rgba: 2063658751
+  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 0.48235294}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6559,7 +6610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7143,7 +7194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7619,6 +7670,7 @@ GameObject:
   - component: {fileID: 2114826920}
   - component: {fileID: 2114826919}
   - component: {fileID: 2114826918}
+  - component: {fileID: 2114826923}
   m_Layer: 5
   m_Name: 'Cinematica 3 2D  '
   m_TagString: Untagged
@@ -7788,6 +7840,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114826916}
   m_CullTransparentMesh: 0
+--- !u!114 &2114826923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114826916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68eef8b70cc7d340a0fa8a4bcf648aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boton: {fileID: 2114826918}
+  elementosAfectados:
+  - {fileID: 1800528970}
+  - {fileID: 1293466560}
 --- !u!1 &2122034150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7855,8 +7923,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251263
-  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 1}
+    rgba: 2214653695
+  m_fontColor: {r: 1, g: 0.93442965, b: 0, a: 0.5176471}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7986,6 +8054,7 @@ GameObject:
   - component: {fileID: 2126379217}
   - component: {fileID: 2126379216}
   - component: {fileID: 2126379215}
+  - component: {fileID: 2126379220}
   m_Layer: 5
   m_Name: Cinematica 1 3D
   m_TagString: Untagged
@@ -8155,6 +8224,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126379213}
   m_CullTransparentMesh: 0
+--- !u!114 &2126379220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126379213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68eef8b70cc7d340a0fa8a4bcf648aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boton: {fileID: 2126379215}
+  elementosAfectados:
+  - {fileID: 520376919}
+  - {fileID: 1720710924}
 --- !u!1 &2129927199
 GameObject:
   m_ObjectHideFlags: 0
@@ -8607,7 +8692,7 @@ PrefabInstance:
     - target: {fileID: 2250483900889272298, guid: 464636b52e4d4a344953c6cf5f5aacf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2256636921928378312, guid: 464636b52e4d4a344953c6cf5f5aacf9,
         type: 3}
@@ -8677,12 +8762,12 @@ PrefabInstance:
     - target: {fileID: 3184542202811320884, guid: 464636b52e4d4a344953c6cf5f5aacf9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -600
+      value: -589
       objectReference: {fileID: 0}
     - target: {fileID: 3184542202811320884, guid: 464636b52e4d4a344953c6cf5f5aacf9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -229
+      value: -207
       objectReference: {fileID: 0}
     - target: {fileID: 3407372872080831188, guid: 464636b52e4d4a344953c6cf5f5aacf9,
         type: 3}
