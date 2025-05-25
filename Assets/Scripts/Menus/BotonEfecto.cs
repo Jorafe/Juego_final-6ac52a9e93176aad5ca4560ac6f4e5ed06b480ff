@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class BotonEfecto : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BotonEfecto : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     public Button boton;
     private Vector3 escalaOriginal;
-    public UnityEngine.UI.Graphic[] elementosAfectados;
+    public Graphic[] elementosAfectados;
     private Color[] coloresOriginales;
 
     void Start()
@@ -24,7 +24,7 @@ public class BotonEfecto : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 }
             }
 
-            // Añadir el sonido al evento OnClick
+            // Añadir sonido al hacer clic
             boton.onClick.AddListener(() =>
             {
                 if (SoundManagerMenu.Instance != null)
@@ -35,7 +35,8 @@ public class BotonEfecto : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    // Se llama cuando el ratón entra o cuando se selecciona con el joystick/teclado
+    private void ActivarEfecto()
     {
         boton.transform.localScale = escalaOriginal * 1.025f;
 
@@ -43,20 +44,20 @@ public class BotonEfecto : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             if (elementosAfectados[i] != null)
             {
-                Color colorElemento = elementosAfectados[i].color;
-                colorElemento.a = 1f;
-                elementosAfectados[i].color = colorElemento;
+                Color c = elementosAfectados[i].color;
+                c.a = 1f;
+                elementosAfectados[i].color = c;
             }
         }
 
-        // Reproducir sonido hover
         if (SoundManagerMenu.Instance != null)
         {
             SoundManagerMenu.Instance.PlaySFX(SoundManagerMenu.Instance.hoverSFX);
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    // Se llama cuando el ratón sale o se pierde la selección con joystick/teclado
+    private void DesactivarEfecto()
     {
         boton.transform.localScale = escalaOriginal;
 
@@ -68,4 +69,12 @@ public class BotonEfecto : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
         }
     }
+
+    // Eventos para ratón
+    public void OnPointerEnter(PointerEventData eventData) => ActivarEfecto();
+    public void OnPointerExit(PointerEventData eventData) => DesactivarEfecto();
+
+    // Eventos para joystick/teclado
+    public void OnSelect(BaseEventData eventData) => ActivarEfecto();
+    public void OnDeselect(BaseEventData eventData) => DesactivarEfecto();
 }
