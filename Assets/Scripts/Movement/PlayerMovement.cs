@@ -40,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform orientation;
 
+    public ParticleSystem movementParticlesLeft;
+    public ParticleSystem movementParticlesRight;
+    public ParticleSystem dashParticles;   
+    public ParticleSystem airParticles; 
+
     float horizontalInput;
     float verticalInput;
 
@@ -117,12 +122,81 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("XSpeed", 0);
             animator.SetFloat("YSpeed", 0);
         }
+
+        HandleMovementParticles();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
     }
+
+    private void HandleMovementParticles()
+    {
+        bool isMoving = Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f;
+        bool useDashParticles = dashing || wallrunning;
+        bool useAirParticles = !grounded && !useDashParticles;
+
+        // DASH & WALLRUN PARTICLES
+        if (useDashParticles)
+        {
+            ActivateParticleSystem(dashParticles);
+
+            DeactivateParticleSystem(movementParticlesLeft);
+            DeactivateParticleSystem(movementParticlesRight);
+            DeactivateParticleSystem(airParticles);
+
+            return;
+        }
+
+        // AIR PARTICLES
+        if (useAirParticles)
+        {
+            ActivateParticleSystem(airParticles);
+
+            DeactivateParticleSystem(movementParticlesLeft);
+            DeactivateParticleSystem(movementParticlesRight);
+            DeactivateParticleSystem(dashParticles);
+
+            return;
+        }
+
+        // GROUND MOVEMENT PARTICLES
+        DeactivateParticleSystem(dashParticles);
+        DeactivateParticleSystem(airParticles);
+
+        if (isMoving)
+        {
+            ActivateParticleSystem(movementParticlesLeft);
+            ActivateParticleSystem(movementParticlesRight);
+        }
+        else
+        {
+            DeactivateParticleSystem(movementParticlesLeft);
+            DeactivateParticleSystem(movementParticlesRight);
+        }
+    }
+private void ActivateParticleSystem(ParticleSystem ps)
+{
+    if (ps != null)
+    {
+        if (!ps.gameObject.activeSelf)
+            ps.gameObject.SetActive(true);
+        if (!ps.isPlaying)
+            ps.Play();
+    }
+}
+
+private void DeactivateParticleSystem(ParticleSystem ps)
+{
+    if (ps != null)
+    {
+        if (ps.isPlaying)
+            ps.Stop();
+        if (ps.gameObject.activeSelf)
+            ps.gameObject.SetActive(false);
+    }
+}   
 
     private void MyInput()
     {
