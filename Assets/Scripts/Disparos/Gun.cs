@@ -15,19 +15,22 @@ public class Gun : MonoBehaviour
     private Camera mainCamera;
     private bool allWormsDeactivated = false;
 
-    // Nuevo: Particle System
-    public ParticleSystem fireEffect; // Asigna tu prefab de partículas aquí
+    public ParticleSystem fireEffect;
+
+    public AudioClip shootSound; // Clip de sonido de disparo
+    private AudioSource audioSource;
 
     private void Start()
     {
         mainCamera = Camera.main;
         bulletsLeft = maxBullets;
 
-        // Asegurarnos de que las partículas estén desactivadas inicialmente
         if (fireEffect != null)
-        {
-            fireEffect.Stop(); // Detenemos el sistema de partículas al inicio
-        }
+            fireEffect.Stop();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            Debug.LogWarning("No se encontró AudioSource en el objeto con el script Gun.");
     }
 
     private void Update()
@@ -42,7 +45,7 @@ public class Gun : MonoBehaviour
             {
                 currentPhase++;
                 bulletsLeft = maxBullets;
-                allWormsDeactivated = false; // Reiniciamos el estado de gusanos desactivados
+                allWormsDeactivated = false;
             }
         }
     }
@@ -56,11 +59,15 @@ public class Gun : MonoBehaviour
 
         canShoot = false;
 
-        // Activar la partícula de disparo siempre que dispares
         if (fireEffect != null)
         {
-            fireEffect.transform.position = firePoint.position; // Coloca las partículas en el firePoint
-            fireEffect.Play(); // Reproduce la animación de la partícula
+            fireEffect.transform.position = firePoint.position;
+            fireEffect.Play();
+        }
+
+        if (shootSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shootSound);
         }
 
         Bullet bullet = BulletPool.Instance.GetBullet();
@@ -70,14 +77,10 @@ public class Gun : MonoBehaviour
         bulletsLeft--;
         LevelManager.Instance.RegisterShot();
 
-        // Esperamos el tiempo necesario antes de permitir otro disparo
         yield return new WaitForSeconds(fireRate);
 
-        // Detener el sistema de partículas si es necesario, o dejarlo activo según la duración del efecto
         if (fireEffect != null && fireEffect.isPlaying)
-        {
-            fireEffect.Stop(); // Detenemos el sistema de partículas después de un disparo
-        }
+            fireEffect.Stop();
 
         canShoot = true;
     }

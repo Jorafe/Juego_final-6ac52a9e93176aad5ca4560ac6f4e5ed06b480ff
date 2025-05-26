@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class EstrellaPresion : MonoBehaviour
 {
@@ -16,10 +17,17 @@ public class EstrellaPresion : MonoBehaviour
     public float alturaSobreCollider = 1f;
     public Vector3 escalaEstrella = Vector3.one;
 
+    [Header("UI")]
+    public TextMeshProUGUI mensajeTexto; // Asignar en el inspector
+    public string mensaje = "¡Ha aparecido una estrella!";
+
     private GameObject estrellaActual;
 
     private void Start()
     {
+        if (mensajeTexto != null)
+            mensajeTexto.gameObject.SetActive(false);
+
         StartCoroutine(CicloEstrella());
     }
 
@@ -30,6 +38,7 @@ public class EstrellaPresion : MonoBehaviour
         while (true)
         {
             InstanciarEstrellaAleatoria();
+            StartCoroutine(MostrarMensajeTemporal());
 
             float tiempoRestante = duracionVisible;
             while (estrellaActual != null && tiempoRestante > 0f)
@@ -43,7 +52,6 @@ public class EstrellaPresion : MonoBehaviour
                 Destroy(estrellaActual);
             }
 
-            // Tiempo de espera para volver a generar la estrella
             yield return new WaitForSeconds(tiempoEspera);
         }
     }
@@ -56,15 +64,25 @@ public class EstrellaPresion : MonoBehaviour
         estrellaActual = Instantiate(estrellaPrefab, randomPoint, Quaternion.identity);
         estrellaActual.transform.localScale = escalaEstrella;
 
-        // Agregar el componente que manejará la colisión y el daño a Imogen
         Estrella estrellaScript = estrellaActual.AddComponent<Estrella>();
-        estrellaScript.dano = 20;  // Aquí establecemos el daño que la estrella hará a Imogen
+        estrellaScript.dano = 20;
+    }
+
+    private IEnumerator MostrarMensajeTemporal()
+    {
+        if (mensajeTexto == null) yield break;
+
+        mensajeTexto.text = mensaje;
+        mensajeTexto.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        mensajeTexto.gameObject.SetActive(false);
     }
 
     private Vector3 GetRandomPointAboveCollider(Collider col)
     {
         Bounds bounds = col.bounds;
-
         float x = Random.Range(bounds.min.x, bounds.max.x);
         float z = Random.Range(bounds.min.z, bounds.max.z);
         float y = bounds.max.y + alturaSobreCollider;

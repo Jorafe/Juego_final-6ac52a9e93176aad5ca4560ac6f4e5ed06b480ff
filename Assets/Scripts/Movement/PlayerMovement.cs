@@ -33,6 +33,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip movementClip;
+    public AudioClip dashClip;
+    public AudioClip jumpClip;
+
+
     [Header("Slope Handling")]
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
@@ -124,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         HandleMovementParticles();
+        HandleMovementSounds();
     }
 
     private void FixedUpdate()
@@ -176,27 +184,66 @@ public class PlayerMovement : MonoBehaviour
             DeactivateParticleSystem(movementParticlesRight);
         }
     }
-private void ActivateParticleSystem(ParticleSystem ps)
+
+    private void HandleMovementSounds()
 {
-    if (ps != null)
+    bool isMoving = Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f;
+
+    if (dashing)
     {
-        if (!ps.gameObject.activeSelf)
-            ps.gameObject.SetActive(true);
-        if (!ps.isPlaying)
-            ps.Play();
+        PlayClip(dashClip);
+    }
+    else if (!grounded)
+    {
+        // En el aire, no sonido de movimiento ni dash
+        StopAudio();
+    }
+    else if (grounded && isMoving)
+    {
+        PlayClip(movementClip);
+    }
+    else
+    {
+        StopAudio();
     }
 }
 
-private void DeactivateParticleSystem(ParticleSystem ps)
-{
-    if (ps != null)
+    private void ActivateParticleSystem(ParticleSystem ps)
     {
-        if (ps.isPlaying)
-            ps.Stop();
-        if (ps.gameObject.activeSelf)
-            ps.gameObject.SetActive(false);
+        if (ps != null)
+        {
+            if (!ps.gameObject.activeSelf)
+                ps.gameObject.SetActive(true);
+            if (!ps.isPlaying)
+                ps.Play();
+        }
     }
-}   
+
+    private void DeactivateParticleSystem(ParticleSystem ps)
+    {
+        if (ps != null)
+        {
+            if (ps.isPlaying)
+                ps.Stop();
+            if (ps.gameObject.activeSelf)
+                ps.gameObject.SetActive(false);
+        }
+    }
+
+    private void PlayClip(AudioClip clip)
+    {
+        if (audioSource == null || clip == null) return;
+
+        if (audioSource.clip == clip && audioSource.isPlaying) return;
+
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+    private void StopAudio()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Stop();
+    }
 
     private void MyInput()
     {
@@ -366,6 +413,8 @@ private void DeactivateParticleSystem(ParticleSystem ps)
             animator.SetBool("isJumping", true);
         else
             animator.SetBool("isJumpingMove", true);
+
+            PlayClip(jumpClip);
     }
 
     private void ResetJump()
